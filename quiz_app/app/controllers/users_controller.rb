@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new
-    if user.update(user_params)
+    if user.update(new_user_params)
       session[:user_id] = user.id
       session[:is_instructor] = user.is_instructor
       redirect_to user_path(user)
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(session[:user_id])
-    user.update(user_params)
+    user.update(edit_user_params)
     redirect_to user_path(user) 
   end
 
@@ -39,8 +39,12 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
+  def new_user_params
     params.require(:user).permit(:f_name, :l_name, :email, :password, :password_confirmation)
+  end
+
+  def edit_user_params
+    params.require(:user).permit(:f_name, :l_name)
   end
 
 end
