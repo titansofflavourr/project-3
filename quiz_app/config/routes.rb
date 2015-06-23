@@ -13,11 +13,11 @@ Rails.application.routes.draw do
 
   resources :users, :except =>[:destroy]
 
-  resources :classes, :except =>[:destroy]
-
   resources :courses
 
-  resources :quizes, :except =>[:destroy]
+  resources :cohorts, :except =>[:destroy]
+
+  resources :quizzes, :except =>[:destroy]
 
   resources :questions, :except =>[:destroy]
 
