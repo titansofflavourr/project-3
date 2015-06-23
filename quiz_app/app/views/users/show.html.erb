@@ -1,2 +1,6 @@
 <h1>User#show</h1>
 <p>Find me in app/views/user/show.html.erb</p>
+
+<p>Welcome <%= @user.f_name %></p>
+
+<%= link_to 'Logout', logout_path, method: 'delete' %>

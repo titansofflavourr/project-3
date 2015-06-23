@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
 	#render login form
   def new
+    
   end
 
   #creates a session
