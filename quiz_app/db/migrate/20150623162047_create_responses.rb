@@ -5,6 +5,7 @@ class CreateResponses < ActiveRecord::Migration
     	t.integer :question_id, null: false
     	t.string :answer
     	t.integer :grade
+    	t.string :comment
     	t.timestamps
     end
   end

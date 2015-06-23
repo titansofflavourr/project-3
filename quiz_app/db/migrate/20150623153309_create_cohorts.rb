@@ -1,6 +1,6 @@
-class CreateClasses < ActiveRecord::Migration
+class CreateCohorts < ActiveRecord::Migration
   def change
-    create_table :classes do |t|
+    create_table :cohorts do |t|
     	t.integer :course_id, null: false
     	t.string :name
     	t.date :start_date, null: false
