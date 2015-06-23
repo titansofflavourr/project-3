@@ -10,7 +10,19 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :users
+  resources :users, :except =>[:destroy]
+
+  resources :classes, :except =>[:destroy]
+
+  resources :courses
+
+  resources :quizes, :except =>[:destroy]
+
+  resources :questions, :except =>[:destroy]
+
+  resources :choices, :except =>[:destroy]
+
+  resources :responses, :except =>[:destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -67,4 +79,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
 end
