@@ -5,7 +5,7 @@ class CreateClasses < ActiveRecord::Migration
     	t.string :name
     	t.date :start_date, null: false
     	t.date :end_date, null: false
-    	t.boolean :is_active, null: false, default: false
+    	t.boolean :is_active, null: false, default: true
     	t.timestamps
     end
   end

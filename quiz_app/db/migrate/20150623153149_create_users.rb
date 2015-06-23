@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :l_name, null: false
     	t.string :email, null: false
     	t.string :password_digest, null: false
-    	t.boolean :is_active, null: false, default: false
+    	t.boolean :is_active, null: false, default: true
     	t.timestamps
     end
   end
