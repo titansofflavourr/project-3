@@ -4,7 +4,7 @@ class CreateQuizzes < ActiveRecord::Migration
     	t.string :title, null: false
     	t.string :instructions
     	t.boolean :is_active, null: false, default: true
-    	t.integer :class_id, null: false
+    	t.integer :cohort_id, null: false
     	t.integer :user_id, null: false
     	t.timestamps
     end
