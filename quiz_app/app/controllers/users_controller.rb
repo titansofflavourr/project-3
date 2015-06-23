@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+
+  before_action :authorize, except: [:create, :new]
+
   def index
+    @users = User.all
   end
 
   def create
@@ -9,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find session[:user_id]
   end
 
   def update
