@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	# DHH <3's Coda
 	has_secure_password
 
-	has_many :classes
+	has_and_belongs_to_many :classes
+	has_many :responses
 
 end
