@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root 'sessions#new'
 
   get '/login', to: 'sessions#new'
@@ -8,13 +9,21 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  post '/users/:id/invite', to: 'users#send_invite'
+
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :users, :except =>[:destroy]
 
   resources :courses
 
-  resources :cohorts, :except =>[:destroy]
+  resources :cohorts, :except =>[:destroy] do
+    resources :quizzes, :except =>[:destroy]
+  end
+
+  post '/enroll/:id', to: 'cohorts#enroll'
+
+  # resources :cohorts, :except =>[:destroy]
 
   resources :quizzes, :except =>[:destroy]
 
@@ -24,7 +33,7 @@ Rails.application.routes.draw do
 
   resources :responses, :except =>[:destroy]
 
-
+  # devise_for :users, :controllers => { :invitations => 'users/invitations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
