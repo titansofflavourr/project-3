@@ -1,7 +1,10 @@
 <h1>This is the Instructor (and Student?) Dashboard</h1>
 
 <h4>You are logged in as: <%= session[:user_name] %> 
-	<% if session[:is_instructor] %> [INSTRUCTOR] <% end %></h4>
+	<% if session[:is_instructor] %>
+	 [INSTRUCTOR] 
+	<% end %>
+</h4>
 
 <h2>Profile Data:</h2>
 <h3>Name: <%= @user.f_name %> <%= @user.l_name %></h3>
@@ -49,6 +52,12 @@
 
 <% if session[:is_instructor] %>
 	<%= link_to "Edit User", "/users/#{@user.id}/edit" %>
+<% end %>
+
+<%# create quiz #%>
+
+<% if session[:is_instructor] %>
+	<%= link_to "Create Quiz", "/quizzes/new" %>
 <% end %>
 
 <%# browse classes (index) %>

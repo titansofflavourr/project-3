@@ -10,7 +10,7 @@ class QuizzesController < ApplicationController
   end
 
   def new
-    @quiz = Quiz.new
+    @quiz = Quiz.new(user_id: session[:user_id], cohort_id: params[:cohort_id])
   end
 
   def show
