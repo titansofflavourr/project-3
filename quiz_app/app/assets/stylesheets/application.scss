@@ -10,6 +10,48 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "choices.scss";
+@import "classes.scss";
+@import "courses.scss";
+@import "questions.scss";
+@import "quizzes.scss";
+@import "responses.scss";
+@import "users.scss";
+
+body {
+	background-color: #71EEB8;
+}
+
+.header {
+	height: 200px;
+	background-color: white;
+}
+
+#toplogo {
+	float: left;
+	padding: 20px;
+}
+
+#toplogo img {
+	width: 150px;
+}
+
+#topname {
+	float: left;
+	margin-top: 35px;
+}
+
+#topname h1 {
+	color: #2a7b03;
+	font-size: 70px;
+	font-weight: bold;
+}
+
+#topname a:hover {
+	text-decoration: none;
+}
