@@ -14,9 +14,13 @@ Rails.application.routes.draw do
 
   resources :courses
 
+  resources :cohorts, :except =>[:destroy] do
+    resources :quizzes, :except =>[:destroy]
+  end
+
   post '/enroll/:id', to: 'cohorts#enroll'
 
-  resources :cohorts, :except =>[:destroy]
+  # resources :cohorts, :except =>[:destroy]
 
   resources :quizzes, :except =>[:destroy]
 
