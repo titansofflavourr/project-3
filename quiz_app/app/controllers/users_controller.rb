@@ -8,13 +8,22 @@ class UsersController < ApplicationController
 
   def create
     user = User.new
-    if user.update(new_user_params)
-      session[:user_id] = user.id
-      session[:is_instructor] = user.is_instructor
-      redirect_to user_path(user)
-    else
-      # rerender the form
-      redirect_to '/users/new'
+    # if already logged in as instructor
+    if session[:is_instructor]
+      if user.update(new_user_params)
+        redirect_to user_path(user)
+      else
+        redirect_to "/users/#{session[:user_id]}"
+      end
+    else #new user
+      if user.update(new_user_params)
+        session[:user_id] = user.id
+        session[:user_name] = "#{user.f_name} #{user.l_name}"
+        session[:is_instructor] = user.is_instructor
+        redirect_to user_path(user)
+      else
+        redirect_to '/users/new'
+      end
     end
   end
 
@@ -23,18 +32,29 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    if session[:is_instructor]
+      @user = User.find(params[:id])
+    else
+      @user = User.find(session[:user_id])
+    end
   end
 
   def update
-    user = User.find(session[:user_id])
+    if session[:is_instructor]
+      user = User.find(params[:id])
+    else
+      user = User.find(session[:user_id])
+    end
     user.update(edit_user_params)
     redirect_to user_path(user) 
   end
 
   def edit
-    # can instructors edit students' profiles?
-    @user = User.find(session[:user_id]) 
+    if session[:is_instructor]
+      @user = User.find(params[:id])
+    else
+      @user = User.find(session[:user_id])
+    end 
   end
 
   private
@@ -44,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def edit_user_params
-    params.require(:user).permit(:f_name, :l_name)
+    params.require(:user).permit(:f_name, :l_name, :email, :is_active, :is_instructor)
   end
 
 end

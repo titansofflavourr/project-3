@@ -1,2 +1,18 @@
-<h1>Class#show</h1>
-<p>Find me in app/views/class/show.html.erb</p>
+<h1>Class/Cohort Show View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<h2>Course: <%= @cohort.course.name %></h2>
+<h2>Cohort Name: <%= @cohort.name %></h2>
+
+<h3>Start Date: <%= @cohort.start_date %></h3>
+<h3>End Date: <%= @cohort.end_date %></h3>
+
+<% if (@cohort.is_active) %>
+	<h3>Status: ACTIVE</h3>
+<% else %>
+	<h3>Status: INACTIVE</h3>
+<% end %>
+
+<%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %>
+

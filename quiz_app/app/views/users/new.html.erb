@@ -1,2 +1,25 @@
-<h1>User#new</h1>
-<p>Find me in app/views/user/new.html.erb</p>
+<h1>Create New User View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<%= form_for @user, url: {action: "create"} do |f| %>
+	<%= f.label :f_name, "First Name" %>
+	<%= f.text_field :f_name %>
+	<%= f.label :l_name, "Last Name" %>
+	<%= f.text_field :l_name %>
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email %>
+
+	<%= f.label :password, "Password" %>
+	<%= f.password_field :password %>
+	<%= f.label :password_confirmation, "Confirm Password" %>
+	<%= f.password_field :password_confirmation %>
+
+	<%= f.label :is_instructor, "Is Instructor?:" %>
+	<%= f.radio_button(:is_instructor, :true) %>
+	<%= f.label(:is_instructor_true, "Yes") %>
+	<%= f.radio_button(:is_instructor, :false) %>
+	<%= f.label(:is_instructor_false, "No") %>
+
+	<%= f.submit "Create", html: {class: "button"}  %>
+<% end %>

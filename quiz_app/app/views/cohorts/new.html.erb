@@ -1,2 +1,17 @@
-<h1>Class#new</h1>
-<p>Find me in app/views/class/new.html.erb</p>
+<h1>Create a New Class View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<%= form_for @cohort, url: {action: "create"} do |f| %>
+	
+	<%= f.label :course_id, "Course:" %>
+	<%= f.collection_select(:course_id, Course.all, :id, :name) %>
+	<%= f.label :name, "Cohort Name" %>
+	<%= f.text_field :name %>
+	<%= f.label :start_date, "Start Date" %>
+	<%= f.date_field :start_date %>
+	<%= f.label :end_date, "End Date" %>
+	<%= f.date_field :end_date %>
+
+	<%= f.submit "Create", html: {class: "button"}  %>
+<% end %>
