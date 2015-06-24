@@ -18,12 +18,13 @@
 @import "choices.scss";
 @import "classes.scss";
 @import "courses.scss";
-@import "questions.scss";
+@import "dashboard.scss";
 @import "quizzes.scss";
 @import "responses.scss";
 @import "users.scss";
 
 body {
+	color: #006400;
 	background-color: #71EEB8;
 }
 
@@ -54,4 +55,10 @@ body {
 
 #topname a:hover {
 	text-decoration: none;
+}
+
+#footer {
+	position: absolute;
+	right: 50px;
+	padding-top: 20px;
 }
