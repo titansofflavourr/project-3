@@ -1,6 +1,6 @@
-<h1>Edit Class View</h1>
+<h1>Edit Cohort View</h1>
 
-<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+<%= link_to "Back to Cohort", cohort_path(@cohort) %>
 
 <%= form_for @cohort, url: {action: "update"} do |f| %>
 	
