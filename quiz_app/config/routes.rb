@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  post '/enroll_user/:id', to: 'users#enroll'
+
   resources :users, :except =>[:destroy]
 
   resources :courses
@@ -21,7 +23,7 @@ Rails.application.routes.draw do
     resources :quizzes, :except =>[:destroy]
   end
 
-  post '/enroll/:id', to: 'cohorts#enroll'
+  post '/enroll_cohort/:id', to: 'cohorts#enroll'
 
   # resources :cohorts, :except =>[:destroy]
 
