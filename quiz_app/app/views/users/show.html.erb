@@ -56,10 +56,6 @@
 
 <%# create quiz #%>
 
-<% if session[:is_instructor] %>
-	<%= link_to "Create Quiz", "/quizzes/new" %>
-<% end %>
-
 <%# browse classes (index) %>
 
 <%= link_to "Cohorts", cohorts_path %>
