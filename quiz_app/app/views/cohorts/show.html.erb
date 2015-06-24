@@ -23,8 +23,8 @@
 	<% end %>
 </ul>
 
-<h3>Enroll a User in this Cohort</h3>
-<form action="/enroll_cohort/<%= @cohort.id %>" method="post">
+<h3>Enroll a User</h3>
+<form action="/enroll/<%= @cohort.id %>" method="post">
 	<select name="user_id">
 		<% @users.each do |user| %>
 			<% if not user.cohorts.include?(@cohort) %>

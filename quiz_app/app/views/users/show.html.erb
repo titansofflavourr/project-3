@@ -29,11 +29,11 @@
 	<h3>Status: INACTIVE</h3>
 <% end %>
 
-<h3>Cohorts this User is enrolled in:</h3>
+<h3>Cohorts this User is Enrolled in:</h3>
 <ul>
 	<% @user.cohorts.each do |cohort| %>
 		<li><%= cohort.course.name %> <%= cohort.name %></li>
-	<% end %>
+	<% end %> 
 </ul>
 
 <%= link_to 'Logout', logout_path, method: 'delete' %>
