@@ -16,3 +16,16 @@
 
 <%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %>
 
+<form action: "/enroll/<%= @cohort.id %>" method: "post">
+	
+
+</form>
+
+<%= form_tag url: {action: "/enroll/<%= @cohort.id %>", method: "post"} do |f| %>
+	
+	<%= f.label :user_id, "User:" %>
+	<%= f.collection_select(:user_id, User.all, :id, :name) %>
+
+	<%= f.submit "Add", html: {class: "button"}  %>
+<% end %>
+

@@ -1,2 +1,10 @@
-<h1>User#index</h1>
-<p>Find me in app/views/user/index.html.erb</p>
+<h1>User Index View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<ul>
+	<% @users.each do |user| %>
+		<li><a href="/users/<%= user.id %>"><%= user.f_name %> <%= user.l_name %></a>
+			<% if user.is_instructor %> [INSTRUCTOR] <% end %></li>
+	<% end %>
+</ul>

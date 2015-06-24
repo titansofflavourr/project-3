@@ -1,15 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
 # Examples:
-#
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-# 5.times do |i|
-# 	Quiz.create(title: "")
-
 
 
 
@@ -51,7 +42,5 @@ response2 = Response.create(user_id: 2, question_id: 1, answer: "Easy to underst
 question2 = Question.create(number: 1, prompt: "Who created Ruby?", is_multiple_choice: false, answer_key: "Yukihiro Matsumoto", max_points: 5, quiz_id: 1)
 
 response3 = Response.create(user_id: 2, question_id: 1, answer: "Matsu", grade: 5, comment: "nothing")
-
-
 
 
