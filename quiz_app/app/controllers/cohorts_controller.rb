@@ -7,6 +7,7 @@ class CohortsController < ApplicationController
   def create
     cohort = Cohort.new
     cohort.update(cohort_params)
+    redirect_to cohort_path(cohort)
   end
 
   def new
@@ -20,6 +21,7 @@ class CohortsController < ApplicationController
   def update
     cohort = Cohort.find(params[:id])
     cohort.update(cohort_params)
+    redirect_to cohort_path(cohort)
   end
 
   def edit
@@ -29,7 +31,7 @@ class CohortsController < ApplicationController
   private
 
   def cohort_params
-    params.require(:cohort).permit(:name, :start_date, :end_date, :is_active)
+    params.require(:cohort).permit(:name, :course_id, :start_date, :end_date, :is_active)
   end
 
 end

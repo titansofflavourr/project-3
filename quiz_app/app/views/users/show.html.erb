@@ -1,6 +1,61 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1>This is the Instructor (and Student?) Dashboard</h1>
 
-<p>Welcome <%= @user.f_name %></p>
+<h4>You are logged in as: <%= session[:user_name] %> 
+	<% if session[:is_instructor] %> [INSTRUCTOR] <% end %></h4>
+
+<h2>Profile Data:</h2>
+<h3>Name: <%= @user.f_name %> <%= @user.l_name %></h3>
+<h3>Email: <%= @user.email %></h3>
+<% if (@user.is_instructor) %>
+	<h3>INSTRUCTOR</h3>
+<% else %>
+	<h3>STUDENT</h3>
+<% end %>
+
+<% if (@user.is_active) %>
+	<h3>Status: ACTIVE</h3>
+<% else %>
+	<h3>Status: INACTIVE</h3>
+<% end %>
 
 <%= link_to 'Logout', logout_path, method: 'delete' %>
+
+<%# edit profile (self) %>
+
+<%= link_to "Edit My Profile", "/users/#{session[:user_id]}/edit" %>
+
+<%# add student (instructors only) %>
+
+<% if session[:is_instructor] %>
+	<%= link_to "Add a User", "/users/new" %>
+<% end %>
+
+<%# edit student profile (instructor only) %>
+
+<% if session[:is_instructor] %>
+	<%= link_to "Edit User", "/users/#{@user.id}/edit" %>
+<% end %>
+
+<%# browse classes (index) %>
+
+<%# create class/cohort (instructors only) %>
+
+<% if session[:is_instructor] %>
+	<%= link_to "Create a New Class(Cohort)", "/cohorts/new" %>
+<% end %>
+
+<%# edit class - this link is on the class(cohort) show page %>
+
+<%# browse quizzes (index) %>
+
+<%# create quiz %>
+
+<%# edit quiz %>
+
+<%# grade quiz %>
+
+
+
+
+
+
