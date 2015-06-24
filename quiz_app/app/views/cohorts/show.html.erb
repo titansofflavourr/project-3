@@ -16,16 +16,29 @@
 
 <%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %>
 
-<form action: "/enroll/<%= @cohort.id %>" method: "post">
-	
+<%= form_tag("/enroll/", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
+<h3>Students</h3>
+<ul>
+	<% @cohort.users.each do |user| %>
+		<li><%= user.f_name %> <%= user.l_name %></li>
+	<% end %>
+</ul>
+
+
+<h3>Enroll a User</h3>
+<form action="/enroll/<%= @cohort.id %>" method="post">
+	<select name="user_id">
+		<% @users.each do |user| %>
+			<option value="<%= user.id %>"><%= user.f_name %> <%= user.l_name %></option> 
+		<% end %>
+	</select>
+	<input type="submit" value="Add User to Cohort"/>
+	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 </form>
 
-<%= form_tag url: {action: "/enroll/<%= @cohort.id %>", method: "post"} do |f| %>
-	
-	<%= f.label :user_id, "User:" %>
-	<%= f.collection_select(:user_id, User.all, :id, :name) %>
-
-	<%= f.submit "Add", html: {class: "button"}  %>
-<% end %>
 
