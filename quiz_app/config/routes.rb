@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  post '/users/:id/invite', to: 'users#send_invite'
+
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :users, :except =>[:destroy]

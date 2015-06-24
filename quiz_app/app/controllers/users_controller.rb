@@ -57,6 +57,12 @@ class UsersController < ApplicationController
     end 
   end
 
+  def send_invite
+    @user = User.find(params[:id])
+    @user.invite!
+    redirect_to @user
+  end 
+
   private
 
   def new_user_params
