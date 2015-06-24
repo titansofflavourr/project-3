@@ -29,6 +29,14 @@
 	<h3>Status: INACTIVE</h3>
 <% end %>
 
+<h3>Cohorts this User is Enrolled in:</h3>
+<ul>
+	<% @user.cohorts.each do |cohort| %>
+		<li><%= cohort.course.name %> <%= cohort.name %></li>
+	<% end %> 
+</ul>
+
+
 <%= link_to 'Logout', logout_path, method: 'delete' %>
 
 <%# edit profile (self) %>
