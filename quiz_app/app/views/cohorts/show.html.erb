@@ -22,7 +22,7 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<h3>Students</h3>
+<h3>Students in this Cohort</h3>
 <ul>
 	<% @cohort.users.each do |user| %>
 		<li><%= user.f_name %> <%= user.l_name %></li>
@@ -34,7 +34,9 @@
 <form action="/enroll/<%= @cohort.id %>" method="post">
 	<select name="user_id">
 		<% @users.each do |user| %>
-			<option value="<%= user.id %>"><%= user.f_name %> <%= user.l_name %></option> 
+			<% if not user.cohorts.include?(@cohort) %>
+				<option value="<%= user.id %>"><%= user.f_name %> <%= user.l_name %></option>
+			<% end %> 
 		<% end %>
 	</select>
 	<input type="submit" value="Add User to Cohort"/>
