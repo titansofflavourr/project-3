@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :courses
 
+  post '/enroll/:id', to: 'cohorts#enroll'
+
   resources :cohorts, :except =>[:destroy]
 
   resources :quizzes, :except =>[:destroy]

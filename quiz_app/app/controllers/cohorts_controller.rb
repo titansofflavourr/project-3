@@ -28,6 +28,13 @@ class CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
   end
 
+  def enroll
+    cohort = Cohort.find(params[:id])
+    user = User.find(params[:user_id])
+    cohort.users.append(user)
+    redirect_to cohort_path(cohort)
+  end
+
   private
 
   def cohort_params
