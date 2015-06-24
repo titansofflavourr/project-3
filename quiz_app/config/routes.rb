@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :courses
 
-  resources :cohorts, :except =>[:destroy]
+  resources :cohorts, :except =>[:destroy] do
+    resources :quizzes
+  end
 
   resources :quizzes, :except =>[:destroy]
 
