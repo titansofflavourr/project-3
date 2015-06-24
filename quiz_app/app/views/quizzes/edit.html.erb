@@ -1,3 +1,34 @@
-Prefix          | Verb | URI Pattern                |               |Controller#Action
+<!-- Prefix          | Verb | URI Pattern                |               |Controller#Action
 
-edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizzes#edit
+edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizzes#edit -->
+
+
+<!-- QUIZ:(title:, instructions:, is_active:( true), cohort_id:, user_id:) -->
+
+<!-- QUESTION:(number:, prompt:, is_multiple_choice:, answer_key:, max_points:, quiz_id:) -->
+
+
+<h1>Editing Quiz: "<%= @quiz.title.titleize %>"</h1>
+<p>Created by <%=@quiz.user.f_name.capitalize%> <%=@quiz.user.l_name.capitalize%></p>
+
+<h1>Current Questions:</h1>
+<ul>
+  <% @quiz.questions.each do |question| %>
+    <li>
+      <b><%= question.prompt %></b>
+      <li>(Answer:<%= question.answer_key%>)</li>
+      <li><i>Worth <%= question.max_points%> points</i></li>
+
+    </li> <br>
+  <%end%>
+</ul>
+
+
+<fieldset>
+  <legend>Add Question </legend>
+  <form>
+    <input type="submit">
+
+  </form>
+
+</fieldset>
