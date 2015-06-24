@@ -1,12 +1,14 @@
 <div class="row">
 	<div class="col-md-3">
 		<div id="top-box-nav">
+		<%# top left box to select class and quiz #%> 
 		<h4>You are logged in as: <br> <%= session[:user_name] %> 
 			<% if session[:is_instructor] %> [INSTRUCTOR] <% end %></h4>
 		</div>
 	</div>
 	<div class="col-md-8">
 		<div id="nav-bar">
+		<%# navigation bar with buttons #%> 
 		<ul>
 			<li><button id="dash-button">DASH</button></li>
 			<li><button id="profile-button">PROFILE</li>
@@ -24,6 +26,7 @@
 <div class="row">
 	<div class="col-md-3">
 		<div id="info-sidebar">
+		<%# displays student #%> 
 			<h2>Profile Data:</h2>
 			<h3>Name: <br> <%= @user.f_name %> <%= @user.l_name %></h3>
 			<h3>Email: <br> <%= @user.email %></h3>
