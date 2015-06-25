@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(session[:user_id])
     end
+    @cohorts = Cohort.all
   end
 
   def update
@@ -62,6 +63,13 @@ class UsersController < ApplicationController
     @user.invite!
     redirect_to @user
   end 
+
+  def enroll
+    user = User.find(params[:id])
+    cohort = Cohort.find(params[:cohort_id])
+    user.cohorts.append(cohort)
+    redirect_to user_path(user)
+  end
 
   private
 

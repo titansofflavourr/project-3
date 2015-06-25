@@ -1,3 +1,145 @@
-Prefix          | Verb | URI Pattern                |               |Controller#Action
+<!-- Prefix          | Verb | URI Pattern                |               |Controller#Action
 
-edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizzes#edit
+edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizzes#edit -->
+
+
+<!-- QUIZ:(title:, instructions:, is_active:( true), cohort_id:, user_id:) -->
+
+<!-- QUESTION:(number:, prompt:, is_multiple_choice:, answer_key:, max_points:, quiz_id:) -->
+
+
+<h1>Editing Quiz: "<%= @quiz.title.titleize %>"</h1>
+<p>Created by <%=@quiz.user.f_name.capitalize%> <%=@quiz.user.l_name.capitalize%></p>
+
+<h1>Current Questions:</h1>
+<ul>
+  <% @quiz.questions.each do |question| %>
+    <li>
+      <b><%= question.prompt %></b>
+      <li>(Answer:<%= question.answer_key%>)</li>
+      <li><i>Worth <%= question.max_points%> points</i></li>
+
+    </li> <br>
+  <%end%>
+</ul>
+
+
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add a Question</h3>
+    </div> <!-- panel-heading -->
+    <div class="panel-body">
+
+
+      <form class="new-question-form form-horizontal" id="<%=@quiz.id%>">
+        <div class="row">
+          <div class="col-xs-10">
+            <input type="hidden" name="quiz_id" value="<%=@quiz.id%>">
+            <div class="input-group">
+              <input type="text" name="number" class="form-control question-number-field" placeholder="Question Number">
+            </div> <!-- input group -->
+
+            
+              <input type="text" name="prompt" class="form-control question-prompt-field" placeholder="Question Prompt">
+            
+            <div class="input-group"> 
+              <input type="text" name="max_points" class="form-control question-max-points-field" placeholder="Max Points">
+            </div> <!-- input group -->
+
+            <div class="form-group">
+              <label class="control-label col-xs-1">Question Type:</label>
+              <div class="col-xs-2">
+                  <label class="radio-inline">
+                      <input type="radio" id="short-answer-radio" name="is_multiple_choice" value="false" checked="checked"> Short Answer
+                  </label>
+              </div>
+              <div class="col-xs-2">
+                  <label class="radio-inline">
+                      <input type="radio" id="mult-choice-radio" name="is_multiple_choice" value="true"> Multiple Choice
+                  </label>
+              </div>
+            </div> <!-- form group -->
+
+
+
+          </div><!-- col -->
+        </div> <!-- row -->
+        <div class="col-xs-4" class="mult-choice-answer-panel hidden">
+          <div class="panel panel-success mult-choice-answer-panel hidden">
+            <div class="panel-heading">
+              <h3 class="panel-title">Multiple Choice Options:</h3> (select correct option)
+            </div> <!-- panel-heading -->
+            <div class="panel-body">
+              <div class="input-group">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="mult-choice" value="a">
+                  </span>
+                  <input type="text" class="form-control mult-choice" id="choice-a"placeholder="Choice A" >
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="mult-choice" value="b">
+                  </span>
+                  <input type="text" class="form-control mult-choice" id="choice-b"placeholder="Choice B" >
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="mult-choice" value="c">
+                  </span>
+                  <input type="text" class="form-control mult-choice" id="choice-c"placeholder="Choice C" >
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="mult-choice" value="d">
+                  </span>
+                  <input type="text" class="form-control mult-choice" id="choice-d"placeholder="Choice D" >
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="mult-choice" value="e">
+                  </span>
+                  <input type="text" class="form-control mult-choice" id="choice-e"placeholder="Choice E" >
+                </div>
+
+              </div> <!-- input-group -->
+
+            </div> <!-- panel-body -->
+          </div> <!-- panel -->
+        </div><br>
+
+        <div class="col-xs-7" class="short-answer-panel">
+          <div class="panel panel-success short-answer-panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Short Answer Solution:</h3>
+            </div> <!-- panel-heading -->
+            <div class="panel-body">
+              <div class="form-group">
+                <input type="text" class="form-control mult-choice" name="answer_key" placeholder=" (for future grading reference)" >
+              </div> <!-- input-group -->
+
+            </div> <!-- panel-body -->
+          </div> <!-- panel -->
+        </div><br>
+
+
+    </div> <!-- panel-body -->
+    <br>
+        <span class="form-group-btn">
+          <button type="submit" value="submit" class="btn btn-success add-question-button" id="<%=@quiz.id%>">
+            
+            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+            <span class="glyphicon-class">Add Question</span>
+            
+          </button>
+        </span>
+
+      </form>
+
+
+
+  </div> <!-- panel -->
+
+
+

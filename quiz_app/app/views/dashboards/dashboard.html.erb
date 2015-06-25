@@ -1,0 +1,68 @@
+<div class="row">
+	<div class="col-sm-2">
+		<div id="top-box-nav">
+		<%# top left box to select class and quiz #%> 
+
+			<select name="cohort_id">
+		<% @cohorts.each do |cohort| %>
+			<% if cohort.users.include?(@user) %>
+				<option value="<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></option>
+			<% end %> 
+		<% end %>
+	</select>
+
+		
+		<h4>You are logged in as: <br> <span id="logged-in"><%= session[:user_name] %></span>
+			<% if session[:is_instructor] %><br> [INSTRUCTOR] <% end %></h4>
+			<%= link_to 'Logout', logout_path, method: 'delete' %>
+		</div>
+	</div>
+	<div class="col-sm-9">
+		<div id="nav-bar">
+		<%# navigation bar with buttons #%> 
+		<ul>
+			<li><button id="dash-button">DASH</button></li>
+			<li><button id="profile-button">PROFILE</li>
+			<li><button id="classes-button">CLASSES</li>
+			<% if session[:is_instructor] %>
+			<li><button id="create-quiz-button">CREATE QUIZ</li>
+			<% else %>
+			<li><button id="take-quiz-button">TAKE QUIZ</li>
+			<% end %>
+		</ul>
+	</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-2">
+		<div id="info-sidebar">
+			<br><br><br><br><br><br><br><br><br>
+			QUIZ GRADE:<br>
+			<input type="text" name="quiz-grade" value="" readonly><br><br>
+			INCORRECT ANSWERS:<br>
+			<input type="text" name="incorrect" value="" readonly><br><br>
+			OVERALL COURSE GRADE:<br>
+			<input type="text" name="course-grade" value="" readonly><br><br>
+			QUIZZES TAKEN:<br>
+			<input type="text" name="quizzes-taken" value="" readonly><br><br>
+		</div>
+	</div>
+
+
+
+	<div class="col-sm-9">
+		<div id="dash-main">
+			<h1>Welcome to the <% if session[:is_instructor] %>instructor<% else %>student<% end %> dashboard.</h1>
+			
+			<iframe id="dynamic-content" src="/cohorts/1/quizzes/1/edit">
+			</iframe>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+

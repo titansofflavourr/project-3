@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
 
+  require 'json'
+
   def index
     @questions = Question.all
   end
@@ -7,7 +9,9 @@ class QuestionsController < ApplicationController
   def create
     question = Question.new
     question.update(question_params)
-  end
+    @question = question.to_json
+    render json: @question
+  end 
 
   def new
     @question = Question.new
@@ -29,7 +33,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:number, :prompt, :answer_key, :is_multiple_choice, :max_points)
+    params.require(:question).permit(:number, :prompt, :answer_key, :is_multiple_choice, :max_points, :quiz_id)
   end
 
 end

@@ -3,14 +3,13 @@
 <head>
   <title>QuizApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="header">
 	<div id="toplogo">
-		<a href="/"><img src="assets/logo.png">
+		<a href="/"><img src="http://i.imgur.com/HD4qXlk.png">
 	</div>
 	 <div id="topname">
 	 	<h1>QUIZZULHU</h2></a>
@@ -18,6 +17,12 @@
 </div>
 
 <%= yield %>
+
+<div id="footer">
+	copyright @ Titans of Flavourr 2015. all rights reserved
+</div>
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 </body>
 </html>

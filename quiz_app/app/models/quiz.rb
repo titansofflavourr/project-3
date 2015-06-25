@@ -13,7 +13,7 @@
 #
 
 class Quiz < ActiveRecord::Base
-
+  belongs_to :user
 	belongs_to :cohort
 	has_many :questions
 	belongs_to :user

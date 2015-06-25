@@ -1,2 +1,8 @@
-<h1>Course#show</h1>
-<p>Find me in app/views/course/show.html.erb</p>
+<h1>Course Show Page</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<h2>Course: <%= @course.name %></h2>
+
+
+
