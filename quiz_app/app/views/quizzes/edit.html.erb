@@ -35,28 +35,28 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
       <form class="new-question-form form-horizontal" id="<%=@quiz.id%>">
         <div class="row">
           <div class="col-xs-10">
-            
+            <input type="hidden" name="quiz_id" value="<%=@quiz.id%>">
             <div class="input-group">
-              <input type="text" class="form-control question-number-field" placeholder="Question Number">
+              <input type="text" name="number" class="form-control question-number-field" placeholder="Question Number">
             </div> <!-- input group -->
 
             
-              <input type="text" class="form-control question-prompt-field" placeholder="Question Prompt">
+              <input type="text" name="prompt" class="form-control question-prompt-field" placeholder="Question Prompt">
             
             <div class="input-group"> 
-              <input type="text" class="form-control question-max-points-field" placeholder="Max Points">
+              <input type="text" name="max_points" class="form-control question-max-points-field" placeholder="Max Points">
             </div> <!-- input group -->
 
             <div class="form-group">
               <label class="control-label col-xs-1">Question Type:</label>
               <div class="col-xs-2">
                   <label class="radio-inline">
-                      <input type="radio" id="short-answer-radio" name="question-type-radios" value="short-answer" checked="checked"> Short Answer
+                      <input type="radio" id="short-answer-radio" name="is_multiple_choice" value="false" checked="checked"> Short Answer
                   </label>
               </div>
               <div class="col-xs-2">
                   <label class="radio-inline">
-                      <input type="radio" id="mult-choice-radio" name="question-type-radios" value="mult-choice"> Multiple Choice
+                      <input type="radio" id="mult-choice-radio" name="is_multiple_choice" value="true"> Multiple Choice
                   </label>
               </div>
             </div> <!-- form group -->
@@ -116,7 +116,7 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
             </div> <!-- panel-heading -->
             <div class="panel-body">
               <div class="form-group">
-                <input type="text" class="form-control mult-choice" id="choice-d"placeholder=" (for future grading reference)" >
+                <input type="text" class="form-control mult-choice" name="answer_key" placeholder=" (for future grading reference)" >
               </div> <!-- input-group -->
 
             </div> <!-- panel-body -->
