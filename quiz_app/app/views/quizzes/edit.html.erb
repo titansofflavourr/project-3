@@ -12,13 +12,23 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 <p>Created by <%=@quiz.user.f_name.capitalize%> <%=@quiz.user.l_name.capitalize%></p>
 
 <h1>Current Questions:</h1>
-<ul>
+<ul id="quiz-questions">
   <% @quiz.questions.each do |question| %>
     <li>
-      <b><%= question.prompt %></b>
-      <li>(Answer:<%= question.answer_key%>)</li>
-      <li><i>Worth <%= question.max_points%> points</i></li>
-
+      <b><%= question.prompt %></b><br>
+      <%if !question.is_multiple_choice%>
+        <input type="text" disabled="true">
+      <%end%>
+        <ul>
+          <% question.choices.each do |choice| %>
+            <li>
+              <input type="radio" checked="checked" disabled = "true">
+              <b><%=choice.key%>:</b> <%=choice.option%>
+            </li>
+          <%end%>
+        </ul>
+      (Answer:<%= question.answer_key%>)<br>
+      <i>Worth <%= question.max_points%> points</i>
     </li> <br>
   <%end%>
 </ul>
@@ -74,33 +84,33 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
               <div class="input-group">
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <input type="radio" name="mult-choice" value="a">
+                    <input type="radio" name="mc_answer_key" value="a">
                   </span>
-                  <input type="text" class="form-control mult-choice" id="choice-a"placeholder="Choice A" >
+                  <input type="text" class="form-control mc_answer_key" name="choices[]"placeholder="Choice A" >
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <input type="radio" name="mult-choice" value="b">
+                    <input type="radio" name="mc_answer_key" value="b">
                   </span>
-                  <input type="text" class="form-control mult-choice" id="choice-b"placeholder="Choice B" >
+                  <input type="text" class="form-control mc_answer_key" name="choices[]"placeholder="Choice B" >
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <input type="radio" name="mult-choice" value="c">
+                    <input type="radio" name="mc_answer_key" value="c">
                   </span>
-                  <input type="text" class="form-control mult-choice" id="choice-c"placeholder="Choice C" >
+                  <input type="text" class="form-control mc_answer_key" name="choices[]"placeholder="Choice C" >
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <input type="radio" name="mult-choice" value="d">
+                    <input type="radio" name="mc_answer_key" value="d">
                   </span>
-                  <input type="text" class="form-control mult-choice" id="choice-d"placeholder="Choice D" >
+                  <input type="text" class="form-control mc_answer_key" name="choices[]"placeholder="Choice D" >
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">
-                    <input type="radio" name="mult-choice" value="e">
+                    <input type="radio" name="mc_answer_key" value="e">
                   </span>
-                  <input type="text" class="form-control mult-choice" id="choice-e"placeholder="Choice E" >
+                  <input type="text" class="form-control mc_answer_key" name="choices[]"placeholder="Choice E" >
                 </div>
 
               </div> <!-- input-group -->
@@ -116,7 +126,7 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
             </div> <!-- panel-heading -->
             <div class="panel-body">
               <div class="form-group">
-                <input type="text" class="form-control mult-choice" name="answer_key" placeholder=" (for future grading reference)" >
+                <input type="text" class="form-control short-answer" name="sa_answer_key" placeholder=" (for future grading reference)" >
               </div> <!-- input-group -->
 
             </div> <!-- panel-body -->
@@ -137,9 +147,20 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 
       </form>
 
-
-
-  </div> <!-- panel -->
-
+    <script id="new-question-template" type="x-mustache">
+      <li>
+        <b> {{prompt}} </b><br>
+          <ul>
+            {{#choices}}%>
+              <li>
+                <input type="radio" checked="checked" disabled = "true">
+                <b>{{key}}:</b> {{.}}
+              </li>
+            {{/choices}}
+          </ul>
+            (Answer:{{answer_key}})<br>
+            <i>Worth {{max_points}} points</i>
+      </li> <br>
+    </script>
 
 
