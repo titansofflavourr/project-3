@@ -5,10 +5,13 @@
 <div id="cohorts">
 	<h5>Select a Cohort: </h5>
 	<select name="cohort_id" id="select_cohort">
+		<option value="0">SELECT COHORT</option>
 		<% @cohorts.each do |cohort| %>
 	  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
 	  <% end %>
 	</select>
+
+	<div id="cohort_report"></div>
 
 	<script id="cohort_template" type="mustache">
 		<h3>Cohort: {{cohort.name}}</h3>
@@ -18,6 +21,7 @@
 		<hr>
 		<h5>Select a Quiz: </h5>
 		<select name="quiz_id" id="select_quiz">
+			<option value="0">SELECT QUIZ</option>
 		  {{#quizzes}}
 		  	<option value="{{id}}">{{title}}</option> 
 		  {{/quizzes}}
@@ -25,10 +29,45 @@
 	
 		<div id="quiz_report"></div>
 
+		<hr>
+
+		<div id="student_report"></div>
 
 	</script>
 
-	<div id="cohort_report"></div>
+	<script id="quiz_template" type="mustache">
+		<h4>Quiz: {{quiz.title}}</h4>
+		<h5>Date Assigned: {{quiz.date_assigned}}</h5>
+		<h5>Number of Questions: {{questions}}</h5>
+		<h5>Number of Student Assessments: {{assessments}}</h5>
+		<h5>Average Cohort Score: {{average_score}} (out of {{total_points}} total points)</h5>
+		<hr>
+	</script>
+
+	<script id="student_template" type="mustache">
+		<h4>Students</h4>
+		<div class="row">
+			<div class="col-sm-5">
+				<table class="table">
+				  <tr>
+						<th>Student Name</th>
+						<th>Student Overall Average</th>
+						<th>Student Quiz Score</th>
+					</tr>
+				{{#users}}
+					<tr>
+						<td class="student_name" id="{{id}}">{{f_name}} {{l_name}}</td>
+						<td class="student_average" id="{{id}}"></td>
+						<td class="student_score" id="{{id}}"></td>
+					</tr>
+				{{/users}}
+				</table>
+			</div>
+		</div>
+		<hr>
+	</script>
+
+	
 
 
 

@@ -43,7 +43,33 @@ class CohortsController < ApplicationController
     course = cohort.course.name
     quiz_count = cohort.quizzes.count
     quizzes = cohort.quizzes
-    users = cohort.users
+    users = []
+    cohort.users.each do |user|
+      if (user.is_instructor)
+        users.push(user)
+      end
+    end
+
+    user_averages = [];
+    users.each do |user|
+      total_student_score = 0
+      user.assessments.each do |assessment|
+        score = (assessment.student_score * 100)
+        points = assessment.quiz.total_points
+        if (points > 0)
+          assessment_score = score / points
+          total_student_score = total_student_score + assessment_score
+        end
+      end
+      if (user.assessments.count > 0)
+        total_student_average = total_student_score / user.assessments.count
+      else
+        total_student_average = 0
+      end 
+      user_averages.push({id: user.id, average: total_student_average})
+      binding.pry
+    end
+    # the code below will be replaced by calculations based on the assessment table
     total_cohort_scores = 0
     total_cohort_points = 0
     quizzes.each do |quiz|
@@ -66,13 +92,16 @@ class CohortsController < ApplicationController
       total_cohort_scores = total_cohort_scores + total_quiz_scores
       total_cohort_points = total_cohort_points + total_quiz_points
     end
-
     if (total_cohort_points > 0)
       cohort_average_score = (total_cohort_scores * 100)/ total_cohort_points
     else
       cohort_average_score = 0
     end
-    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: cohort_average_score}.to_json
+    # new assessment calculations to go here
+
+
+
+    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: cohort_average_score, student_averages: user_averages}.to_json
   end
 
   private

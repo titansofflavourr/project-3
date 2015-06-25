@@ -32,10 +32,20 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
+  def report #ajax call
+    quiz = Quiz.find(params[:quiz_id])
+    questions = quiz.questions.count
+    assessments = quiz.assessments.count
+    average_score = quiz.assessments.average('student_score')
+    total_points = quiz.total_points
+    render json: {quiz: quiz, questions: questions, assessments: assessments,
+      average_score: average_score, total_points: total_points}.to_json
+  end
+
   private
 
   def quiz_params
-    params.require(:quiz).permit(:title, :instructions, :answer_key, :is_active, :user_id)
+    params.require(:quiz).permit(:title, :instructions, :answer_key, :is_active, :user_id, :date_assigned, :total_points)
   end
 
 end

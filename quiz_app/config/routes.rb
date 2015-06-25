@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   # resources :cohorts, :except =>[:destroy]
 
+  get 'quizzes/report', to: 'quizzes#report'
+
   resources :quizzes, :except =>[:destroy]
 
   resources :questions, :except =>[:destroy]
