@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
 
+  require 'json'
+
   def index
     @cohorts = Cohort.all
   end
@@ -34,6 +36,14 @@ class CohortsController < ApplicationController
     user = User.find(params[:user_id])
     cohort.users.append(user)
     redirect_to cohort_path(cohort)
+  end
+
+  def report # ajax call
+    cohort = Cohort.find(params[:cohort_id])
+    course = cohort.course.name
+    quiz_count = cohort.quizzes.count
+    quizzes = cohort.quizzes
+    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes}.to_json
   end
 
   private

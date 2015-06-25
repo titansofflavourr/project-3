@@ -1,0 +1,47 @@
+<h1>Instructor Reports</h1>
+
+<hr>
+
+<div id="cohorts">
+	<h5>Select a Cohort: </h5>
+	<select name="cohort_id" id="select_cohort">
+		<% @cohorts.each do |cohort| %>
+	  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
+	  <% end %>
+	</select>
+
+	<script id="cohort_template" type="mustache">
+		<h3>Cohort: {{cohort.name}}</h3>
+		<h4>Course: {{course}}</h4>
+		<h5>Quizzes Taken: {{quiz_count}}</h5>
+		<h5>Cohort Average Across All Quizzes: 70%</h5>
+		<hr>
+		<h5>Select a Quiz: </h5>
+		<select name="quiz_id" id="select_quiz">
+		  {{#quizzes}}
+		  	<option value="{{id}}">{{title}}</option> 
+		  {{/quizzes}}
+		</select>
+
+
+	</script>
+
+	<div id="cohort_report"></div>
+</div>
+
+<div class="hidden" id="quizzes">
+
+
+	<script id="cohort_template" type="mustache">
+		<h3>Cohort: {{cohort.name}}</h3>
+		<h4>Course: {{course}}</h4>
+		<h5>Quizzes Taken: {{quizzes}}</h5>
+		<h5>Cohort Average Across All Quizzes: 70%</h5>
+	</script>
+
+	<div id="cohort_report"></div>
+</div>
+
+
+
+
