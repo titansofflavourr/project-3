@@ -1,7 +1,7 @@
 var question_id = "";
 
 
-$('button').on('click',function(event) {
+$('.student-quiz-button').on('click',function(event) {
 	// event.preventDefault(); 
 	console.log($(this))
 	var answer = $(this).parent().children().first().val();
