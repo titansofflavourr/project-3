@@ -19,9 +19,12 @@
 @import "classes.scss";
 @import "courses.scss";
 @import "dashboard.scss";
+@import "login.scss";
 @import "quizzes.scss";
 @import "responses.scss";
 @import "users.scss";
+
+
 
 body {
 	color: #006400;
@@ -34,8 +37,9 @@ body {
 }
 
 #toplogo {
-	float: left;
-	padding: 20px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }
 
 #toplogo img {
@@ -43,11 +47,14 @@ body {
 }
 
 #topname {
-	float: left;
-	margin-top: 35px;
+	position: absolute;
+	left: 200px;
+	top: 40px;
 }
 
+
 #topname h1 {
+	white-space: nowrap;
 	color: #2a7b03;
 	font-size: 70px;
 	font-weight: bold;

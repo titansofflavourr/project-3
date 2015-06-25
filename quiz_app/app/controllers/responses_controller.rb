@@ -5,8 +5,12 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    response = Response.new
-    response.update(response_params)
+    binding.pry
+    @response = Response.create(user_id: session[:user_id], question_id: params[:question_id],answer: params[:answer])
+    binding.pry
+    render json: @response
+    # response = Response.new
+    # response.update(response_params)
   end
 
   def new
@@ -29,7 +33,7 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response).permit(:user_id, :answer, :grade, :comment)
+    params.require(:response).permit(:user_id, :answer, :question_id, :grade, :comment)
   end
 
 end

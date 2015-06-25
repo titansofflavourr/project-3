@@ -1,2 +1,11 @@
-<h1>Course#edit</h1>
-<p>Find me in app/views/course/edit.html.erb</p>
+<h1>Edit Course View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<%= form_for @course, url: {action: "update"} do |f| %>
+	
+	<%= f.label :name, "Course Name" %>
+	<%= f.text_field :name %>
+
+	<%= f.submit "Update", html: {class: "button"}  %>
+<% end %>

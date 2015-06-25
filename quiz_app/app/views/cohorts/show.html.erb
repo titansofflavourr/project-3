@@ -14,6 +14,8 @@
 	<h3>Status: INACTIVE</h3>
 <% end %>
 
+<%= link_to "Add New Quiz", new_cohort_quiz_path(@cohort) %>
+
 <%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %>
 
 <h3>Students in this Cohort</h3>
@@ -24,7 +26,7 @@
 </ul>
 
 <h3>Enroll a User</h3>
-<form action="/enroll/<%= @cohort.id %>" method="post">
+<form action="/enroll_cohort/<%= @cohort.id %>" method="post">
 	<select name="user_id">
 		<% @users.each do |user| %>
 			<% if not user.cohorts.include?(@cohort) %>
@@ -35,5 +37,3 @@
 	<input type="submit" value="Add User to Cohort"/>
 	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 </form>
-
-
