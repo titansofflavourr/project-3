@@ -15,10 +15,20 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 <ul id="quiz-questions">
   <% @quiz.questions.each do |question| %>
     <li>
-      <b><%= question.prompt %></b>
-      <li>(Answer:<%= question.answer_key%>)</li>
-      <li><i>Worth <%= question.max_points%> points</i></li>
-
+      <b><%= question.prompt %></b><br>
+      <%if !question.is_multiple_choice%>
+        <input type="text" disabled="true">
+      <%end%>
+        <ul>
+          <% question.choices.each do |choice| %>
+            <li>
+              <input type="radio" checked="checked" disabled = "true">
+              <b><%=choice.key%>:</b> <%=choice.option%>
+            </li>
+          <%end%>
+        </ul>
+      (Answer:<%= question.answer_key%>)<br>
+      <i>Worth <%= question.max_points%> points</i>
     </li> <br>
   <%end%>
 </ul>
@@ -139,8 +149,18 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 
     <script id="new-question-template" type="x-mustache">
       <li>
-        <b> {{prompt}} </b>
-        <li>(Answer:{{answer_key}})</li>
-        <li><i>Worth {{max_points}} points</i></li>
+        <b> {{prompt}} </b><br>
+          <ul>
+            {{#choices}}%>
+              <li>
+                <input type="radio" checked="checked" disabled = "true">
+                <b>{{key}}:</b> {{.}}
+              </li>
+            {{/choices}}
+          </ul>
+            (Answer:{{answer_key}})<br>
+            <i>Worth {{max_points}} points</i>
       </li> <br>
     </script>
+
+

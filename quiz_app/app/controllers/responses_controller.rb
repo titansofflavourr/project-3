@@ -5,10 +5,14 @@ class ResponsesController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
+    @response = Response.create(user_id: session[:user_id], question_id: params[:question_id],answer: params[:answer])
+=======
     # creating response using session and ajax params
     @response = Response.create(user_id: session[:user_id], question_id: params[:question_id],answer: params[:answer])
     
     # send response back to browser
+>>>>>>> 03a482b51a16cdcf497d14ad4791f9bee63142e9
     render json: @response
 
     

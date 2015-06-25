@@ -1,7 +1,11 @@
 var question_id = "";
 
 
+<<<<<<< HEAD
+$('.thatbutton').on('click',function(event) {
+=======
 $('.student-quiz-submit-button').on('click',function(event) {
+>>>>>>> 03a482b51a16cdcf497d14ad4791f9bee63142e9
 	// event.preventDefault(); 
 	console.log($(this));
 	var answer_input = $(this).parent().children().first()
