@@ -4,6 +4,7 @@
 <h2>Profile Data:</h2>
 <h3>Name: <%= @user.f_name %> <%= @user.l_name %></h3>
 <h3>Email: <%= @user.email %></h3>
+<%= image_tag gravatar_url(@user.email, '100x100') %>
 <% if (@user.is_instructor) %>
 	<h3>INSTRUCTOR</h3>
 <% else %>
