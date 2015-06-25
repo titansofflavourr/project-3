@@ -24,11 +24,13 @@
 @import "responses.scss";
 @import "users.scss";
 
-
+h1 {
+	color: #795548;
+}
 
 body {
-	color: #006400;
-	background-color: #71EEB8;
+	color: #689F38;
+	background-color: #DCEDC8;
 }
 
 .header {
@@ -55,7 +57,7 @@ body {
 
 #topname h1 {
 	white-space: nowrap;
-	color: #2a7b03;
+	color: #795548;
 	font-size: 70px;
 	font-weight: bold;
 }

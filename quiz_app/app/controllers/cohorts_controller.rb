@@ -43,6 +43,7 @@ class CohortsController < ApplicationController
     course = cohort.course.name
     quiz_count = cohort.quizzes.count
     quizzes = cohort.quizzes
+    users = cohort.users
     total_scored = 0
     total_points = 0
     quizzes.each do |quiz|
@@ -58,7 +59,7 @@ class CohortsController < ApplicationController
     else
       average = 0
     end
-    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, average: average}.to_json
+    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: average}.to_json
   end
 
   private

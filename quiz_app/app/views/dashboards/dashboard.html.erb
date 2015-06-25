@@ -1,23 +1,41 @@
 <div class="row">
-	<div class="col-sm-2">
+	<div class="col-sm-3">
 		<div id="top-box-nav">
 		<%# top left box to select class and quiz #%> 
 
-			<select name="cohort_id">
-		<% @cohorts.each do |cohort| %>
-			<% if cohort.users.include?(@user) %>
-				<option value="<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></option>
-			<% end %> 
-		<% end %>
-	</select>
+    <select name="cohort_id" id="class_select">
+        <% @cohorts.each do |cohort| %>
+          <option value="<%= cohort.id %>"><%= cohort.course.name %> - <%= cohort.name %></option> 
+      <% end %>
+    </select>
 
+   <script id="class_template" type="mustache">
+        <h5>Select a Quiz: </h5>
+        <select name="quiz_id" id="quiz_selector">
+          {{#quizzes}}
+              <option value="{{id}}">{{title}}</option> 
+          {{/quizzes}}
+        </select>
+   </script> 
+
+    <script id="student_template" type="mustache">
+        <h5>Select a User: </h5>
+        <select name="student_id" id="user_selector">
+          {{#users}}
+              <option value="{{id}}">{{f_name}}</option> 
+          {{/users}}
+        </select>
+   </script> 
+
+   <div id="class_report">
+   </div>
 		
 		<h4>You are logged in as: <br> <span id="logged-in"><%= session[:user_name] %></span>
 			<% if session[:is_instructor] %><br> [INSTRUCTOR] <% end %></h4>
 			<%= link_to 'Logout', logout_path, method: 'delete' %>
 		</div>
 	</div>
-	<div class="col-sm-9">
+	<div class="col-sm-8">
 		<div id="nav-bar">
 		<%# navigation bar with buttons #%> 
 		<ul>
@@ -34,9 +52,14 @@
 	</div>
 </div>
 
+
 <div class="row">
-	<div class="col-sm-2">
+	<div class="col-sm-3">
 		<div id="info-sidebar">
+
+			<div id="student_report">
+			</div>
+
 			<br><br><br><br><br><br><br><br><br>
 			QUIZ GRADE:<br>
 			<input type="text" name="quiz-grade" value="" readonly><br><br>
@@ -51,18 +74,22 @@
 
 
 
-	<div class="col-sm-9">
+	<div class="col-sm-8">
 		<div id="dash-main">
 			<h1>Welcome to the <% if session[:is_instructor] %>instructor<% else %>student<% end %> dashboard.</h1>
 			
-			<iframe id="dynamic-content" src="/cohorts/1/quizzes/1/edit">
-			</iframe>
+			<div id="display-profile">
+				<%= render 'showuser' %>
+			</div>
+
+			<div id="display-classes">
+				<%= render 'showclasses' %>
+			</div>
+
 
 		</div>
 	</div>
 </div>
-
-
 
 
 
