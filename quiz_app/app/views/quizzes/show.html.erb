@@ -1,2 +1,26 @@
-<h1>Quiz#show</h1>
-<p>Find me in app/views/quiz/show.html.erb</p>
+
+<%# Student View for Quizzes %> 
+
+<h1 class="quiz_id">Quiz: <%= @quiz.id%> <%= @quiz.title %></h1>
+
+	<% @quiz.questions.each do |question| %>
+		<div class="question">
+			<%= question.prompt %>
+			<%# showing question that belongs to quiz %>
+			<% if question.responses.find_by(user: @user) == nil %>
+				<input type="text" class="<%=question.id%>"></input>
+				<br>
+				<button class="student-quiz-button" id="answer<%=question.id%>">submit answer</button>
+				<p class="hidden">answer submitted</p>
+				<br>
+			<% else %>
+			<%# disable answering questions that user already submitted answers for%>
+				<input type="text" value="<%=question.responses.find_by(user: @user).answer%>" disabled></input>
+				<p>answer submitted</p>
+			<% end %>
+		</div>
+	<% end %>
+	<br>
+<a href="/cohorts/<%=@cohort.id%>/quizzes">Complete Quiz</a>	
+
+
