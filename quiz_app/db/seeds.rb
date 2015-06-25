@@ -51,15 +51,23 @@ response3 = Response.create(user_id: 2, question_id: question1.id, answer: "Mats
 
 question4 = Question.create(number: 4, prompt: "what is one of Ruby framework?", is_multiple_choice: true, answer_key: "c", max_points: 3, quiz: quiz1)
 
-choice1 = Choices.create(question: question4, key: "A", option: "Node")
+choice1 = Choice.create(question: question4, key: "A", option: "Node")
 
-choice2 = Choices.create(question: question4, key: "B", option: "MongoDB")
+choice2 = Choice.create(question: question4, key: "B", option: "MongoDB")
 
-choice3 = Choices.create(question: question4, key: "C", option: "Rails")
+choice3 = Choice.create(question: question4, key: "C", option: "Rails")
+
+choice4 = Choice.create(question: question4, key: "D", option: "postgres")
+
+question5 = Question.create(number: 5, prompt: 'What is database?',is_multiple_choice: true, answer_key: "a", max_points: 5, quiz: quiz1)
+
+choice1 = Choice.create(question: question5, key: "A", option: "Database is where you store data")
+
+choice2 = Choice.create(question: question5, key: "B", option: "Database is base of data")
+
+choice2 = Choice.create(question: question5, key: "C", option: "Database is just data in the basement")
 
 choice4 = Choices.create(question: question4, key: "D", option: "Postgres")
-
-
 
 
 
