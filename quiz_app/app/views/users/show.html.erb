@@ -64,6 +64,9 @@
 
 <% if session[:is_instructor] %>
 	<%= link_to "Create a New Class(Cohort)", "/cohorts/new" %>
+
+	<% else %>
+	<%= link_to "Show Quizzes", "/cohorts/#{@user.cohorts.first.id}/quizzes" %>
 <% end %>
 
 <%# edit class - this link is on the class(cohort) show page %>

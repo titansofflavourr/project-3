@@ -45,8 +45,18 @@ question2 = Question.create(number: 2, prompt: "what's the advantage of semantic
 
 response2 = Response.create(user: user_2, question: question1, answer: "Easy to understand", grade: 5, comment: "this was easy")
 
-question2 = Question.create(number: 1, prompt: "Who created Ruby?", is_multiple_choice: false, answer_key: "Yukihiro Matsumoto", max_points: 5, quiz: quiz1)
+question3 = Question.create(number: 1, prompt: "Who created Ruby?", is_multiple_choice: false, answer_key: "Yukihiro Matsumoto", max_points: 5, quiz: quiz2)
 
 response3 = Response.create(user_id: 2, question_id: question1.id, answer: "Matsu", grade: 5, comment: "nothing")
+
+question4 = Question.create(number: 4, prompt: "what is one of Ruby framework?", is_multiple_choice: true, answer_key: "c", max_points: 3, quiz: quiz1)
+
+choice1 = Choices.create(question: question4, key: "A", option: "Node")
+
+choice2 = Choices.create(question: question4, key: "B", option: "MongoDB")
+
+choice3 = Choices.create(question: question4, key: "C", option: "Rails")
+
+choice4 = Choices.create(question: question4, key: "D", option: "Rails")
 
 

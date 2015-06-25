@@ -1,7 +1,8 @@
 class QuizzesController < ApplicationController
 
   def index
-    @quizzes = Quiz.new
+    @cohort = Cohort.find(params[:cohort_id])
+    @quizzes = Quiz.where(cohort: params[:cohort_id])
   end
 
   def create
@@ -14,7 +15,12 @@ class QuizzesController < ApplicationController
   end
 
   def show
+    @cohort = Cohort.find(params[:cohort_id])
     @quiz = Quiz.find(params[:id])
+    # find questions from quiz and if user has responses
+    @questions = @quiz.questions
+
+    @user = User.find(session[:user_id])
   end
 
   def update
