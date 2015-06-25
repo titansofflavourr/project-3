@@ -57,6 +57,9 @@ choice2 = Choices.create(question: question4, key: "B", option: "MongoDB")
 
 choice3 = Choices.create(question: question4, key: "C", option: "Rails")
 
-choice4 = Choices.create(question: question4, key: "D", option: "Rails")
+choice4 = Choices.create(question: question4, key: "D", option: "Postgres")
+
+
+
 
 
