@@ -1,0 +1,39 @@
+<%# edit profile (self) %>
+
+			<%= link_to "Edit My Profile", "/users/#{session[:user_id]}/edit" %>
+
+			<%# browse users (instructors and students) %>
+
+			<%= link_to "Users", users_path %>
+
+			<%# add student (instructors only) %>
+
+			<% if session[:is_instructor] %>
+				<%= link_to "Add a User", "/users/new" %>
+			<% end %>
+
+			<%# edit student profile (instructor only) %>
+
+			<% if session[:is_instructor] %>
+				<%= link_to "Edit User", "/users/#{@user.id}/edit" %>
+			<% end %>
+
+			<%# browse classes (index) %>
+
+			<%= link_to "Cohorts", cohorts_path %>
+
+			<%# create class/cohort (instructors only) %>
+
+			<% if session[:is_instructor] %>
+				<%= link_to "Create a New Class(Cohort)", "/cohorts/new" %>
+			<% end %>
+
+			<%# edit class - this link is on the class(cohort) show page %>
+
+			<%# browse quizzes (index) %>
+
+			<%# create quiz %>
+
+			<%# edit quiz %>
+
+			<%# grade quiz %>
