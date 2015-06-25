@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:user_name] = "#{user.f_name} #{user.l_name}"
       session[:is_instructor] = user.is_instructor
-      redirect_to user_path(user) #dashboard
+      redirect_to "/" #dashboard
     else
       # rerender the form
       redirect_to '/login'

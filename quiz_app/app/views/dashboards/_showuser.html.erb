@@ -1,8 +1,5 @@
 <h4>You are logged in as: <%= session[:user_name] %> 
-	<% if session[:is_instructor] %>
-	 [INSTRUCTOR] 
-	<% end %>
-</h4>
+	<% if session[:is_instructor] %> [INSTRUCTOR] <% end %></h4>
 
 <h2>Profile Data:</h2>
 <h3>Name: <%= @user.f_name %> <%= @user.l_name %></h3>
@@ -60,8 +57,6 @@
 	<%= link_to "Edit User", "/users/#{@user.id}/edit" %>
 <% end %>
 
-<%# create quiz #%>
-
 <%# browse classes (index) %>
 
 <%= link_to "Cohorts", cohorts_path %>
@@ -70,32 +65,6 @@
 
 <% if session[:is_instructor] %>
 	<%= link_to "Create a New Class(Cohort)", "/cohorts/new" %>
-
-	<% else %>
-	<%= link_to "Show Quizzes", "/cohorts/#{@user.cohorts.first.id}/quizzes" %>
 <% end %>
 
 <%# edit class - this link is on the class(cohort) show page %>
-
-<%# enroll a student in a cohort %>
-
-<h3>Enroll this User in a Cohort</h3>
-<form action="/enroll_user/<%= @user.id %>" method="post">
-	<select name="cohort_id">
-		<% @cohorts.each do |cohort| %>
-			<% if not cohort.users.include?(@user) %>
-				<option value="<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></option>
-			<% end %> 
-		<% end %>
-	</select>
-	<input type="submit" value="Add User to Cohort"/>
-	<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-</form>
-
-<%# browse quizzes (index) %>
-
-<%# create quiz %>
-
-<%# edit quiz %>
-
-<%# grade quiz %>
