@@ -14,7 +14,7 @@
 		<h3>Cohort: {{cohort.name}}</h3>
 		<h4>Course: {{course}}</h4>
 		<h5>Quizzes Taken: {{quiz_count}}</h5>
-		<h5>Cohort Average Across All Quizzes: 70%</h5>
+		<h5>Cohort Average Across All Quizzes: {{average}} %</h5>
 		<hr>
 		<h5>Select a Quiz: </h5>
 		<select name="quiz_id" id="select_quiz">
@@ -22,11 +22,13 @@
 		  	<option value="{{id}}">{{title}}</option> 
 		  {{/quizzes}}
 		</select>
+	
 		<div id="quiz_report"></div>
-	</script>
-		
-</div>
 
+
+	</script>
+
+	<div id="cohort_report"></div>
 
 
 

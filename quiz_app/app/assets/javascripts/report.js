@@ -19,5 +19,4 @@ selectCohort.addEventListener("change", function(event) {
 				window.alert("Oops, there was a problem with the cohort request.");
 			}
 		});
-
 });

@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623200631) do
+ActiveRecord::Schema.define(version: 20150625213936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assessments", force: :cascade do |t|
+    t.integer "user_id",                             null: false
+    t.integer "quiz_id",                             null: false
+    t.integer "student_score"
+    t.string  "comment"
+    t.string  "status",        default: "completed"
+  end
 
   create_table "choices", force: :cascade do |t|
     t.integer "question_id", null: false
@@ -56,13 +64,15 @@ ActiveRecord::Schema.define(version: 20150623200631) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string   "title",                       null: false
+    t.string   "title",                        null: false
     t.string   "instructions"
-    t.boolean  "is_active",    default: true, null: false
-    t.integer  "cohort_id",                   null: false
-    t.integer  "user_id",                     null: false
+    t.boolean  "is_active",     default: true, null: false
+    t.integer  "cohort_id",                    null: false
+    t.integer  "user_id",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date_assigned"
+    t.integer  "total_points"
   end
 
   create_table "responses", force: :cascade do |t|
