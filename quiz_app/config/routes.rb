@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'sessions#new'
+
+  root 'dashboards#index' 
 
   get '/login', to: 'sessions#new'
 

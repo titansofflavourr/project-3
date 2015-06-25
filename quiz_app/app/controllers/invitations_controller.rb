@@ -1,4 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
+
   def update
     if this
       redirect_to root_path
@@ -6,4 +7,5 @@ class Users::InvitationsController < Devise::InvitationsController
       super
     end
   end
+  
 end
