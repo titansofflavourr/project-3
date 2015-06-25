@@ -14,4 +14,14 @@ class DashboardsController < ApplicationController
 		end
 	end
 
+	def report
+		if (session[:is_instructor])
+		 @cohorts = Cohort.all
+		 @quizzes = Quiz.all
+		 render :report
+		else
+			redirect_to user_path(user)
+		end
+	end
+
 end

@@ -1,3 +1,6 @@
+
+<%# Student View for Quizzes %> 
+
 <h1 class="quiz_id">Quiz: <%= @quiz.id%> <%= @quiz.title %></h1>
 
 	<% @quiz.questions.each do |question| %>
@@ -7,7 +10,7 @@
 			<% if question.responses.find_by(user: @user) == nil %>
 				<input type="text" class="<%=question.id%>"></input>
 				<br>
-				<button class="answer<%=question.id%>">submit answer</button>
+				<button class="student-quiz-button" id="answer<%=question.id%>">submit answer</button>
 				<p class="hidden">answer submitted</p>
 				<br>
 			<% else %>
