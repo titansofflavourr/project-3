@@ -1,2 +1,9 @@
-<h1>Course#index</h1>
-<p>Find me in app/views/course/index.html.erb</p>
+<h1>Courses Index View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<ul>
+	<% @courses.each do |course| %>
+		<li><a href="/courses/<%= course.id %>"><%= course.name %></a></li>
+	<% end %>
+</ul>

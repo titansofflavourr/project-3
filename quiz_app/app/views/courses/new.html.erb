@@ -1,2 +1,11 @@
-<h1>Course#new</h1>
-<p>Find me in app/views/course/new.html.erb</p>
+<h1>Create a New Course View</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<%= form_for @course, url: {action: "create"} do |f| %>
+	
+	<%= f.label :name, "Course Name" %>
+	<%= f.text_field :name %>
+
+	<%= f.submit "Create", html: {class: "button"}  %>
+<% end %>
