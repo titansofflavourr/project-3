@@ -25,8 +25,9 @@ class ResponsesController < ApplicationController
   end
 
   def update
-    response = Response.find(params[:id])
-    response.update(response_params)
+    student_response = Response.find(params[:id])
+    @response = student_response.update(answer: params[:answer])
+    render json: @response 
   end
 
   def edit
