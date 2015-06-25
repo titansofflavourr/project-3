@@ -8,7 +8,8 @@ $('.student-quiz-button').on('click',function(event) {
 	question_id = parseInt($(this).parent().children().first().attr('class'));
 	console.log("button clicked");
 	post_new_answer(answer, question_id);
-	$(this).hide();
+	$(this).addClass('hidden');
+	$(this).next().show(); 
 	$(this).parent().children().last().prev().attr('class','show');
 });
 
