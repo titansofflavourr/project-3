@@ -38,10 +38,12 @@ $.ajax({
     dataType: 'json'
   }).done(function(result) {
     console.log("ajax is done, now ajaxing ",result["prompt"], " question.");
+    // debugger;
     var template = $("#new-question-template").html();
     var html = Mustache.render(template, result);
     $( "#quiz-questions" ).append(html); //appends 
-    $( "input" ).val("") //clears inputs for next question
+    $( "input" ).val("") 
+    //clears inputs for next question
   })
 });
 

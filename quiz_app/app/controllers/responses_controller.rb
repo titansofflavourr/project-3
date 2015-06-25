@@ -5,9 +5,7 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    binding.pry
     @response = Response.create(user_id: session[:user_id], question_id: params[:question_id],answer: params[:answer])
-    binding.pry
     render json: @response
     # response = Response.new
     # response.update(response_params)
