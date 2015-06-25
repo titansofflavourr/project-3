@@ -1,3 +1,6 @@
+
+<%# Student View for Quizzes %> 
+
 <h1 class="quiz_id">Quiz: <%= @quiz.id%> <%= @quiz.title %></h1>
 
 	<% @quiz.questions.each do |question| %>
@@ -7,13 +10,20 @@
 			<% if question.responses.find_by(user: @user) == nil %>
 				<input type="text" class="<%=question.id%>"></input>
 				<br>
-				<button class="answer<%=question.id%>">submit answer</button>
+				<button class="student-quiz-submit-button" id="submit-answer<%=question.id%>">submit answer</button>
+				<button class="student-quiz-edit-button hidden" id="edit-answer<%=question.id%>">edit answer</button>
+				<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">update answer</button>
 				<p class="hidden">answer submitted</p>
 				<br>
 			<% else %>
 			<%# disable answering questions that user already submitted answers for%>
-				<input type="text" value="<%=question.responses.find_by(user: @user).answer%>" disabled></input>
+				<input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
+				<br>
+				<button class="student-quiz-submit-button hidden" id="submit-answer<%=question.id%>">submit answer</button>
+				<button class="student-quiz-edit-button" id="edit-answer<%=question.id%>">edit answer</button>
+				<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">update answer</button>
 				<p>answer submitted</p>
+				<br>
 			<% end %>
 		</div>
 	<% end %>

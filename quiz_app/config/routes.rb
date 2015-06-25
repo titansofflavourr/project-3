@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'dashboards#index' 
 
+  get '/report', to: 'dashboards#report'
+
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
   resources :users, :except =>[:destroy]
 
   resources :courses
+
+  get 'cohorts/report', to: 'cohorts#report'
 
   resources :cohorts, :except =>[:destroy] do
     resources :quizzes, :except =>[:destroy]

@@ -67,9 +67,7 @@ choice2 = Choice.create(question: question5, key: "B", option: "Database is base
 
 choice2 = Choice.create(question: question5, key: "C", option: "Database is just data in the basement")
 
-
-
-
+choice4 = Choice.create(question: question4, key: "D", option: "Postgres")
 
 
 
