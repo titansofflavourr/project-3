@@ -1,14 +1,17 @@
 var question_id = "";
 
 
-$('.student-quiz-button').on('click',function(event) {
+$('.student-quiz-submit-button').on('click',function(event) {
 	// event.preventDefault(); 
 	console.log($(this))
 	var answer = $(this).parent().children().first().val();
 	question_id = parseInt($(this).parent().children().first().attr('class'));
 	console.log("button clicked");
 	post_new_answer(answer, question_id);
-	$(this).hide();
+	//hide submit answer button and reveal edit button 
+	$(this).addClass('hidden');
+	$(this).next().removeClass('hidden');
+	//show answer submitted comment  
 	$(this).parent().children().last().prev().attr('class','show');
 });
 
