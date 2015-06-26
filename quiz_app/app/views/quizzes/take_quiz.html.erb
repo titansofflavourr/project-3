@@ -1,0 +1,21 @@
+<h1>Today's Quizzes</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<% if session[:is_instructor] %>
+
+	<h3>This page is for students only</h3>
+
+<% else %>
+
+	<ul>
+		<% @user.cohorts.each do |cohort| %>
+			<% cohort.quizzes.each do |quiz| %>
+				<% if (quiz.date_assigned == Date.today) %>
+					<li><a href="<%= quiz.id %>"><%= quiz.title %></a></li>
+				<% end %>
+			<% end %>
+		<% end %>
+	</ul>
+
+<% end %>
