@@ -1,0 +1,25 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>User Index View</h1>
+			</div>
+
+
+			<div id="center-user">
+				<ul>
+					<% @users.each do |user| %>
+						<li><a href="/users/<%= user.id %>"><%= user.f_name %> <%= user.l_name %></a>
+							<% if user.is_instructor %> [INSTRUCTOR] <% end %></li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>

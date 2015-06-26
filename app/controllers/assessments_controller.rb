@@ -8,6 +8,7 @@ class AssessmentsController < ApplicationController
     if not session[:is_instructor]
     binding.pry
     assessment = Assessment.create(quiz_id: params[:quiz_id], user_id: session[:user_id])
+    redirect_to user_path
     end
   end
 
@@ -26,6 +27,7 @@ class AssessmentsController < ApplicationController
 
   def edit
     @assessment = Assessment.find(params[:id])
+    @quiz = Quiz.find(params[:quiz_id])
   end
 
   private
