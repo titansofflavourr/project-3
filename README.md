@@ -4,14 +4,14 @@ WDI Project 3 - Quiz Builder
 Create and share quizzes for class.
 
 Team members
-  Michael Dennis - https://www.github.com/michaelsdennis4
-  Junho Rhee - https://www.github.com/juno0628
-  David Neuhaus - https://www.github.com/neuhausneuhaus
-  Gabriella Lubliner - https://www.github.com/poele
-  Devatha Kesarkodigae - https://www.github.com/deksr
+  - Michael Dennis - https://www.github.com/michaelsdennis4
+  - Junho Rhee - https://www.github.com/juno0628
+  - David Neuhaus - https://www.github.com/neuhausneuhaus
+  - Gabriella Lubliner - https://www.github.com/poele
+  - Devatha Kesarkodigae - https://www.github.com/deksr
   
 Technologies
-  Devise Invitable - https://github.com/scambra/devise_invitable
+  - Devise Invitable - https://github.com/scambra/devise_invitable
   
 Trello - https://trello.com/b/dpKWLosa/wdi-project-3
 Artifacts & ERD's - see Trello (above)
