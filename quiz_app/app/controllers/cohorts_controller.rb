@@ -43,46 +43,12 @@ class CohortsController < ApplicationController
     course = cohort.course.name
     quiz_count = cohort.quizzes.count
     quizzes = cohort.quizzes
-    users = cohort.users
-
-    #filter out instructors
-    # users = []
-    # cohort.users.each do |user|
-    #   if (user.is_instructor)
-    #     users.push(user)
-    #   end
-    # end
-
-    # the code below will be replaced by calculations based on the assessment table
-    # total_cohort_scores = 0
-    # total_cohort_points = 0
-    # quizzes.each do |quiz|
-    #   total_quiz_scores = 0
-    #   total_quiz_points = 0
-    #   quiz.questions.each do |question|
-    #     total_question_scores = 0
-    #     question.responses.each do |response|
-    #       total_question_scores = total_question_scores + response.grade
-    #     end
-    #     if (question.responses.count > 0)
-    #       total_question_scores = total_question_scores / question.responses.count
-    #     else
-    #       total_question_scores = 0
-    #     end
-    #     total_question_points = question.max_points
-    #     total_quiz_scores = total_quiz_scores + total_question_scores
-    #     total_quiz_points = total_quiz_points + total_question_points
-    #   end
-    #   total_cohort_scores = total_cohort_scores + total_quiz_scores
-    #   total_cohort_points = total_cohort_points + total_quiz_points
-    # end
-    # if (total_cohort_points > 0)
-    #   cohort_average_score = (total_cohort_scores * 100)/ total_cohort_points
-    # else
-    #   cohort_average_score = 0
-    # end
-
-    # new assessment calculations to go here
+    users = []
+    cohort.users.each do |user|
+      if (user.is_instructor)
+        users.push(user)
+      end
+    end
     cohort_average = 0
     cohort_count = 0
     users.each do |user|
