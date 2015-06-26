@@ -1,5 +1,5 @@
 <div id="back-to-link">
-	<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+	<%= link_to "Back to Dashboard", "/" %>
 </div>
 
 <div class="row">
@@ -11,11 +11,13 @@
 			</div>
 
 
-			<div id="center-user">
+			<div id="general-links-list">
 				<ul>
 					<% @users.each do |user| %>
-						<li><a href="/users/<%= user.id %>"><%= user.f_name %> <%= user.l_name %></a>
-							<% if user.is_instructor %> [INSTRUCTOR] <% end %></li>
+						<li>
+							<a class="name-links" href="/users/<%= user.id %>"><%= user.f_name %> <%= user.l_name %></a>
+							<% if user.is_instructor %> &mdash; [INSTRUCTOR] <% end %>
+						</li>
 					<% end %>
 				</ul>
 			</div>

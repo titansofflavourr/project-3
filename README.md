@@ -12,6 +12,8 @@ Team members
   
 Technologies
   - Devise Invitable - https://github.com/scambra/devise_invitable
+  - jQuery
+  - mustache.js
   
 Trello - https://trello.com/b/dpKWLosa/wdi-project-3
 Artifacts & ERD's - see Trello (above)
