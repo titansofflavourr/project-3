@@ -9,6 +9,7 @@ Quiz.destroy_all
 Question.destroy_all
 Response.destroy_all
 Choice.destroy_all
+Assessment.destroy_all
 
 #creating course
 course_1 = Course.create(name: "Web_Development_Immersive")
@@ -37,17 +38,17 @@ quiz3 = Quiz.create(title: "second quiz about Ruby", instructions: "please solve
 question1 = Question.create(number: 1, prompt: "what does HTML stand for?", is_multiple_choice: false, answer_key: "big apple", max_points: 5, quiz: quiz1)
 
 
-response1 = Response.create(user: user_2, question: question1, answer: "Hypertext blah", grade: 3, comment: "this was tough man")
+response1 = Response.create(user: user_2, question: question1, answer: "Hypertext blah", comment: "this was tough man")
 
 
 question2 = Question.create(number: 2, prompt: "what's the advantage of semantic language?", is_multiple_choice: false, answer_key: "easy to comprehend", max_points: 5, quiz: quiz1)
 
 
-response2 = Response.create(user: user_2, question: question1, answer: "Easy to understand", grade: 5, comment: "this was easy")
+response2 = Response.create(user: user_2, question: question2, answer: "Easy to understand", comment: "this was easy")
 
 question3 = Question.create(number: 1, prompt: "Who created Ruby?", is_multiple_choice: false, answer_key: "Yukihiro Matsumoto", max_points: 5, quiz: quiz2)
 
-response3 = Response.create(user_id: 2, question_id: question1.id, answer: "Matsu", grade: 5, comment: "nothing")
+response3 = Response.create(user_id: 2, question_id: question1.id, answer: "Matsu", comment: "nothing")
 
 question4 = Question.create(number: 4, prompt: "what is one of Ruby framework?", is_multiple_choice: true, answer_key: "c", max_points: 3, quiz: quiz1)
 
@@ -65,9 +66,7 @@ choice1 = Choice.create(question: question5, key: "A", option: "Database is wher
 
 choice2 = Choice.create(question: question5, key: "B", option: "Database is base of data")
 
-choice2 = Choice.create(question: question5, key: "C", option: "Database is just data in the basement")
+choice3 = Choice.create(question: question5, key: "C", option: "Database is just data in the basement")
 
-choice4 = Choice.create(question: question4, key: "D", option: "Postgres")
-
-
+ass1 = Assessment.create(user: user_2, quiz: quiz1)
 
