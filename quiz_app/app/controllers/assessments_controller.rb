@@ -26,6 +26,7 @@ class AssessmentsController < ApplicationController
 
   def edit
     @assessment = Assessment.find(params[:id])
+    @quiz = Quiz.find(params[:quiz_id])
   end
 
   private
