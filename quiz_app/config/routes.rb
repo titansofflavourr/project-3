@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   post '/users/:id/invite', to: 'users#send_invite'
-
+  
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'users/report', to: 'users#report'
@@ -33,9 +33,13 @@ Rails.application.routes.draw do
 
   # resources :cohorts, :except =>[:destroy]
 
+  get 'quiz', to: 'quizzes#take'
+
   get 'quizzes/report', to: 'quizzes#report'
 
-  resources :quizzes, :except =>[:destroy]
+  resources :quizzes, :except =>[:destroy] do
+    resources :assessments, :except =>[:destroy]
+  end
 
   resources :questions, :except =>[:destroy]
 

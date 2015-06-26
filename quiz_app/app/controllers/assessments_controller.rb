@@ -5,8 +5,10 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    assessment = Assessment.new
-    assessment.update(assessment_params)
+    if not session[:is_instructor]
+    binding.pry
+    assessment = Assessment.create(quiz_id: params[:quiz_id], user_id: session[:user_id])
+    end
   end
 
   def new

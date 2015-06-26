@@ -1,7 +1,7 @@
 
 <%# Student View for Quizzes %> 
 
-<h1 class="student-quiz-title">QUIZ:  <%= @quiz.title.upcase %></h1>
+<h1 id="<%=@quiz.id%>" class="student-quiz-title">QUIZ:  <%= @quiz.title.upcase %></h1>
 <h3 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h3>
 <h3 class="student-user-name">USERNAME: <%= @user.f_name.upcase %> <%= @user.l_name.upcase %></h3>
 
@@ -17,6 +17,7 @@
 			  	<% question.choices.each_with_index do |choice, i| %>
 						<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
 						<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+						<br>
 					<% end %>
 
 					<br>
@@ -47,9 +48,11 @@
 			  		<% if question.responses.find_by(user: @user).answer == (i+65).chr %>
 							<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" checked disabled >
 							<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+							<br>
 						<% else %>	
 							<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" disabled>
 							<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+							<br>
 						<% end %>
 					<% end %>
 						<br>
@@ -73,6 +76,7 @@
 		</div>
 	<% end %>
 	<br>
-<a href="/cohorts/<%=@cohort.id%>/quizzes">COMPLETE QUIZ</a>	
+<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
+<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>	
 
 
