@@ -15,6 +15,7 @@ class QuizzesController < ApplicationController
   def create
     quiz = Quiz.new
     quiz.update(quiz_params)
+    redirect_to "/quizzes/#{quiz.id}/edit"
   end
 
   def new

@@ -12,7 +12,7 @@
 	<%= f.date_field :date_assigned %><br>
 	<%= f.label :instructions, "Instructions" %>
 	<%= f.text_area :instructions %><br>
-	<%= f.hidden_field :user_id %>
+	<%= f.hidden_field :user_id, html: {value: session[:user_id]} %>
 
 	<%= f.submit "Create Quiz", html: {class: "button"}  %>
 
