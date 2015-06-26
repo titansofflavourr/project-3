@@ -164,30 +164,6 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 		})
 	}
 
-	/////completing quiz and add to assessment table
-
-	$('.student-complete-quiz-button').on('click', function() {
-			var quiz_id = parseInt($('.student-quiz-title').attr('id'));
-			submit_student_quiz_to_create(quiz_id);
-			window.alert("THANK YOU FOR SUBMITTING YOUR QUIZ - QUIZZULHU")
-	})
-
-
-	var submit_student_quiz_to_create = function(quiz_id) {
-		var url = '/quizzes/' + quiz_id + '/assessments'
-		//sending ajax call to create assessments 
-		$.ajax({
-			url: url,
-			type: 'POST',
-			data: {
-				quiz_id: quiz_id
-			}
-		}).done(function(data) {
-			console.log(data);
-			
-		})
-	}
-
 }
 
 
