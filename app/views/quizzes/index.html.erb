@@ -1,2 +1,30 @@
-<h1>Quiz#index</h1>
-<p>Find me in app/views/quiz/index.html.erb</p>
+<h1>All Quizzes</h1>
+
+<%  @quizzes.each do |quiz| %>
+
+	<p><a href="/quizzes/<%= quiz.id %>/edit">Quiz Title: <%= quiz.title %></a></p>
+	<p>Course: <%= quiz.cohort.course.name %></p>
+	<p>Cohort: <%= quiz.cohort.name %></p>
+	<p>Created by: <%= quiz.user.f_name%> <%= quiz.user.l_name%> </p>
+	<p>Date Assigned: <%= quiz.date_assigned %></p>
+	<h4>Copy This Quiz</h4>
+
+	<div class="copy_quiz">
+		<form action="/copyquiz/<%= quiz.id %>" method="post">
+			<label for="cohort_id">Select a Cohort for the New Copy: </label>
+			<select name="cohort_id">
+				<% @cohorts.each do |cohort| %>
+					<option value="<%= cohort.id %>"><%= cohort.name %> <%= cohort.course.name %></option>
+				<% end %>	
+			</select><br>
+			<label for="date_assigned">Select an Assigned Date: </label>
+			<input type="date" name="date_assigned"/><br>
+			<input type="submit" value="Copy Quiz"/>
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token%>" />
+		</form>
+	</div>
+
+	<hr>
+
+<% end %>
+

@@ -6,9 +6,8 @@ class AssessmentsController < ApplicationController
 
   def create
     if not session[:is_instructor]
-    binding.pry
     assessment = Assessment.create(quiz_id: params[:quiz_id], user_id: session[:user_id])
-    redirect_to user_path
+    redirect_to '/'
     end
   end
 

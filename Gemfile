@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise',           '>= 2.0.0'
 gem 'devise_invitable', '~> 1.3.4'
+gem 'chart-js-rails'
 
 # Use Unicorn as the app server
 
@@ -46,6 +47,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
   gem 'annotate', '~> 2.6.6'
+  gem 'rails_12factor'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   root 'dashboards#index' 
 
-  get '/report', to: 'dashboards#report'
-
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
+
+  get '/report', to: 'dashboards#report'
 
   post '/users/:id/invite', to: 'users#send_invite'
   
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'quiz', to: 'quizzes#take'
 
   get 'quizzes/report', to: 'quizzes#report'
+
+  post 'copyquiz/:id', to: 'quizzes#copy'
 
   resources :quizzes, :except =>[:destroy] do
     resources :assessments, :except =>[:destroy]
