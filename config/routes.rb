@@ -37,6 +37,8 @@ Rails.application.routes.draw do
 
   get 'quizzes/report', to: 'quizzes#report'
 
+  post 'copyquiz/:id', to: 'quizzes#copy'
+
   resources :quizzes, :except =>[:destroy] do
     resources :assessments, :except =>[:destroy]
   end

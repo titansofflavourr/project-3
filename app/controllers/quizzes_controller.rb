@@ -8,6 +8,7 @@ class QuizzesController < ApplicationController
       @quizzes = Quiz.where(cohort: params[:cohort_id])
       render 'student_index'
     else 
+      @cohorts = Cohort.all
       @quizzes = Quiz.all
     end
   end
@@ -31,7 +32,6 @@ class QuizzesController < ApplicationController
       @user = User.find(session[:user_id])
       render 'student_show'
     end
-
   end
 
   def update
@@ -46,6 +46,30 @@ class QuizzesController < ApplicationController
   def take
     @user = User.find(session[:user_id])
     render :take_quiz
+  end
+
+  def copy
+    # copy quiz
+    old_quiz = Quiz.find(params[:id])
+    new_quiz = old_quiz.dup
+    new_quiz.is_active = :true
+    new_quiz.user_id = session[:user_id]
+    new_quiz.cohort_id = params[:cohort_id]
+    new_quiz.date_assigned = params[:date_assigned]
+    new_quiz.save
+    #copy questions
+    old_quiz.questions.each do |old_question| 
+      new_question = old_question.dup
+      new_question.quiz_id = new_quiz.id
+      new_question.save
+      #copy choices
+      old_question.choices.each do |old_choice|
+        new_choice = old_choice.dup
+        new_choice.question_id = new_question.id
+        new_choice.save
+      end
+    end
+    redirect_to "/quizzes/#{new_quiz.id}/edit"
   end
 
   def report #ajax call
