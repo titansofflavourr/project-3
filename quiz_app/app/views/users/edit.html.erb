@@ -1,3 +1,7 @@
+<div id="back-to-link">
+	<%= link_to "Back to Profile", @user %>
+</div>
+
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="main-user">
@@ -21,15 +25,19 @@
 
 				<% if session[:is_instructor] %>
 					<%= f.label :is_active, "Active?:" %>
-					<%= f.radio_button(:is_active, :true) %>
-					<%= f.label(:is_active_true, "Yes") %>
-					<%= f.radio_button(:is_active, :false) %>
-					<%= f.label(:is_active_false, "No") %><br>
+					<div class="radio-button">
+						<%= f.radio_button(:is_active, :true) %>
+						<%= f.label(:is_active_true, "Yes") %>
+						<%= f.radio_button(:is_active, :false) %>
+						<%= f.label(:is_active_false, "No") %><br>
+					</div>
 					<%= f.label :is_instructor, "Is Instructor?:" %>
-					<%= f.radio_button(:is_instructor, :true) %>
-					<%= f.label(:is_instructor_true, "Yes") %>
-					<%= f.radio_button(:is_instructor, :false) %>
-					<%= f.label(:is_instructor_false, "No") %>
+					<div class="radio-button">
+						<%= f.radio_button(:is_instructor, :true) %>
+						<%= f.label(:is_instructor_true, "Yes") %>
+						<%= f.radio_button(:is_instructor, :false) %>
+						<%= f.label(:is_instructor_false, "No") %>
+					</div>
 				<% end %>
 			<br>
 			<div id="user-submit">
@@ -38,9 +46,6 @@
 			<% end %>
 			</div>
 			<br><br><br>
-			<div id="back-to-profile-link">
-				<%= link_to "Back to Profile", @user %>
-			</div>
 
 		</div>
 	</div>

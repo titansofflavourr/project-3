@@ -1,8 +1,11 @@
 .main-user {
+	margin-right: auto;
+	margin-left: auto;
+	clear: both;
 	margin-top: 20px;
 	background-color: white;
 	opacity: 0.9;
-	height: 45em;
+	height: 47em;
 	border-radius: 20px;
 }
 
@@ -16,25 +19,23 @@
 }
 
 #center-user {
-	margin-top: 5%;
 	margin-left: 30%;
 
 	label {
-
 		font-size: 1.5em;
-
-	}
+	 }
 
 }
 
 #edit-user-text-input input {
-	
+	color: #795548;
 	width: 50%;
 }
 
 #user-submit {
 	margin-top: 10px;
 	margin-left: 20%;
+
 	input {
 		color: white;
 		background-color: #9CCC65;
@@ -42,12 +43,17 @@
 		padding: 10px;
 		border-radius: 20px;
 	}
+
+	input:hover {
+			background-color: #795548;
+			box-shadow:5px 5px 5px #16872b;
+		}
 }
 
 
-#back-to-profile-link {
-	float: right;
-	margin-right: 10px;
+#back-to-link {
+	float: left;
+	margin: 10px 10px 5px 10px;
 	padding: 20px;
 	background-color: #9CCC65;
 	border-radius: 25px;
@@ -61,7 +67,7 @@
 	}
 }
 
-#back-to-profile-link:hover {
+#back-to-link:hover {
 	background-color: #795548;
 	box-shadow:5px 5px 5px #16872b;
 	}
