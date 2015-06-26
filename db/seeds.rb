@@ -12,11 +12,11 @@ Choice.destroy_all
 Assessment.destroy_all
 
 #creating course
-course_1 = Course.create(name: "Web_Development_Immersive")
+course_1 = Course.create(name: "Web Development Immersive")
 
 course_2 = Course.create(name: "UX")
 
-course_3 = Course.create(name: "Project_Management")
+course_3 = Course.create(name: "Project Management")
 
 cohort1 = Cohort.create(course: course_1, name: "Melville", start_date: "2015-04-27", end_date: "2015-07-21", is_active: true)
 
