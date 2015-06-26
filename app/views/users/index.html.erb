@@ -1,0 +1,27 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>User Index View</h1>
+			</div>
+
+
+			<div id="general-links-list">
+				<ul>
+					<% @users.each do |user| %>
+						<li>
+							<a class="name-links" href="/users/<%= user.id %>"><%= user.f_name %> <%= user.l_name %></a>
+							<% if user.is_instructor %> &mdash; [INSTRUCTOR] <% end %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>

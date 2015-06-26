@@ -3,6 +3,24 @@ WDI Project 3 - Quiz Builder
 
 Create and share quizzes for class.
 
+Team members
+  - Michael Dennis - https://www.github.com/michaelsdennis4
+  - Junho Rhee - https://www.github.com/juno0628
+  - David Neuhaus - https://www.github.com/neuhausneuhaus
+  - Gabriella Lubliner - https://www.github.com/poele
+  - Devatha Kesarkodigae - https://www.github.com/deksr
+  
+Technologies
+  - Devise Invitable - https://github.com/scambra/devise_invitable
+  - jQuery
+  - mustache.js
+  
+Trello - https://trello.com/b/dpKWLosa/wdi-project-3
+Artifacts & ERD's - see Trello (above)
+Wireframes - https://github.com/titansofflavourr/project-3/tree/master/wireframes
+
+====================================================================================================
+
 Instructor Portal
 
 When an instructor logs in they should have a dashboard that has a link to create a new quiz, lists quizzes they've created, and displays notifications about quizzes students have taken that need to be graded.

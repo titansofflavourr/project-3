@@ -1,0 +1,51 @@
+<div id="back-to-link">
+	<%= link_to "Back to Profile", @user %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>Edit User Profile View</h1>
+			</div>
+			<br>
+
+			<div id="center-user">
+			<br><br>
+				<div id="edit-user-text-input">
+					<%= form_for @user, url: {action: "update"} do |f| %>
+						<%= f.label :f_name, "First Name" %><br>
+						<%= f.text_field :f_name %><br>
+						<%= f.label :l_name, "Last Name" %><br>
+						<%= f.text_field :l_name %><br>
+						<%= f.label :email, "Email" %><br>
+						<%= f.text_field :email %><br>
+				</div>
+
+				<% if session[:is_instructor] %>
+					<%= f.label :is_active, "Active?:" %><br>
+						<%= f.radio_button(:is_active, :true) %>
+						<%= f.label(:is_active_true, "Yes") %>
+						<%= f.radio_button(:is_active, :false) %>
+						<%= f.label(:is_active_false, "No") %><br>
+					<%= f.label :is_instructor, "Is Instructor?:" %><br>
+						<%= f.radio_button(:is_instructor, :true) %>
+						<%= f.label(:is_instructor_true, "Yes") %>
+						<%= f.radio_button(:is_instructor, :false) %>
+						<%= f.label(:is_instructor_false, "No") %>
+				<% end %>
+			<br>
+			<div id="user-submit">
+				<%= f.submit "Update", html: {class: "button"}  %>
+			</div>
+			<% end %>
+			</div>
+			<br><br><br>
+
+		</div>
+	</div>
+</div>
+
+<%# what about password changes? %>
+<%# well i guess they'll just have to goddamn deal with it %>

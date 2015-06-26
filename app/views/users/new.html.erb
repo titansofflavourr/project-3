@@ -1,0 +1,46 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>Create New User View</h1>
+			</div>
+
+			<div id="center-user">
+			<br><br>
+				<div id="edit-user-text-input">
+					<%= form_for @user, url: {action: "create"} do |f| %>
+						<%= f.label :f_name, "First Name" %><br>
+						<%= f.text_field :f_name %><br>
+						<%= f.label :l_name, "Last Name" %><br>
+						<%= f.text_field :l_name %><br>
+						<%= f.label :email, "Email" %><br>
+						<%= f.text_field :email %><br>
+
+
+				<%= f.label :password, "Password" %><br>
+				<%= f.password_field :password %><br>
+				<%= f.label :password_confirmation, "Confirm Password" %><br>
+				<%= f.password_field :password_confirmation %>
+				</div>
+				<br><br>
+				<%= f.label :is_instructor, "Is Instructor?:" %><br>
+				<%= f.radio_button(:is_instructor, :true) %>
+				<%= f.label(:is_instructor_true, "Yes") %>
+				<%= f.radio_button(:is_instructor, :false) %>
+				<%= f.label(:is_instructor_false, "No") %>
+
+
+			<div id="user-submit">
+				<%= f.submit "Create", html: {class: "button"}  %>
+			</div>
+			<% end %>
+		</div>
+
+		</div>
+	</div>
+</div>

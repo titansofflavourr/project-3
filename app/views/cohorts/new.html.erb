@@ -1,0 +1,36 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>Create a New Cohort</h1>
+			</div>
+
+
+			<div id="center-user">
+				<br><br>
+				<div id="edit-user-text-input">
+					<%= form_for @cohort, url: {action: "create"} do |f| %>
+						
+						<%= f.label :course_id, "Course:" %><br>
+						<%= f.collection_select(:course_id, Course.all, :id, :name) %><br><br><br>
+						<%= f.label :name, "Cohort Name" %><br>
+						<%= f.text_field :name %><br>
+						<%= f.label :start_date, "Start Date" %><br>
+						<%= f.date_field :start_date %><br>
+						<%= f.label :end_date, "End Date" %><br>
+						<%= f.date_field :end_date %><br>
+				</div>
+				<div id="user-submit">
+						<%= f.submit "Create", html: {class: "button"}  %>
+				</div>
+					<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>

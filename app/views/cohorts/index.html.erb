@@ -1,0 +1,23 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
+				<h1>Cohorts Index View</h1>
+			</div>
+
+			<div id="general-links-list">
+				<ul>
+					<% @cohorts.each do |cohort| %>
+						<li><a class="name-links" href="/cohorts/<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></a></li>
+					<% end %>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
