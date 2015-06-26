@@ -1,8 +1,13 @@
 class QuizzesController < ApplicationController
 
   def index
-    @cohort = Cohort.find(params[:cohort_id])
-    @quizzes = Quiz.where(cohort: params[:cohort_id])
+    if not session[:is_instructor]
+      @cohort = Cohort.find(params[:cohort_id])
+      @quizzes = Quiz.where(cohort: params[:cohort_id])
+      render 'student_index'
+    else 
+      @quizzes = Quiz.all
+    end
   end
 
   def create
@@ -15,12 +20,15 @@ class QuizzesController < ApplicationController
   end
 
   def show
-    @cohort = Cohort.find(params[:cohort_id])
-    @quiz = Quiz.find(params[:id])
-    # find questions from quiz and if user has responses
-    @questions = @quiz.questions
+    if not session[:is_instructor]
+      @cohort = Cohort.find(params[:cohort_id])
+      @quiz = Quiz.find(params[:id])
+      # find questions from quiz and if user has responses
+      @questions = @quiz.questions
+      @user = User.find(session[:user_id])
+      render 'student_show'
+    end
 
-    @user = User.find(session[:user_id])
   end
 
   def update
