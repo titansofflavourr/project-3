@@ -24,20 +24,16 @@
 				</div>
 
 				<% if session[:is_instructor] %>
-					<%= f.label :is_active, "Active?:" %>
-					<div class="radio-button">
+					<%= f.label :is_active, "Active?:" %><br>
 						<%= f.radio_button(:is_active, :true) %>
 						<%= f.label(:is_active_true, "Yes") %>
 						<%= f.radio_button(:is_active, :false) %>
 						<%= f.label(:is_active_false, "No") %><br>
-					</div>
-					<%= f.label :is_instructor, "Is Instructor?:" %>
-					<div class="radio-button">
+					<%= f.label :is_instructor, "Is Instructor?:" %><br>
 						<%= f.radio_button(:is_instructor, :true) %>
 						<%= f.label(:is_instructor_true, "Yes") %>
 						<%= f.radio_button(:is_instructor, :false) %>
 						<%= f.label(:is_instructor_false, "No") %>
-					</div>
 				<% end %>
 			<br>
 			<div id="user-submit">

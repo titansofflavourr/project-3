@@ -1,4 +1,13 @@
 
+<h1>All Quiz</h1>
 
 
+<%  @quizzes.each do |quiz| %>
+<p><%= quiz.title %>
+</p>
+<p> <%= quiz.user.f_name%> </p>
+<p><%= quiz.cohort.course.name%> </p>
+<hr>
+
+<% end %>
 

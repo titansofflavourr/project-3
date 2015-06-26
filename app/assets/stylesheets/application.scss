@@ -15,14 +15,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "assessments.scss";
 @import "choices.scss";
-@import "classes.scss";
-@import "courses.scss";
 @import "dashboard.scss";
 @import "login.scss";
 @import "quizzes.scss";
-@import "responses.scss";
-@import "users.scss";
+@import "profiles-and-cohorts.scss";
 
 h1 {
 	color: #795548;

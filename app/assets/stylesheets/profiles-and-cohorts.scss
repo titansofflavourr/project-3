@@ -7,6 +7,7 @@
 	opacity: 0.9;
 	height: 47em;
 	border-radius: 20px;
+	overflow: scroll;
 }
 
 #user-header {
@@ -27,10 +28,51 @@
 
 }
 
+#general-links-list {
+
+	 ul {
+	 	margin-top: 5%;
+	 	margin-left: 25%;
+	 	list-style-type: hebrew;
+	 	width: 50%;
+
+	 	li {
+	 		text-align: center;
+	 		background-color: #9CCC65;
+	 		padding: 10px; 
+	 		margin: 2%;
+	 		border-radius: 50px;
+
+	 		.name-links {
+	 			color: white;
+	 		}
+
+	 		.name-links:hover {
+	 			text-decoration: none;
+	 		}
+
+	 	}
+
+	 	li:hover {
+			background-color: #795548;
+			box-shadow:5px 5px 5px #16872b;
+	 	}
+
+	}
+
+}
+
 #edit-user-text-input input {
 	color: #795548;
 	width: 50%;
+	border-radius: 10px;
+	border: 2px solid #9CCC65;
 }
+
+#edit-user-text-input input:focus {
+	background-color: #DCEDC8;
+}
+
 
 #user-submit {
 	margin-top: 10px;
@@ -71,5 +113,6 @@
 	background-color: #795548;
 	box-shadow:5px 5px 5px #16872b;
 	}
+
 
 
