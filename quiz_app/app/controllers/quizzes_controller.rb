@@ -1,5 +1,7 @@
 class QuizzesController < ApplicationController
 
+  require 'json'
+
   def index
     @cohort = Cohort.find(params[:cohort_id])
     @quizzes = Quiz.where(cohort: params[:cohort_id])
@@ -38,8 +40,13 @@ class QuizzesController < ApplicationController
     assessments = quiz.assessments.count
     average_score = quiz.assessments.average('student_score')
     total_points = quiz.total_points
+    if (quiz.total_points > 0)
+      percent = (average_score * 100) / quiz.total_points
+    else
+      percent = "NA"
+    end
     render json: {quiz: quiz, questions: questions, assessments: assessments,
-      average_score: average_score, total_points: total_points}.to_json
+      average_score: average_score, total_points: total_points, percent: percent}.to_json
   end
 
   private

@@ -14,15 +14,10 @@ var cohort = function(event) {
 		success: function(result) {
 			var output = Mustache.render($('#cohort_template').html(), result);
 			$("#cohort_report").html(output);
-			var output = Mustache.render($('#student_template').html(), result);
-			$("#student_report").html(output);
 			var selectQuiz = document.querySelector("#select_quiz");
-			for (var i=0; i < result.student_averages; i++) {
-				var id = result.student_averages[i].id
-				var td = document.querySelector(".student_average#"+id);
-				td.textContent = result.student_averages[i].student_average;
-			};
+			var selectStudent = document.querySelector("#select_student");
 			selectQuiz.addEventListener("change", quiz);
+			selectStudent.addEventListener("change", student);
 		},
 		error: function() {
 			window.alert("Please select a cohort.");
@@ -33,7 +28,6 @@ var cohort = function(event) {
 var quiz = function(event) {
 	event.preventDefault();
 	var parameters = $('#select_quiz').serializeArray();
-	console.log(parameters);
 	$.ajax({
 		url: "quizzes/report",
 		type: "GET",
@@ -45,6 +39,25 @@ var quiz = function(event) {
 		},
 		error: function() {
 			window.alert("Please select a quiz.");
+		}
+	});
+};
+
+var student = function(event) {
+	event.preventDefault();
+	var parameters = $('#select_student').serializeArray();
+	$.ajax({
+		url: "users/report",
+		type: "GET",
+		dataType: "json",
+		data: parameters,
+		success: function(result) {
+			console.log(result);
+			var output = Mustache.render($('#student_template').html(), result);
+			$("#student_report").html(output);	
+		},
+		error: function() {
+			window.alert("Please select a student.");
 		}
 	});
 };

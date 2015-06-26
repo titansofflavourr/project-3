@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  get 'users/report', to: 'users#report'
   post '/enroll_user/:id', to: 'users#enroll'
 
   resources :users, :except =>[:destroy]
