@@ -11,11 +11,13 @@ Team members
   Devatha Kesarkodigae - https://www.github.com/deksr
   
 Technologies
+  Devise Invitable - https://github.com/scambra/devise_invitable
   
-Trello 
-Artifacts
-Wireframes
-ERDs
+Trello - https://trello.com/b/dpKWLosa/wdi-project-3
+Artifacts & ERD's - see Trello (above)
+Wireframes - https://github.com/titansofflavourr/project-3/tree/master/wireframes
+
+====================================================================================================
 
 Instructor Portal
 
