@@ -10,12 +10,14 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   get '/report', to: 'dashboards#report'
+
+  resources :dashboards
 
   post '/users/:id/invite', to: 'users#send_invite'
   
-  resources :sessions, only: [:new, :create, :destroy]
-
   get '/users/report', to: 'users#report'
   post '/enroll_user/:id', to: 'users#enroll'
 
