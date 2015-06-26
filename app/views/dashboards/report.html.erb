@@ -1,4 +1,23 @@
-<!-- MUSTACHE TEMPLATES  -->
+<h1>Instructor Reports</h1>
+
+<hr>
+
+<div id="cohorts">
+
+	<h5>Select a Cohort: </h5>
+	<select name="cohort_id" id="select_cohort">
+		<option value="0">SELECT COHORT</option>
+		<% @cohorts.each do |cohort| %>
+	  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
+	  <% end %>
+	</select>
+
+	<div id="cohort_report">
+	</div>
+
+</div>
+
+<!-- MUSTACHE TEMPLATES BELOW -->
 
 <script id="cohort_template" type="mustache">
 	<h3>Cohort: {{cohort.name}}</h3>
@@ -70,27 +89,6 @@
 		</tbody>
 	</table>
 </script>
-
-<!-- PAGE -->
-
-<h1>Instructor Reports</h1>
-
-<hr>
-
-<div id="cohorts">
-
-	<h5>Select a Cohort: </h5>
-	<select name="cohort_id" id="select_cohort">
-		<option value="0">SELECT COHORT</option>
-		<% @cohorts.each do |cohort| %>
-	  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
-	  <% end %>
-	</select>
-
-	<div id="cohort_report">
-	</div>
-
-</div>
 
 
 

@@ -16,14 +16,14 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
 
-  get 'users/report', to: 'users#report'
+  get '/users/report', to: 'users#report'
   post '/enroll_user/:id', to: 'users#enroll'
 
   resources :users, :except =>[:destroy]
 
   resources :courses
 
-  get 'cohorts/report', to: 'cohorts#report'
+  get '/cohorts/report', to: 'cohorts#report'
 
   resources :cohorts, :except =>[:destroy] do
     resources :quizzes, :except =>[:destroy]
@@ -33,11 +33,11 @@ Rails.application.routes.draw do
 
   # resources :cohorts, :except =>[:destroy]
 
-  get 'quiz', to: 'quizzes#take'
+  get '/quiz', to: 'quizzes#take'
 
-  get 'quizzes/report', to: 'quizzes#report'
+  get '/quizzes/report', to: 'quizzes#report'
 
-  post 'copyquiz/:id', to: 'quizzes#copy'
+  post '/copyquiz/:id', to: 'quizzes#copy'
 
   resources :quizzes, :except =>[:destroy] do
     resources :assessments, :except =>[:destroy]
