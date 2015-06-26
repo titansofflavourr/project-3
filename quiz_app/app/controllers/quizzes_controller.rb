@@ -43,6 +43,11 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
   end
 
+  def take
+    @user = User.find(session[:user_id])
+    render :take_quiz
+  end
+
   def report #ajax call
     quiz = Quiz.find(params[:quiz_id])
     questions = quiz.questions.count
