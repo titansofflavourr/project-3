@@ -57,9 +57,9 @@ choice2 = Choice.create(question: question4, key: "B", option: "MongoDB")
 
 choice3 = Choice.create(question: question4, key: "C", option: "Rails")
 
-choice4 = Choice.create(question: question4, key: "D", option: "postgres")
+choice4 = Choice.create(question: question4, key: "D", option: "Express")
 
-question5 = Question.create(number: 5, prompt: 'What is database?',is_multiple_choice: true, answer_key: "a", max_points: 5, quiz: quiz1)
+question5 = Question.create(number: 5, prompt: 'What is database?',is_multiple_choice: true, answer_key: "A", max_points: 5, quiz: quiz1)
 
 choice1 = Choice.create(question: question5, key: "A", option: "Database is where you store data")
 
@@ -67,7 +67,13 @@ choice2 = Choice.create(question: question5, key: "B", option: "Database is base
 
 choice2 = Choice.create(question: question5, key: "C", option: "Database is just data in the basement")
 
-choice4 = Choice.create(question: question4, key: "D", option: "Postgres")
+choice4 = Choice.create(question: question4, key: "E", option: "Postgres")
+
+
+
+
+
+
 
 
 
