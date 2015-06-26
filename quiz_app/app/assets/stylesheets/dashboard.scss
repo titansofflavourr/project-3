@@ -1,16 +1,75 @@
-@media (min-width: px ) and (max-width: 1250px ) {
+@media (min-width: 1px ) and (max-width: 770px ) {
+
+	#nav-bar {
+		padding: 0px;
+		}
 
 		#nav-bar ul li {
-			font-size: 0.5em;
+			font-size: 0.35em;
+			padding: 0px;
+			margin: 0px;
+			border-radius: 20px;
+	}
+
+	#nav-bar ul li button {
+		margin: 0px;
+		padding: 7px;
+	}
+
+	.dash-main-inner {
+	
+		#dash-profile {
+				float: left;
+			.dash-profile-nav {
+				ul {
+					li {
+						display: list-item;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media (min-width: 770px ) and (max-width: 988px ) {
+
+		#nav-bar ul li {
+			font-size: 0.4em;
 			display: inline;
-			margin: 0px 0px 5px 5px;
+			margin: 0px 0px 0px 0px;
 			border-radius: 100px;
+	}
+
+	.dash-main-inner {
+	
+		#dash-profile {
+
+			.dash-profile-nav ul {
+				li {
+					display: list-item;
+				}
+			}
+		}
 	}
 
 }
 
 @media (min-width: 988px ) and (max-width: 1250px ) {
 	
+
+	.dash-main-inner {
+	
+		#dash-profile {
+
+			.dash-profile-nav ul {
+				li {
+					display: list-item;
+				}
+			}
+		}
+	}
+
 		#nav-bar ul li {
 			font-size: 0.7em;
 			display: inline;
@@ -18,8 +77,8 @@
 			border-radius: 100px;
 	}
 
-}
 
+}
 
 
 #top-box-nav {
@@ -30,6 +89,10 @@
 	margin: 50px 0 0 10px;
 	padding: 20px;
 	border-radius: 20px;
+}
+
+#class_select {
+	padding: 10px;
 }
 
 #logged-in {
@@ -64,12 +127,17 @@
 	color: white;
 	font-weight: bold;
 	font-size: 2em;
-
-	box-shadow:5px 5px 5px #16872b;
 	background-color: #795548;
+	opacity: 0.8;
 	padding: 15px;
 	border: 0px;
 	border-radius: 50px;
+}
+
+#nav-bar button:hover {
+
+	opacity: 1;
+	box-shadow:5px 5px 5px #16872b;
 }
 
 #info-sidebar {
@@ -107,4 +175,88 @@
 	height: 100%;
 
 }
+
+.dash-main-inner {
+	
+	#dash-profile {
+
+		h2 {
+			color: #795548;
+		}
+
+		h3 {
+			color: #9CCC65;
+		}
+
+		#dash-gravatar-picture {
+			margin: 50px 50px 50px 0px; 
+			img {
+				float: left;
+				border-radius: 150px;
+			}
+		}
+
+		.profile-cohort-list {
+			list-style-type: hebrew;
+
+		}
+
+		#dash-user-details {
+			float: left;
+			margin: 20px 0px 20px 50px;
+
+		}
+
+		.dash-block {
+			float: left;
+			width: 100%;
+			height: 100px;
+
+		}
+
+		.dash-profile-nav {
+			float: right;
+
+			ul {
+				list-style-type: none;
+			}
+
+			li {
+				display: inline;
+				margin-top: 1%;
+				padding: 10px;
+				background-color: #9CCC65;
+				border-radius: 25px;
+
+				a {
+
+					color: white;
+					font-weight: bold;
+
+				}
+
+				a:hover {
+					text-decoration: none;
+				}
+
+			}
+
+			li:hover {
+			
+				background-color: #795548;
+				box-shadow:5px 5px 5px #16872b;
+
+			}	
+
+		}
+
+	}
+
+
+
+}	
+	
+
+
+
 

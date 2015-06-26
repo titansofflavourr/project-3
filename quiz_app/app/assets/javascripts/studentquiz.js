@@ -2,8 +2,9 @@ console.log("student-quiz linked")
 
 var question_id = "";
 
+var student_quiz_submit = document.querySelector('.student-quiz-submit-button');
 
-$('.student-quiz-submit-button').on('click',function(event) {
+if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(event) {
 	// event.preventDefault(); 
 	console.log($(this));
 	var answer_input = $(this).parent().find('input');
@@ -162,4 +163,4 @@ var post_multiple_choice_update_answer = function(answer, question_id, response_
 		console.log(data);
 	})
 }
-
+}

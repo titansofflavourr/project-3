@@ -7,21 +7,21 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    # question = Question.new
-
-    # question.update(question_params)
     if params[:is_multiple_choice] == 'true'
       answer = params[:mc_answer_key]
     else
       answer = params[:sa_answer_key]
     end
-    question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); @question = question.to_json
+    question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
     params["choices"].each_with_index do |choice, i|
       if choice != ""
         question.choices.create({question_id:question.id, option: choice, key:(i+97).chr})
       end
     end  
-    render json: @question
+
+    @choices = question.choices.to_json
+    # binding.pry
+    render json: question.to_json(:include => [:choices])
   end 
 
   def new

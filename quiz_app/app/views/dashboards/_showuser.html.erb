@@ -1,70 +1,56 @@
-<h4>You are logged in as: <%= session[:user_name] %> 
-	<% if session[:is_instructor] %> [INSTRUCTOR] <% end %></h4>
+<div class="dash-main-inner">
+	<div id="dash-profile">
 
-<h2>Profile Data:</h2>
-<h3>Name: <%= @user.f_name %> <%= @user.l_name %></h3>
-<h3>Email: <%= @user.email %></h3>
-<%= image_tag gravatar_url(@user.email, '100x100') %>
-<% if (@user.is_instructor) %>
-	<h3>INSTRUCTOR</h3>
-<% else %>
-	<h3>STUDENT</h3>
-	<%# sending invitation #%> 	
-	<% if @user.invitation_sent_at != nil %>
-		<h3>Invited on <%= @user.invitation_sent_at %></h3>
-	<% else %>
-		<h3> User is not invited </h3>
-	<% end %>
-	
-	<%= form_for @user, url: "/users/#{@user.id}/invite", method: 'post' do |f| %>
-		<%= f.submit "send invite", html: {class: "button"}  %>
-	<% end %>
-	<!-- <form action="<%= @user.id %>/invite" method="POST"><input type="submit" value ="sent invitation email"></input></form >  -->
-<% end %>
+		<div class="dash-profile-nav">
+			<ul>
+				<li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
 
-<% if (@user.is_active) %>
-	<h3>Status: ACTIVE</h3>
-<% else %>
-	<h3>Status: INACTIVE</h3>
-<% end %>
+				<%# edit profile (self) %>
 
-<h3>Cohorts this User is Enrolled in:</h3>
-<ul>
-	<% @user.cohorts.each do |cohort| %>
-		<li><%= cohort.course.name %> <%= cohort.name %></li>
-	<% end %> 
-</ul>
+				<li><%= link_to "Edit Profile", "/users/#{session[:user_id]}/edit" %></li>
 
-<%= link_to 'Logout', logout_path, method: 'delete' %>
+				<%# browse users (instructors and students) %>
 
-<%# edit profile (self) %>
+				<li><%= link_to "Users", users_path %></li>
 
-<%= link_to "Edit My Profile", "/users/#{session[:user_id]}/edit" %>
+				<%# add student (instructors only) %>
 
-<%# browse users (instructors and students) %>
+				<% if session[:is_instructor] %>
+					<li><%= link_to "Add a User", "/users/new" %></li>
+				<% end %>
 
-<%= link_to "Users", users_path %>
+				<%# browse classes (index) %>
 
-<%# add student (instructors only) %>
+				<li><%= link_to "Cohorts", cohorts_path %></li>
 
-<% if session[:is_instructor] %>
-	<%= link_to "Add a User", "/users/new" %>
-<% end %>
+				<%# create class/cohort (instructors only) %>
 
-<%# edit student profile (instructor only) %>
+				<% if session[:is_instructor] %>
+					<li><%= link_to "Create a New Cohort", "/cohorts/new" %></li>
+				<% end %>
 
-<% if session[:is_instructor] %>
-	<%= link_to "Edit User", "/users/#{@user.id}/edit" %>
-<% end %>
+				<%# edit class - this link is on the class(cohort) show page %>
+			</ul>
+		</div>
 
-<%# browse classes (index) %>
+		<div id="dash-gravatar-picture">
+			<%= image_tag gravatar_url(@user.email, '200x200') %>
+		</div>
+		<div id="dash-user-details">
+			<h2>Name:</h2> <h3><%= @user.f_name %> <%= @user.l_name %></h3>
+			<h2>Email:</h2> <h3><%= @user.email %></h3>
 
-<%= link_to "Cohorts", cohorts_path %>
 
-<%# create class/cohort (instructors only) %>
+			<h2>Cohorts you are a part of:</h2>
+			<ul class="profile-cohort-list">
+				<% @user.cohorts.each do |cohort| %>
+					<li><%= cohort.course.name %> <%= cohort.name %></li>
+				<% end %> 
+			</ul>
+		</div>
 
-<% if session[:is_instructor] %>
-	<%= link_to "Create a New Class(Cohort)", "/cohorts/new" %>
-<% end %>
 
-<%# edit class - this link is on the class(cohort) show page %>
+
+
+	</div>
+</div>

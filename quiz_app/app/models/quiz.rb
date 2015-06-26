@@ -13,8 +13,11 @@
 #
 
 class Quiz < ActiveRecord::Base
+
   belongs_to :user
 	belongs_to :cohort
 	has_many :questions
+	has_many :assessments
 	belongs_to :user
+
 end
