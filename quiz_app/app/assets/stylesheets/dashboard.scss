@@ -1,5 +1,6 @@
 @media (min-width: 1px ) and (max-width: 770px ) {
 
+<<<<<<< HEAD
     #nav-bar {
         padding: 0px;
         }
@@ -29,10 +30,41 @@
             }
         }
     }
+=======
+	#nav-bar {
+		padding: 0px;
+		}
+
+		#nav-bar ul li {
+			font-size: 0.3em;
+			padding: 0px;
+			margin: 0px;
+			border-radius: 10px;
+	}
+
+	#nav-bar ul li button {
+		margin: 0px;
+		padding: 7px;
+	}
+
+	.dash-main-inner {
+	
+		#dash-profile {
+				float: left;
+			.dash-profile-nav {
+				ul {
+					li {
+						display: list-item;
+					}
+				}
+			}
+		}
+	}
+>>>>>>> 404e95892822052eea0370e18848fde919836857
 
 }
 
-@media (min-width: 770px ) and (max-width: 988px ) {
+@media (min-width: 770px ) and (max-width: 1050px ) {
 
         #nav-bar ul li {
             font-size: 0.4em;
@@ -55,9 +87,9 @@
 
 }
 
-@media (min-width: 988px ) and (max-width: 1250px ) {
-    
 
+@media (min-width: 1050px ) and (max-width: 1300px ) {
+	
     .dash-main-inner {
     
         #dash-profile {
@@ -124,13 +156,14 @@
 }
 
 #nav-bar button {
-    color: white;
-    font-size: 2em;
-    background-color: #795548;
-    opacity: 0.8;
-    padding: 15px;
-    border: 0px;
-    border-radius: 50px;
+
+	color: white;
+	font-size: 2em;
+	background-color: #795548;
+	opacity: 0.8;
+	padding: 15px;
+	border: 0px;
+	border-radius: 50px;
 }
 
 #nav-bar button:hover {

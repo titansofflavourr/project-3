@@ -1,2 +1,19 @@
-<h1>Quiz#new</h1>
-<p>Find me in app/views/quiz/new.html.erb</p>
+<h1>Create a New Quiz</h1>
+
+<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+
+<%= form_for @quiz, url: {action: "create"} do |f| %>
+	
+	<%= f.label :course_id, "Cohort:" %>
+	<%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %><br>
+	<%= f.label :title, "Title" %>
+	<%= f.text_field :title %><br>
+	<%= f.label :date_assigned, "Date Assigned" %>
+	<%= f.date_field :date_assigned %><br>
+	<%= f.label :instructions, "Instructions" %>
+	<%= f.text_area :instructions %><br>
+	<%= f.hidden_field :user_id, html: {value: session[:user_id]} %>
+
+	<%= f.submit "Create Quiz", html: {class: "button"}  %>
+
+<% end %>
