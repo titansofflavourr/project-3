@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  require 'json'
+
   before_action :authorize, except: [:create, :new]
 
   def index
@@ -69,6 +71,30 @@ class UsersController < ApplicationController
     cohort = Cohort.find(params[:cohort_id])
     user.cohorts.append(cohort)
     redirect_to user_path(user)
+  end
+
+  def report #ajax call
+    user = User.find(params[:student_id])
+    assessments = user.assessments
+    average = 0
+    count = 0
+    quizzes = []
+    assessments.each do |assessment|
+      if (assessment.quiz.total_points > 0)
+        percent = (assessment.student_score * 100) / assessment.quiz.total_points
+        average = average + percent
+        count = count + 1
+      else
+        percent = "NA"
+      end
+      quizzes.push({quiz: assessment.quiz, assessment: assessment, percent: percent})
+    end
+    if (count > 0)
+      average = average / count
+    else
+      average = "NA"
+    end
+    render json: {user: user, quizzes: quizzes, average: average}.to_json
   end
 
   private

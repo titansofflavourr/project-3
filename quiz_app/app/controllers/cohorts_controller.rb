@@ -44,22 +44,71 @@ class CohortsController < ApplicationController
     quiz_count = cohort.quizzes.count
     quizzes = cohort.quizzes
     users = cohort.users
-    total_scored = 0
-    total_points = 0
-    quizzes.each do |quiz|
-      quiz.questions.each do |question|
-        total_points = total_points + question.max_points
-        question.responses.each do |response|
-          total_scored = total_scored + response.grade
+
+    #filter out instructors
+    # users = []
+    # cohort.users.each do |user|
+    #   if (user.is_instructor)
+    #     users.push(user)
+    #   end
+    # end
+
+    # the code below will be replaced by calculations based on the assessment table
+    # total_cohort_scores = 0
+    # total_cohort_points = 0
+    # quizzes.each do |quiz|
+    #   total_quiz_scores = 0
+    #   total_quiz_points = 0
+    #   quiz.questions.each do |question|
+    #     total_question_scores = 0
+    #     question.responses.each do |response|
+    #       total_question_scores = total_question_scores + response.grade
+    #     end
+    #     if (question.responses.count > 0)
+    #       total_question_scores = total_question_scores / question.responses.count
+    #     else
+    #       total_question_scores = 0
+    #     end
+    #     total_question_points = question.max_points
+    #     total_quiz_scores = total_quiz_scores + total_question_scores
+    #     total_quiz_points = total_quiz_points + total_question_points
+    #   end
+    #   total_cohort_scores = total_cohort_scores + total_quiz_scores
+    #   total_cohort_points = total_cohort_points + total_quiz_points
+    # end
+    # if (total_cohort_points > 0)
+    #   cohort_average_score = (total_cohort_scores * 100)/ total_cohort_points
+    # else
+    #   cohort_average_score = 0
+    # end
+
+    # new assessment calculations to go here
+    cohort_average = 0
+    cohort_count = 0
+    users.each do |user|
+      assessments = user.assessments
+      user_average = 0
+      count = 0
+      assessments.each do |assessment|
+        if (assessment.quiz.total_points > 0)
+          percent = (assessment.student_score * 100) / assessment.quiz.total_points
+          user_average = user_average + percent
+          count = count + 1
         end
       end
+      if (count > 0)
+        user_average = user_average / count
+        cohort_average = cohort_average + user_average
+        cohort_count = cohort_count + 1
+      end
     end
-    if (total_points > 0)
-      average = total_scored / total_points
+    if (cohort_count > 0)
+      cohort_average = cohort_average / cohort_count
     else
-      average = 0
+      cohort_average = "NA"
     end
-    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: average}.to_json
+
+    render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: cohort_average}.to_json
   end
 
   private
