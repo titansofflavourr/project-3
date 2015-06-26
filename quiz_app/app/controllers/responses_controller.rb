@@ -5,7 +5,6 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    binding.pry
     # creating response using session and ajax params
     @response = Response.create(user_id: session[:user_id], question_id: params[:question_id],answer: params[:answer])
     
@@ -26,7 +25,6 @@ class ResponsesController < ApplicationController
   end
 
   def update
-    binding.pry
     student_response = Response.find(params[:id])
     @response = student_response.update(answer: params[:answer])
     render json: @response 
