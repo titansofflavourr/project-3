@@ -9,16 +9,17 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 
 
 <h1>Editing Quiz: "<%= @quiz.title.titleize %>"</h1>
-<p>Created by <%=@quiz.user.f_name.capitalize%> <%=@quiz.user.l_name.capitalize%></p>
+<p>Created by <%= @quiz.user.f_name.capitalize %> <%= @quiz.user.l_name.capitalize %></p>
 
 <h1>Current Questions:</h1>
 <ul id="quiz-questions">
   <% @quiz.questions.each do |question| %>
     <li>
       <b><%= question.prompt %></b><br>
-      <%if !question.is_multiple_choice%>
-        <input type="text" disabled="true">
-      <%end%>
+      <% if !question.is_multiple_choice %>
+        <input type="text" disabled="true"><br>
+      <% else %>
+      
         <ul>
           <% question.choices.each do |choice| %>
             <li>
@@ -26,7 +27,8 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
               <b><%=choice.key%>:</b> <%=choice.option%>
             </li>
           <%end%>
-        </ul>
+        </ul><br>
+      <% end %>
       (Answer:<%= question.answer_key%>)<br>
       <i>Worth <%= question.max_points%> points</i>
     </li> <br>
@@ -144,18 +146,20 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
             
           </button>
         </span>
-
       </form>
 
     <script id="new-question-template" type="x-mustache">
       <li>
         <b> {{prompt}} </b><br>
           <ul>
-            {{#choices}}%>
+            {{#choices}}
               <li>
                 <input type="radio" checked="checked" disabled = "true">
-                <b>{{key}}:</b> {{.}}
+                <b>{{key}}:</b> {{option}}
               </li>
+            {{/choices}}
+            {{^choices}}
+              <input type="text" disabled="true"><br>
             {{/choices}}
           </ul>
             (Answer:{{answer_key}})<br>
