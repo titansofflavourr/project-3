@@ -1,4 +1,69 @@
-// Place all the styles related to the user controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-user {
+	margin-top: 20px;
+	background-color: white;
+	opacity: 0.9;
+	height: 45em;
+	border-radius: 20px;
+}
+
+#user-header {
+	width: 100%;
+	text-align: center;
+
+	h1 {
+		font-size: 4em;
+	}
+}
+
+#center-user {
+	margin-top: 5%;
+	margin-left: 30%;
+
+	label {
+
+		font-size: 1.5em;
+
+	}
+
+}
+
+#edit-user-text-input input {
+	
+	width: 50%;
+}
+
+#user-submit {
+	margin-top: 10px;
+	margin-left: 20%;
+	input {
+		color: white;
+		background-color: #9CCC65;
+		border: 0px;
+		padding: 10px;
+		border-radius: 20px;
+	}
+}
+
+
+#back-to-profile-link {
+	float: right;
+	margin-right: 10px;
+	padding: 20px;
+	background-color: #9CCC65;
+	border-radius: 25px;
+
+	a {
+		color: white;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+}
+
+#back-to-profile-link:hover {
+	background-color: #795548;
+	box-shadow:5px 5px 5px #16872b;
+	}
+
 
