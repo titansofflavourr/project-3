@@ -65,8 +65,34 @@ body {
 	text-decoration: none;
 }
 
+#user-info-layout {
+		text-align: center;
+		float: right;
+		margin-right: 10px;
+
+	a {
+		color: white;
+
+		padding: 5px;
+		background-color: #9CCC65;
+		border-radius: 15px;
+	}
+
+	a:hover {
+
+		text-decoration: none;
+    background-color: #795548;
+    box-shadow:5px 5px 5px #16872b;
+	}
+
+}
+
 #footer {
+	background-image: url("http://i.imgur.com/aFybUVQ.gif");
+	background-size: cover;
 	position: absolute;
-	right: 50px;
+	right: 0px;
+	height: 100px;
+	width: 350px;
 	padding-top: 20px;
 }

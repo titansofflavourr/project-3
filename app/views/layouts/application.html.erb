@@ -17,12 +17,19 @@
 	 <div id="topname">
 	 	<h1>QUIZZULHU</h2></a>
 	 </div>
+
+	 <div id="user-info-layout">
+	 	<% if session[:user_name] %>
+			<h4>Welcome, <%= session[:user_name] %>.</h4>
+			<%= link_to 'Logout', logout_path, method: 'delete' %>
+		<% end %>
+	</div>
 </div>
 
 <%= yield %>
 
 <div id="footer">
-	copyright @ Titans of Flavourr 2015. all rights reserved
+&nbsp;
 </div>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

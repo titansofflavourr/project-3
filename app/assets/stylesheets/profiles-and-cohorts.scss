@@ -13,6 +13,7 @@
 #user-header {
 	width: 100%;
 	text-align: center;
+	color: #795548;
 
 	h1 {
 		font-size: 4em;
@@ -129,6 +130,59 @@ input[type=text]:focus, textarea:focus {
   box-shadow: 0 0 5px rgba(142, 250, 157, 1);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;
-  border: 1px solid rgba(81, 203, 238, 1);
+  border: 1px solid rgba(95, 255, 48, 1);
+}
+
+.profile-nav {
+            float: right;
+
+            ul {
+                list-style-type: none;
+            }
+
+            li {
+                display: inline;
+                margin-top: 1%;
+                padding: 10px;
+                background-color: #9CCC65;
+                border-radius: 25px;
+
+                a {
+
+                    color: white;
+                    font-weight: bold;
+
+                }
+
+                a:hover {
+                    text-decoration: none;
+                }
+
+            }
+
+            li:hover {
+            
+                background-color: #795548;
+                box-shadow:5px 5px 5px #16872b;
+
+            }    
+
+        }
+
+
+#user-details {
+		float: left;
+		width: 75%;
+		margin: 20px 0px 20px 50px;
+}
+
+
+#gravatar-picture {
+  margin: 50px 50px 50px 50px; 
+    img {
+    	margin-right: 50px;
+      float: left;
+      border-radius: 150px;
+     }
 }
 

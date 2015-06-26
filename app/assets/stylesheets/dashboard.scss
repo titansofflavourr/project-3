@@ -257,6 +257,40 @@
 
 }    
     
+.profile-nav {
+            float: right;
 
+            ul {
+                list-style-type: none;
+            }
+
+            li {
+                display: inline;
+                margin-top: 1%;
+                padding: 10px;
+                background-color: #9CCC65;
+                border-radius: 25px;
+
+                a {
+
+                    color: white;
+                    font-weight: bold;
+
+                }
+
+                a:hover {
+                    text-decoration: none;
+                }
+
+            }
+
+            li:hover {
+            
+                background-color: #795548;
+                box-shadow:5px 5px 5px #16872b;
+
+            }    
+
+        }
 
 
