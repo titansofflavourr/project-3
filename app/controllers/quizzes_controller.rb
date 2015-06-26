@@ -76,11 +76,17 @@ class QuizzesController < ApplicationController
     quiz = Quiz.find(params[:quiz_id])
     questions = quiz.questions.count
     assessments = quiz.assessments.count
-    average_score = quiz.assessments.average('student_score')
-    total_points = quiz.total_points
-    if (quiz.total_points > 0)
-      percent = (average_score * 100) / quiz.total_points
+    if (assessments > 0)
+      average_score = quiz.assessments.average('student_score')
+      total_points = quiz.total_points
+      if (total_points > 0)
+        percent = (average_score * 100) / total_points
+      else
+        percent = "NA"
+      end
     else
+      average_score = "NA"
+      total_points = "NA"
       percent = "NA"
     end
     render json: {quiz: quiz, questions: questions, assessments: assessments,

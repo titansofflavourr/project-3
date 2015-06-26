@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   root 'dashboards#index' 
 
-  get '/report', to: 'dashboards#report'
-
   get '/login', to: 'sessions#new'
 
   post '/login', to: 'sessions#create'
 
   delete '/logout', to: 'sessions#destroy'
+
+  get '/report', to: 'dashboards#report'
 
   post '/users/:id/invite', to: 'users#send_invite'
   
