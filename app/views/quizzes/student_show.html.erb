@@ -76,7 +76,7 @@
 		</div>
 	<% end %>
 	<br>
-<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
-<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>	
+<%=button_to "COMPLETE QUIZ", "/quizzes/#{@quiz.id}/assessments", method: "POST", class: "student-complete-quiz-page"%>
+<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITH SAVING</a></button>	
 
 
