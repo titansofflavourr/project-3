@@ -26,8 +26,9 @@ user_1 = User.create(is_instructor: true, f_name: "Junho", l_name: "Rhee", email
 
 user_2 = User.create(is_instructor: false, f_name: "Deke", l_name: "k", email: "k.n.devs@gmail.com", password: "password", password_confirmation: "password")
 
-user_1 = User.create(is_instructor: false, f_name: "David", l_name: "Newhaus", email: "jewhaus@gmail.com", password: "password", password_confirmation: "password")
+user_3 = User.create(is_instructor: true, f_name: "David", l_name: "Newhaus", email: "jewhaus@gmail.com", password: "password", password_confirmation: "password")
 
+user_4 = User.create(is_instructor: false, f_name: "Michael", l_name: "Finnagan", email: "whiskerismychine@gmail.com", password: "password", password_confirmation: "password")
 
 quiz1 = Quiz.create(title: "first quiz about HTML", instructions: "please solve all the questions and submit it. If you have any issues, please leave a comment", is_active: true, cohort: cohort1, user: user_1)
 
@@ -46,11 +47,14 @@ question2 = Question.create(number: 2, prompt: "what's the advantage of semantic
 
 response2 = Response.create(user: user_2, question: question2, answer: "Easy to understand", comment: "this was easy")
 
+
 question3 = Question.create(number: 1, prompt: "Who created Ruby?", is_multiple_choice: false, answer_key: "Yukihiro Matsumoto", max_points: 5, quiz: quiz2)
 
-response3 = Response.create(user_id: 2, question_id: question1.id, answer: "Matsu", comment: "nothing")
+response3 = Response.create(user: user_4, question_id: question1.id, answer: "Matsu", comment: "nothing")
 
 question4 = Question.create(number: 4, prompt: "what is one of Ruby framework?", is_multiple_choice: true, answer_key: "c", max_points: 3, quiz: quiz1)
+
+response10 = Response.create(user: user_2, question: question4, answer: "C")
 
 choice1 = Choice.create(question: question4, key: "A", option: "Node")
 
@@ -70,4 +74,6 @@ choice3 = Choice.create(question: question5, key: "C", option: "Database is just
 
 
 ass1 = Assessment.create(user: user_2, quiz: quiz1)
+
+question6 = Question.create(number: 6, prompt: "This okay?", is_multiple_choice: false, answer_key: "easy to comprehend", max_points: 15, quiz: quiz1)
 
