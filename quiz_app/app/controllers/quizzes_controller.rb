@@ -65,3 +65,4 @@ class QuizzesController < ApplicationController
   end
 
 end
+
