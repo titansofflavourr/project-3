@@ -26,24 +26,46 @@ $('#short-answer-radio').click(function() {
 });
 
 // ------Question-Submit(to-db-and-DOM)-----
-$( ".add-question-button").click(function(event){
+var myFunc = function(event){
   event.preventDefault();
   var parameters = $('.new-question-form').serializeArray();
   console.log("parameters=", parameters)
 
-$.ajax({
+    // debugger;
+  $.ajax({
     url: '/questions',
     type: 'POST',
     data: parameters,
     dataType: 'json'
   }).done(function(result) {
-    console.log("ajax is done, now ajaxing ",result["prompt"], " question.");
-    // debugger;
+    console.log("ajax is done, now ajaxing ",result["choices"], " question.");
     var template = $("#new-question-template").html();
     var html = Mustache.render(template, result);
     $( "#quiz-questions" ).append(html); //appends 
-    $( "input" ).val("") 
-    //clears inputs for next question
+    $( "input" ).val(""); //clears inputs for next question
+    $(".add-question-button").click(myFunc)
   })
-});
+}
+
+$( ".add-question-button").click(myFunc)
+
+// $( ".add-question-button").click(function(event){
+//   event.preventDefault();
+//   var parameters = $('.new-question-form').serializeArray();
+//   console.log("parameters=", parameters)
+
+//     // debugger;
+//   $.ajax({
+//     url: '/questions',
+//     type: 'POST',
+//     data: parameters,
+//     dataType: 'json'
+//   }).done(function(result) {
+//     console.log("ajax is done, now ajaxing ",result["choices"], " question.");
+//     var template = $("#new-question-template").html();
+//     var html = Mustache.render(template, result);
+//     $( "#quiz-questions" ).append(html); //appends 
+//     $( "input" ).val(""); //clears inputs for next question
+//   })
+// });
 

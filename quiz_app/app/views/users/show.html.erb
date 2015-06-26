@@ -94,6 +94,33 @@
 
 <%# browse quizzes (index) %>
 
+<h3>My Quizzes</h3>
+
+<table class="table">
+	<thead>
+		<th>Quiz Title</th>
+		<th>Date Assigned</th>
+		<th>Status</th>
+		<th>Score</th>
+		<th>Points</th>
+		<th>Percent</th>
+	</thead>
+	<tbody>
+		<% @user.assessments.each do |assessment| %>
+			<tr>
+				<td><%= assessment.quiz.title %></td>
+				<td><%= assessment.quiz.date_assigned %></td>
+				<td><%= assessment.status %></td>
+				<td><%= assessment.student_score %></td>
+				<td><%= assessment.quiz.total_points %></td>
+				<% if (assessment.quiz.total_points > 0)
+					percent = (assessment.student_score * 100) / assessment.quiz.total_points else percent="NA" end %>
+				<td><%= percent %>%</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
 <%# create quiz %>
 
 <%# edit quiz %>
