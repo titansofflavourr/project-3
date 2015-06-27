@@ -20,7 +20,7 @@ class DashboardsController < ApplicationController
 		 @quizzes = Quiz.all
 		 render :report
 		else
-			redirect_to user_path(user)
+			redirect_to "/users/#{session[:user_id]}"
 		end
 	end
 

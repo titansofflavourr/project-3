@@ -38,13 +38,15 @@
 		<div id="nav-bar">
 		<%# navigation bar with buttons #%> 
 		<ul>
-			<li><button id="dash-button">DASH</button></li>
-			<li><button id="profile-button">PROFILE</li>
-			<li><button id="classes-button">QUIZZES</li>
+			<li><a href="/dashboards"><button id="dash-button">DASH</button></a></li>
+			<li><a href="/users/<%= session[:user_id] %>"><button id="profile-button">PROFILE</button></a></li>
 			<% if session[:is_instructor] %>
-			<li><button id="create-quiz-button">CREATE QUIZ</li>
+				<li><a href="/quizzes"><button id="classes-button">QUIZZES</button></a></li>
+			<% end %>
+			<% if session[:is_instructor] %>
+				<li><button id="create-quiz-button">CREATE QUIZ</button></li>
 			<% else %>
-			<li><button id="take-quiz-button">TAKE QUIZ</li>
+				<li><a href="/quiz"><button id="take-quiz-button">TAKE QUIZ</button></a></li>
 			<% end %>
 		</ul>
 	</div>
