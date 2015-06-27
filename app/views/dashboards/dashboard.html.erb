@@ -44,7 +44,7 @@
 				<li><a href="/quizzes"><button id="classes-button">QUIZZES</button></a></li>
 			<% end %>
 			<% if session[:is_instructor] %>
-				<li><button id="create-quiz-button">CREATE QUIZ</button></li>
+				<li><a href="/quizzes/new"><button id="create-quiz-button">CREATE QUIZ</button></a></li>
 			<% else %>
 				<li><a href="/quiz"><button id="take-quiz-button">TAKE QUIZ</button></a></li>
 			<% end %>
