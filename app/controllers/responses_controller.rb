@@ -25,9 +25,15 @@ class ResponsesController < ApplicationController
   end
 
   def update
+    if not session[:is_instructor]
     student_response = Response.find(params[:id])
     @response = student_response.update(answer: params[:answer])
     render json: @response 
+    else
+      instructor_graded = Response.find(params[:id])
+      @response = instructor_graded.update(grade: params[:grade])
+      render json: @response
+    end
   end
 
   def edit

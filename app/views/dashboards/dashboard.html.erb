@@ -32,7 +32,6 @@
 		
 		<h4>You are logged in as: <br> <span id="logged-in"><%= session[:user_name] %></span>
 			<% if session[:is_instructor] %><br> [INSTRUCTOR] <% end %></h4>
-			<%= link_to 'Logout', logout_path, method: 'delete' %>
 		</div>
 	</div>
 	<div class="col-sm-8">

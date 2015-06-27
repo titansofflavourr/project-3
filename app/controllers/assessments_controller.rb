@@ -27,6 +27,8 @@ class AssessmentsController < ApplicationController
   def edit
     @assessment = Assessment.find(params[:id])
     @quiz = Quiz.find(params[:quiz_id])
+    @cohort = @quiz.cohort
+    @user = @assessment.user
   end
 
   private
