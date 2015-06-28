@@ -6,11 +6,7 @@
 
 				<%# edit profile (self) %>
 
-				<li><%= link_to "Edit Profile", "/users/#{session[:user_id]}/edit" %></li>
-
-				<%# browse users (instructors and students) %>
-
-				<li><%= link_to "Members", users_path %></li>
+				<li><%= link_to "My Profile", "/users/#{session[:user_id]}/edit" %></li>
 
 				<%# add student (instructors only) %>
 
@@ -19,8 +15,9 @@
 				<% end %>
 
 				<%# browse classes (index) %>
-
-				<li><%= link_to "Cohorts", cohorts_path %></li>
+				<% if session[:is_instructor] %>
+					<li><%= link_to "Cohorts", cohorts_path %></li>
+				<% end %>
 
 				<%# create class/cohort (instructors only) %>
 
@@ -30,7 +27,11 @@
 
 				<%# reports %>
 
-				<li><%= link_to "Reports", "/report" %></li>
+				<% if session[:is_instructor] %>
+					<li><%= link_to "Reports", "/report" %></li>
+				<% else %>
+					<li><%= link_to "My Results", "/report" %></li>
+				<% end %>
 
 				<% if session[:is_instructor] %>
 					<li><%= link_to "Assessments", "/assessments" %></li>

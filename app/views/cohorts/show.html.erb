@@ -31,6 +31,21 @@
 					<% end %>
 				</ul>
 
+				<h3>Quizzes</h3>
+				<% if (session[:is_instructor]) %>
+						<ul>
+							<% @cohort.quizzes.each do |quiz| %>
+								<li><a href="/quizzes/<%= quiz.id %>/edit"><%= quiz.title %></a></li>
+							<% end %>
+						</ul>
+				<% else %>
+						<ul>
+							<% @cohort.quizzes.each do |quiz| %>
+								<li><%= quiz.title %></li>
+							<% end %>
+						</ul>
+				<% end %>
+
 
 				<% if (session[:is_instructor]) %>
 					<h3>Instructor Options</h3>
