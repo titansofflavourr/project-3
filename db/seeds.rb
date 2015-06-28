@@ -7,7 +7,6 @@ Response.destroy_all
 Choice.destroy_all
 Assessment.destroy_all
 
-
 # COURSES ------------------------------------------------
 
 #   create_table "courses", force: :cascade do |t|
