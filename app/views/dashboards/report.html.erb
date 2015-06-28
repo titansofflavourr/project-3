@@ -144,7 +144,7 @@
 		<tbody>
 			<% @user.assessments.each do |assessment| %>
 				<tr>
-					<td><%= assessment.quiz.title %></td>
+					<td><a href="/quizzes/<%= assessment.quiz.id %>/assessments/<%= assessment.id %>"><%= assessment.quiz.title %></a></td>
 					<td><%= assessment.status %></td>
 					<td><%= assessment.student_score %></td>
 					<td><%= assessment.quiz.total_points %></td>
