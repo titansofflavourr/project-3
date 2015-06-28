@@ -1,3 +1,4 @@
+
 <h1 id="<%=@quiz.id%>">Quiz Result: <%=@quiz.title.titleize%></h1>
 <h2>Judging <%=@user.f_name.titleize%> <%=@user.l_name.titleize%>'s worth as a sacrifice to the elder gods. </h2>
 <h5 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h5>
@@ -12,7 +13,9 @@
 
   <%response = question.responses.find_by(user: @user)%>
     <div class="question">
-      <h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
+      <% renderer = Redcarpet::Render::HTML.new %>
+        <% markdown = Redcarpet::Markdown.new(renderer) %>
+        <h3>#<%= i + 1 %>. <%= markdown.render(question.prompt).html_safe %></h3>
       <%# showing question that belongs to quiz %>
 
       <% if response == nil %>
@@ -26,7 +29,7 @@
             <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
             <br>
           <% end %>
-          <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
+          <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);"  value=0 disabled><br><br>
 
 
         <% else %>

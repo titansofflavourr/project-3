@@ -55,7 +55,7 @@
 					<h3>Cohorts this User is Enrolled in:</h3>
 					<ul>
 						<% @user.cohorts.each do |cohort| %>
-							<li><%= cohort.course.name %> <%= cohort.name %></li>
+							<li><a href="/cohorts/<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></a></li>
 						<% end %> 
 					</ul>
 

@@ -166,6 +166,7 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 
 	$('.student-complete-quiz-page').click(function( ){
 	 //ajax call to assessment
+	 console.log('clicked');
 	 var blanks = []
 		var count = $('.short-answer-field')
 		for (var i = 0; i < count.length; i ++) {
@@ -188,6 +189,6 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 		//after submitting, change view for complete//
 		$(this).addClass("hidden");
 		$('.student-take-quiz-view').addClass("hidden");
-		$('.student-submitted-quiz-view').append('<p> THANK YOU FOR TAKING QUIZ.</p>');
+		$('.student-submitted-quiz-view').html('<p> THANK YOU FOR TAKING QUIZ.</p>');
 	})
 }

@@ -1,7 +1,7 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-    	t.integer :number, null: false
+    	t.integer :number
     	t.string :prompt, null: false
     	t.boolean :is_multiple_choice, null: false, default: false
     	t.string :answer_key
