@@ -17,11 +17,13 @@ class QuestionsController < ApplicationController
       if choice != ""
         question.choices.create({question_id:question.id, option: choice, key:(i+97).chr})
       end
-    end  
+    end 
+    # @choices = question.choices.to_json
+    # render json: question.to_json(:include => [:choices])
+    choices = question.choices
+    render json: {question: question, choices: choices}.to_json
 
-    @choices = question.choices.to_json
-    # binding.pry
-    render json: question.to_json(:include => [:choices])
+
   end 
 
   def new

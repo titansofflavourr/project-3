@@ -169,7 +169,7 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 
             <script id="new-question-template" type="x-mustache">
               <li>
-                <b> {{prompt}} </b><br>
+                <b> {{question.prompt}} </b><br>
                   <ul>
                     {{#choices}}
                       <li>
@@ -181,8 +181,8 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
                       <input type="text" disabled="true"><br>
                     {{/choices}}
                   </ul>
-                    (Answer:{{answer_key}})<br>
-                    <i>Worth {{max_points}} points</i>
+                    (Answer:{{question.answer_key}})<br>
+                    <i>Worth {{question.max_points}} points</i>
               </li> <br>
             </script>
           </div>
