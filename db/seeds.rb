@@ -655,7 +655,7 @@ assessment9 = Assessment.create({
 	quiz: quiz2,
 })
 
-assessment10 = Assessment.create({
-	user: student5,
-	quiz: quiz2,
-})
+# assessment10 = Assessment.create({
+# 	user: student5,
+# 	quiz: quiz2,
+# })
