@@ -75,7 +75,7 @@ class QuizzesController < ApplicationController
   def report #ajax call
     quiz = Quiz.find(params[:quiz_id])
     questions = quiz.questions.count
-    assessments = quiz.assessments.count
+    assessments = quiz.assessments.where('student_score > 0').count
     if (assessments > 0)
       average_score = quiz.assessments.average('student_score')
       total_points = quiz.total_points

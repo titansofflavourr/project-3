@@ -1,14 +1,30 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token %>
+			<div id="user-header">
+				<h1><%= t 'devise.invitations.edit.header' %></h1>
+			</div>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+				<div id="center-user">
+				<br><br>
+					<div id="edit-user-text-input">
+						<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+					  <%= devise_error_messages! %>
+					  <%= f.hidden_field :invitation_token %>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+					  <p><%= f.label :password %><br />
+					  <%= f.password_field :password %></p>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
-<% end %>
+					  <p><%= f.label :password_confirmation %><br />
+					  <%= f.password_field :password_confirmation %></p>
+					</div>
+					<br>
+					<div id="user-submit">
+					 <%= f.submit t("devise.invitations.edit.submit_button") %>
+					<% end %>
+				</div>
+
+		</div>
+	</div>
+</div>

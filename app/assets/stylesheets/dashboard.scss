@@ -146,6 +146,7 @@
     inset 0 2px 2px rgba(255,255,255,1); 
     color: white;
     font-weight: bold;
+    height: 700px;
     background-color: #9CCC65;
     margin: 30px 0 0 10px;
     padding: 20px 0px 20px 50px;
@@ -257,40 +258,4 @@
 
 }    
     
-.profile-nav {
-            float: right;
-
-            ul {
-                list-style-type: none;
-            }
-
-            li {
-                display: inline;
-                margin-top: 1%;
-                padding: 10px;
-                background-color: #9CCC65;
-                border-radius: 25px;
-
-                a {
-
-                    color: white;
-                    font-weight: bold;
-
-                }
-
-                a:hover {
-                    text-decoration: none;
-                }
-
-            }
-
-            li:hover {
-            
-                background-color: #795548;
-                box-shadow:5px 5px 5px #16872b;
-
-            }    
-
-        }
-
 
