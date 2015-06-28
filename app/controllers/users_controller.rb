@@ -22,11 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if session[:is_instructor]
-      @user = User.find(params[:id])
-    else
-      @user = User.find(session[:user_id])
-    end
+    @user = User.find(params[:id])
     @cohorts = Cohort.all
   end
 

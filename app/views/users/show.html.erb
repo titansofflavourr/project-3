@@ -1,5 +1,5 @@
 <div id="back-to-link">
-	<%= link_to "Back to Dashboard", "/" %>
+	<%= link_to "Back to Members", "/users" %>
 </div>
 
 <div class="row">
@@ -25,20 +25,25 @@
 						<h3>INSTRUCTOR</h3>
 					<% else %>
 						<h3>STUDENT</h3>
-						<%# sending invitation #%> 	
+					<% end %>
+
+					<% if (session[:is_instructor]) %>
 						<% if @user.invitation_sent_at != nil %>
 							<h3>Invited on <%= @user.invitation_sent_at %></h3>
 						<% else %>
-							<h3> User is not invited </h3>
+							<h3> Student is not invited </h3>
 						<% end %>
 						
 						<%= form_for @user, url: "/users/#{@user.id}/invite", method: 'post' do |f| %>
 							<div id="user-submit">
 								<%= f.submit "send invite", html: {class: "button"}  %>
 						</div>
-						<% end %>
+									<%# sending invitation #%> 	
+				
 						<!-- <form action="<%= @user.id %>/invite" method="POST"><input type="submit" value ="sent invitation email"></input></form >  -->
+						<% end %>
 					<% end %>
+			
 
 					<% if (@user.is_active) %>
 						<h3>Status: ACTIVE</h3>
@@ -57,54 +62,27 @@
 
 					<%# enroll a student in a cohort %>
 
-					<h3>Enroll this User in a Cohort</h3>
-					<form action="/enroll_user/<%= @user.id %>" method="post">
-						<select name="cohort_id">
-							<% @cohorts.each do |cohort| %>
-								<% if not cohort.users.include?(@user) %>
-									<option value="<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></option>
-								<% end %> 
-							<% end %>
-						</select>
+					<% if (session[:is_instructor]) %>
 
-					<div id="user-submit">
-						<input type="submit" value="Add User to Cohort"/>
-					</div>
-						<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-					</form>
-
-					<%# browse quizzes (index) %>
-
-					<% if not session[:is_instructor] %>
-
-						<h3>My Quizzes</h3>
-
-						<table class="table">
-							<thead>
-								<th>Quiz Title</th>
-								<th>Date Assigned</th>
-								<th>Status</th>
-								<th>Score</th>
-								<th>Points</th>
-								<th>Percent</th>
-							</thead>
-							<tbody>
-								<% @user.assessments.each do |assessment| %>
-									<tr>
-										<td><%= assessment.quiz.title %></td>
-										<td><%= assessment.quiz.date_assigned %></td>
-										<td><%= assessment.status %></td>
-										<td><%= assessment.student_score %></td>
-										<td><%= assessment.quiz.total_points %></td>
-										<% if (assessment.quiz.total_points > 0)
-											percent = (assessment.student_score * 100) / assessment.quiz.total_points else percent="NA" end %>
-										<td><%= percent %>%</td>
-									</tr>
+						<h3>Enroll this User in a Cohort</h3>
+						<form action="/enroll_user/<%= @user.id %>" method="post">
+							<select name="cohort_id">
+								<% @cohorts.each do |cohort| %>
+									<% if not cohort.users.include?(@user) %>
+										<option value="<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></option>
+									<% end %> 
 								<% end %>
-							</tbody>
-						</table>
+							</select>
+
+						<div id="user-submit">
+							<input type="submit" value="Add User to Cohort"/>
+						</div>
+							<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+						</form>
 
 					<% end %>
+
+		
 				<br><br><br>
 
 
