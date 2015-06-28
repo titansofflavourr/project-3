@@ -166,6 +166,7 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 
 	$('.student-complete-quiz-page').click(function( ){
 	 //ajax call to assessment
+	 console.log('clicked');
 	 var blanks = []
 		var count = $('.short-answer-field')
 		for (var i = 0; i < count.length; i ++) {

@@ -698,5 +698,3 @@ assessment9 = Assessment.create({
 # 	user: student5,
 # 	quiz: quiz2,
 # })
-
-
