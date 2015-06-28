@@ -608,14 +608,14 @@ response20 = Response.create({
 
     response25 = Response.create({
       user: student1,
-      question: question8,
+      question: question9,
       answer: 'this is my incorrect answer.',
 
     })
 
     response26 = Response.create({
       user: student1,
-      question: question8,
+      question: question10,
       answer: 'NO ANSWER SUBMITTED',
 
     })
