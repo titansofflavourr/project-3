@@ -158,6 +158,12 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
                   </button>
                 </span>
               </form>
+            
+            <form action="/quizzes/<%= @quiz.id %>/points" method="post">
+              <input type="hidden" name="_method" value="patch"/>
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
+              <input type="submit" value="Finish"/>
+            </form>
 
             <script id="new-question-template" type="x-mustache">
               <li>

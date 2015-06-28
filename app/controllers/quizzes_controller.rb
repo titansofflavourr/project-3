@@ -38,6 +38,17 @@ class QuizzesController < ApplicationController
   def update
     quiz = Quiz.find(params[:id]) 
     quiz.update(quiz_params)
+    redirect_to '/quizzes'
+  end
+
+  def points
+    quiz = Quiz.find(params[:id]) 
+    total_points = 0
+    quiz.questions.each do |question|
+      total_points = total_points + question.max_points
+    end
+    quiz.total_points = total_points
+    redirect_to "/quizzes"
   end
 
   def edit
