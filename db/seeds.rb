@@ -261,7 +261,7 @@ question5 = Question.create({
 	number: 1,
 	prompt: 'this is the first mc question.',
 	answer_key: 'a',
-	is_multiple_choice: :true,
+	is_multiple_choice: "true",
 	max_points: 2,
 	quiz: quiz2
 })
@@ -270,7 +270,7 @@ question6 = Question.create({
 	number: 2,
 	prompt: 'this is the second mc question.',
 	answer_key: 'b',
-	is_multiple_choice: :true,
+	is_multiple_choice: "true",
 	max_points: 2,
 	quiz: quiz2
 })
@@ -279,7 +279,7 @@ question7 = Question.create({
   number: 3,
   prompt: 'this is the third mc question.',
   answer_key: 'c',
-  is_multiple_choice: :true,
+  is_multiple_choice: "true",
   max_points: 2,
   quiz: quiz2
 })
@@ -288,7 +288,7 @@ question8 = Question.create({
 	number: 4,
 	prompt: 'this is the first SA question.',
 	answer_key: 'Answer to the first SA question',
-	is_multiple_choice: :false,
+	is_multiple_choice: "false",
 	max_points: 4,
 	quiz: quiz2
 })
@@ -297,7 +297,7 @@ question9 = Question.create({
 	number: 5,
 	prompt: 'this is the second SA question.',
 	answer_key: 'Answer to the second SA question',
-	is_multiple_choice: :false,
+	is_multiple_choice: "false",
 	max_points: 4,
 	quiz: quiz2
 })
@@ -306,7 +306,7 @@ question10 = Question.create({
   number: 6,
   prompt: 'this is the third SA question.',
   answer_key: 'Answer to the third SA question',
-  is_multiple_choice: :false,
+  is_multiple_choice: "false",
   max_points: 4,
   quiz: quiz2
 })
@@ -608,14 +608,14 @@ response20 = Response.create({
 
     response25 = Response.create({
       user: student1,
-      question: question8,
+      question: question9,
       answer: 'this is my incorrect answer.',
 
     })
 
     response26 = Response.create({
       user: student1,
-      question: question8,
+      question: question10,
       answer: 'NO ANSWER SUBMITTED',
 
     })

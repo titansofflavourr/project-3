@@ -1,0 +1,35 @@
+<% if (session[:is_instructor]) %>
+
+	<h1>Quizzes to be Graded</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Cohort</th>
+				<th>Quiz</th>
+				<th>Student</th>
+				<th>Status</th>
+				<th>Date</th>
+			
+			</tr>
+		</thead>
+		<tbody>
+			<% @assessments.each do |assessment| %>
+				<% if (assessment.status == "submitted") %>
+					<tr>
+						<td><a href="/cohorts/<%= assessment.quiz.cohort.id %>"><%= assessment.quiz.cohort.course.name %> - <%= assessment.quiz.cohort.name %></a></td>
+						<td><a href="/quizzes/<%= assessment.quiz.id %>/assessments/<%= assessment.id %>/edit"><%= assessment.quiz.title %></a></td>
+						<td><a href="/users/<%= assessment.user.id %>"><%= assessment.user.f_name %> <%= assessment.user.l_name %></a></td>
+						<td><%= assessment.status %></td>
+						<td><%= assessment.quiz.date_assigned %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+<% else %>
+
+	<h3>This page is for instructors only</h3>
+
+<% end %>
