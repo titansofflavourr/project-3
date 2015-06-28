@@ -3,7 +3,6 @@
 
 		<div class="dash-profile-nav">
 			<ul>
-				<li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
 
 				<%# edit profile (self) %>
 
@@ -29,10 +28,9 @@
 					<li><%= link_to "Create a New Cohort", "/cohorts/new" %></li>
 				<% end %>
 
-				<%# edit class - this link is on the class(cohort) show page %>
+				<%# reports %>
 
-				<li><%= link_to "All Quizess", '/quizzes' %></li>
-
+				<li><%= link_to "Reports", "/report" %></li>
 
 
 			</ul>

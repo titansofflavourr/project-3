@@ -1,82 +1,86 @@
 
 <%# Student View for Quizzes %> 
+<div class="student-take-quiz-view">
+	<h1 id="<%=@quiz.id%>" class="student-quiz-title">QUIZ:  <%= @quiz.title.upcase %></h1>
+	<h3 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h3>
+	<h3 class="student-user-name">USERNAME: <%= @user.f_name.upcase %> <%= @user.l_name.upcase %></h3>
 
-<h1 id="<%=@quiz.id%>" class="student-quiz-title">QUIZ:  <%= @quiz.title.upcase %></h1>
-<h3 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h3>
-<h3 class="student-user-name">USERNAME: <%= @user.f_name.upcase %> <%= @user.l_name.upcase %></h3>
+		<% @quiz.questions.each_with_index do |question, i| %>
+			<div class="question">
+				<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :fenced_code_blockes => true)%>
+				<h3>#<%= i + 1 %>. <%= markdown.render(question.prompt) %></h3>
+				<%# showing question that belongs to quiz %>
 
-	<% @quiz.questions.each_with_index do |question, i| %>
-		<div class="question">
-			<h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
-			<%# showing question that belongs to quiz %>
+				<% if question.responses.find_by(user: @user) == nil %>
 
-
-			<% if question.responses.find_by(user: @user) == nil %>
-
-			  <% if question.is_multiple_choice %>
-			  	<% question.choices.each_with_index do |choice, i| %>
-						<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
-						<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
-						<br>
-					<% end %>
-
-					<br>
-					<button class="student-quiz-multiple-choice-submit-button" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
-					<button class="student-quiz-multiple-choice-edit-button hidden" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
-					<button class="student-quiz--multiple-choice-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
-					<p class="hidden">ANSWER SUBMITTED</p>
-					<br>
-
-
-			  <% else %>
-					<input type="text" class="short-answer-field <%=question.id%>"></input>
-					<br>
-					<button class="student-quiz-submit-button" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
-					<button class="student-quiz-edit-button hidden" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
-					<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
-					<p class="hidden">ANSWER SUBMITTED</p>
-					<br>
-				<% end %>
-
-			<% else %>
-			<%# disable answering questions that user already submitted answers for%>
-
-				<% if question.is_multiple_choice %>
-			  	<% question.choices.each_with_index do |choice, i| %>
-
-			  		<%# showing user submitted answers #%>
-			  		<% if question.responses.find_by(user: @user).answer == (i+65).chr %>
-							<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" checked disabled >
-							<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
-							<br>
-						<% else %>	
-							<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" disabled>
+				  <% if question.is_multiple_choice %>
+				  	<% question.choices.each_with_index do |choice, i| %>
+							<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
 							<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
 							<br>
 						<% end %>
-					<% end %>
+
 						<br>
-						
-						<button class="student-quiz-multiple-choice-submit-button hidden" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
-						<button class="student-quiz-multiple-choice-edit-button" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
-						<button class="student-quiz-multiple-choice-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
-						<p>ANSWER SUBMITTED</p>
+						<button class="student-quiz-multiple-choice-submit-button" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
+						<button class="student-quiz-multiple-choice-edit-button hidden" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
+						<button class="student-quiz--multiple-choice-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
+						<p class="hidden">ANSWER SUBMITTED</p>
 						<br>
 
+
+
+				  <% else %>
+						<input type="text" class="short-answer-field <%=question.id%>"></input>
+						<br>
+						<button class="student-quiz-submit-button" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
+						<button class="student-quiz-edit-button hidden" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
+						<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
+						<p class="hidden">ANSWER SUBMITTED</p>
+						<br>
+					<% end %>
+
 				<% else %>
-					<input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
-					<br>
-					<button class="student-quiz-submit-button hidden" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
-					<button class="student-quiz-edit-button" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
-					<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
-					<p>ANSWER SUBMITTED</p>
-					<br>
+				<%# disable answering questions that user already submitted answers for%>
+
+					<% if question.is_multiple_choice %>
+				  	<% question.choices.each_with_index do |choice, i| %>
+
+				  		<%# showing user submitted answers #%>
+				  		<% if question.responses.find_by(user: @user).answer == (i+65).chr %>
+								<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" checked disabled >
+								<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+								<br>
+							<% else %>	
+								<input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=question.responses.find_by(user: @user).id%>" disabled>
+								<label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+								<br>
+							<% end %>
+						<% end %>
+							<br>
+							
+							<button class="student-quiz-multiple-choice-submit-button hidden" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
+							<button class="student-quiz-multiple-choice-edit-button" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
+							<button class="student-quiz-multiple-choice-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
+							<p>ANSWER SUBMITTED</p>
+							<br>
+
+					<% else %>
+						<input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
+						<br>
+						<button class="student-quiz-submit-button hidden" id="submit-answer<%=question.id%>">SUBMIT ANSWER</button>
+						<button class="student-quiz-edit-button" id="edit-answer<%=question.id%>">EDIT ANSWER</button>
+						<button class="student-quiz-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
+						<p>ANSWER SUBMITTED</p>
+						<br>
+					<% end %>
 				<% end %>
-			<% end %>
-		</div>
-	<% end %>
-	<br>
-<%=button_to "COMPLETE QUIZ", "/quizzes/#{@quiz.id}/assessments", method: "POST", class: "student-complete-quiz-page"%>
-<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITH SAVING</a></button>	
+			</div>
+		<% end %>
+		<br>
+	<button class="student-complete-quiz-page">COMPLETE QUIZ</button>
+</div>
+<div class="student-submitted-quiz-view"> 
+	<button class="student-return-quiz-page"><a href="/">EXIT WITH SAVING</a></button>	
+</div>
 
 

@@ -20,16 +20,26 @@
 @import "dashboard.scss";
 @import "login.scss";
 @import "quizzes.scss";
+@import "report.scss";
 @import "profiles-and-cohorts.scss";
 
 h1 {
 	color: #795548;
 }
 
+select {
+	border: 2px solid #689F38;
+	background-color: #DCEDC8;
+}
+
 body {
 	font-family: "Arial Black", Gadget, sans-serif;
 	color: #689F38;
 	background-color: #DCEDC8;
+
+	background-image: url("http://i.imgur.com/MIep62L.png");
+   background-position: right bottom; 
+   background-repeat: no-repeat;
 }
 
 .header {
@@ -88,10 +98,6 @@ body {
 }
 
 #footer {
-	background-image: url("http://i.imgur.com/aFybUVQ.gif");
-	background-size: cover;
-	position: absolute;
-	right: 0px;
 	height: 100px;
 	width: 350px;
 	padding-top: 20px;

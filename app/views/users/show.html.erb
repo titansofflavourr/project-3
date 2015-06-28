@@ -33,7 +33,9 @@
 						<% end %>
 						
 						<%= form_for @user, url: "/users/#{@user.id}/invite", method: 'post' do |f| %>
-							<%= f.submit "send invite", html: {class: "button"}  %>
+							<div id="user-submit">
+								<%= f.submit "send invite", html: {class: "button"}  %>
+						</div>
 						<% end %>
 						<!-- <form action="<%= @user.id %>/invite" method="POST"><input type="submit" value ="sent invitation email"></input></form >  -->
 					<% end %>
@@ -64,7 +66,10 @@
 								<% end %> 
 							<% end %>
 						</select>
+
+					<div id="user-submit">
 						<input type="submit" value="Add User to Cohort"/>
+					</div>
 						<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 					</form>
 
@@ -100,50 +105,13 @@
 						</table>
 
 					<% end %>
+				<br><br><br>
+
+
 				</div>
 
-						<div class="profile-nav">
-						<ul>
-				<li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
 
-				<%# edit profile (self) %>
-
-				<li><%= link_to "Edit My Profile", "/users/#{session[:user_id]}/edit" %></li>
-
-				<%# browse users (instructors and students) %>
-
-				<li><%= link_to "Users", users_path %></li>
-
-				<%# add student (instructors only) %>
-
-				<% if session[:is_instructor] %>
-					<li><%= link_to "Add a User", "/users/new" %></li>
-				<% end %>
-
-				<%# edit student profile (instructor only) %>
-
-				<% if session[:is_instructor] %>
-					<li><%= link_to "Edit User", "/users/#{@user.id}/edit" %></li>
-				<% end %>
-
-				<%# create quiz #%>
-
-				<%# browse classes (index) %>
-
-				<li><%= link_to "Cohorts", cohorts_path %></li>
-
-				<%# create class/cohort (instructors only) %>
-
-				<% if session[:is_instructor] %>
-					<li><%= link_to "Create a Cohort", "/cohorts/new" %></li>
-
-					<% else %>
-					<li><%= link_to "Show Quizzes", "/cohorts/#{@user.cohorts.first.id}/quizzes" %></li>
-				<% end %>
-
-				<%# edit class - this link is on the class(cohort) show page %>
-				</ul>
-				</div>
+						
 		</div>
 	</div>
 </div>

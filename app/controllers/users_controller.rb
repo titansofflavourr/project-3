@@ -10,22 +10,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new
-    # if already logged in as instructor
-    if session[:is_instructor]
-      if user.update(new_user_params)
-        redirect_to user_path(user)
-      else
-        redirect_to "/users/#{session[:user_id]}"
-      end
-    else #new user
-      if user.update(new_user_params)
-        session[:user_id] = user.id
-        session[:user_name] = "#{user.f_name} #{user.l_name}"
-        session[:is_instructor] = user.is_instructor
-        redirect_to user_path(user)
-      else
-        redirect_to '/users/new'
-      end
+    if user.update(new_user_params)
+      redirect_to user_path(user)
+    else
+      redirect_to '/users/new'
     end
   end
 

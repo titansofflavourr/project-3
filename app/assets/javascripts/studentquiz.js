@@ -164,10 +164,30 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 		})
 	}
 
+	$('.student-complete-quiz-page').click(function( ){
+	 //ajax call to assessment
+	 var blanks = []
+		var count = $('.short-answer-field')
+		for (var i = 0; i < count.length; i ++) {
+    blanks.push($(count[i]).attr('class').split(' ')[1])
+		}
+
+	 var quiz_id = $('.student-quiz-title').attr('id')
+	 var url = '/quizzes/'+ quiz_id + '/assessments' 
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data:{
+				quiz_id: quiz_id,
+				blanks: blanks
+			}
+		}).done(function(data){
+			console.log('ajax finished');
+		})
+
+		//after submitting, change view for complete//
+		$(this).addClass("hidden");
+		$('.student-take-quiz-view').addClass("hidden");
+		$('.student-submitted-quiz-view').append('<p> THANK YOU FOR TAKING QUIZ.</p>');
+	})
 }
-
-
-
-
-
-
