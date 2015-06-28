@@ -45,7 +45,7 @@ class CohortsController < ApplicationController
     quizzes = cohort.quizzes
     users = []
     cohort.users.each do |user|
-      if (user.is_instructor)
+      if not (user.is_instructor)
         users.push(user)
       end
     end
@@ -56,7 +56,7 @@ class CohortsController < ApplicationController
       user_average = 0
       count = 0
       assessments.each do |assessment|
-        if (assessment.quiz.total_points > 0)
+        if (assessment.student_score) && (assessment.quiz.total_points > 0)
           percent = (assessment.student_score * 100) / assessment.quiz.total_points
           user_average = user_average + percent
           count = count + 1
