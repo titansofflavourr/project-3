@@ -23,7 +23,6 @@ class AssessmentsController < ApplicationController
 
   def show
     if not session[:is_instructor]
-      binding.pry 
       @assessment = Assessment.find(params[:id])
       @quiz = Quiz.find(params[:quiz_id])
       @user= User.find(session[:user_id])
