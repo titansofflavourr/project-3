@@ -14,6 +14,7 @@ Technologies
   - Devise Invitable - https://github.com/scambra/devise_invitable
   - jQuery
   - mustache.js
+  - RedCarpet - https://github.com/vmg/redcarpet
   
 Trello - https://trello.com/b/dpKWLosa/wdi-project-3
 Artifacts & ERD's - see Trello (above)

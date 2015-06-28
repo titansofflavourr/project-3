@@ -43,6 +43,8 @@ Rails.application.routes.draw do
 
   resources :assessments, only: [:index]
 
+  patch '/quizzes/:id/points', to: 'quizzes#points'
+
   resources :quizzes, :except =>[:destroy] do
     resources :assessments, :except =>[:destroy]
   end
