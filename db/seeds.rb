@@ -270,7 +270,7 @@ question6 = Question.create({
 	number: 2,
 	prompt: 'this is the second mc question.',
 	answer_key: 'b',
-	is_multiple_choice:"true"
+	is_multiple_choice: "true",
 	max_points: 2,
 	quiz: quiz2
 })
@@ -279,7 +279,7 @@ question7 = Question.create({
   number: 3,
   prompt: 'this is the third mc question.',
   answer_key: 'c',
-  is_multiple_choice:"true"
+  is_multiple_choice: "true",
   max_points: 2,
   quiz: quiz2
 })
