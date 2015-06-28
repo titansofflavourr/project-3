@@ -63,16 +63,34 @@
 
 }
 
-#edit-user-text-input input {
-	color: #795548;
-	width: 50%;
-	border-radius: 10px;
-	border: 2px solid #9CCC65;
+#edit-user-text-input {
+
+	textarea {
+		color: #795548;
+		width: 50%;
+		border-radius: 10px;
+		border: 2px solid #9CCC65;
+
+	}
+
+	textarea:focus {
+
+		background-color: #DCEDC8;
+
+	}
+
+	input {
+		color: #795548;
+		width: 50%;
+		border-radius: 10px;
+		border: 2px solid #9CCC65;
+		}
+
+	input:focus {
+		background-color: #DCEDC8;
+	}
 }
 
-#edit-user-text-input input:focus {
-	background-color: #DCEDC8;
-}
 
 
 #user-submit {
@@ -186,3 +204,37 @@ input[type=text]:focus, textarea:focus {
      }
 }
 
+.cohort-buttons {
+	
+	ul {
+
+		list-style-type: none;
+
+		li {
+			display: inline;
+			padding: 10px;
+			margin: 5px;
+			background-color: #9CCC65;
+			border-radius: 20px;
+
+			a {
+				color: white;
+			}
+
+			a:hover {
+				text-decoration: none;
+
+			}
+
+		}
+
+		li:hover {
+
+			background-color: #795548;
+      box-shadow:5px 5px 5px #16872b;
+
+		}
+
+	}
+
+}

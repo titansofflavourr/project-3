@@ -3,32 +3,6 @@
 		<div id="top-box-nav">
 		<%# top left box to select class and quiz #%> 
 
-    <select name="cohort_id" id="class_select">
-        <% @cohorts.each do |cohort| %>
-          <option value="<%= cohort.id %>"><%= cohort.course.name %> - <%= cohort.name %></option> 
-      <% end %>
-    </select>
-
-   <script id="class_template" type="mustache">
-        <h5>Select a Quiz: </h5>
-        <select name="quiz_id" id="quiz_selector">
-          {{#quizzes}}
-              <option value="{{id}}">{{title}}</option> 
-          {{/quizzes}}
-        </select>
-   </script> 
-
-    <script id="student_template" type="mustache">
-        <h5>Select a User: </h5>
-        <select name="student_id" id="user_selector">
-          {{#users}}
-              <option value="{{id}}">{{f_name}}</option> 
-          {{/users}}
-        </select>
-   </script> 
-
-   <div id="class_report">
-   </div>
 		
 		<h4>You are logged in as: <br> <span id="logged-in"><%= session[:user_name] %></span>
 			<% if session[:is_instructor] %><br> [INSTRUCTOR] <% end %></h4>
@@ -58,18 +32,6 @@
 	<div class="col-sm-3">
 		<div id="info-sidebar">
 
-			<div id="student_report">
-			</div>
-
-			<br><br><br><br><br><br><br><br><br>
-			QUIZ GRADE:<br>
-			<input type="text" name="quiz-grade" value="" readonly><br><br>
-			INCORRECT ANSWERS:<br>
-			<input type="text" name="incorrect" value="" readonly><br><br>
-			OVERALL COURSE GRADE:<br>
-			<input type="text" name="course-grade" value="" readonly><br><br>
-			QUIZZES TAKEN:<br>
-			<input type="text" name="quizzes-taken" value="" readonly><br><br>
 		</div>
 	</div>
 
