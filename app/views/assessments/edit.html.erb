@@ -1,110 +1,130 @@
-<h1 id="<%=@quiz.id%>">Grading Quiz: <%=@quiz.title.titleize%></h1>
-<h2>Judging <%=@user.f_name.titleize%> <%=@user.l_name.titleize%>'s worth as a sacrifice to the elder gods. </h2>
-<h5 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h5>
+<div id="back-to-link">
+  <%= link_to "Back to Dashboard", "/" %>
+</div>
 
-<!-- ======================= QUESTION DISPLAY ======================= -->
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="main-user">
 
-  <% @quiz.questions.each_with_index do |question, i| %>
+      <div id="user-header">
+        <h1 id="<%=@quiz.id%>">Grading Quiz: <%=@quiz.title.titleize%></h1>
+      </div>
+      <hr>
 
-  <%response = question.responses.find_by(user: @user)%>
-    <div class="question">
-      <h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
-      <%# showing question that belongs to quiz %>
+      <div id="reports-inner-box">
 
-      <% if response == nil %>
-
-  <!-- UNANSWERED QUESTIONS =======================-->
-
-        <% if question.is_multiple_choice %>
-    <!-- UNANSWERED MULTI CHOICE =======================-->
-          <% question.choices.each_with_index do |choice, i| %>
-            <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
-            <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
-            <br>
-          <% end %>
-          <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+      <h2>Judging <%=@user.f_name.titleize%> <%=@user.l_name.titleize%>'s worth as a sacrifice to the elder gods. </h2>
+      <h5 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h5>
 
 
+      <!-- ======================= QUESTION DISPLAY ======================= -->
 
-        <% else %>
-    <!-- UNANSWERED SHORT-ANSWER =======================-->
-          <label>Student Answer:</label><br>
-          <input type="text" class="<%=question.id%>" disabled=true value="UNANSWERED"></input>
-          <br><br>
-          
-          <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-        <% end %>
+        <% @quiz.questions.each_with_index do |question, i| %>
 
-      <% else %>
-      <%#questions that user already submitted answers for%>
+        <%response = question.responses.find_by(user: @user)%>
+          <div class="question">
+            <h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
+            <%# showing question that belongs to quiz %>
 
-        <% if question.is_multiple_choice %>
-    <!-- ANSWERED MULTI CHOICE =======================-->
-          <% question.choices.each_with_index do |choice, i| %>
+            <% if response == nil %>
 
-            <%# showing user submitted answer from choices #%>
-            <% if response.answer == (i+65).chr %>
-              <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=response.id%>" checked disabled >
-              <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
-              <br>
-            <% else %>  
-              <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=response.id%>" disabled>
-              <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
-              <br>
+        <!-- UNANSWERED QUESTIONS =======================-->
+
+              <% if question.is_multiple_choice %>
+          <!-- UNANSWERED MULTI CHOICE =======================-->
+                <% question.choices.each_with_index do |choice, i| %>
+                  <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
+                  <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+                  <br>
+                <% end %>
+                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
+                <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
+                <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+
+
+
+              <% else %>
+          <!-- UNANSWERED SHORT-ANSWER =======================-->
+                <label>Student Answer:</label><br>
+                <input type="text" class="<%=question.id%>" disabled=true value="UNANSWERED"></input>
+                <br><br>
+                
+                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
+                <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
+                <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+              <% end %>
+
+            <% else %>
+            <%#questions that user already submitted answers for%>
+
+              <% if question.is_multiple_choice %>
+          <!-- ANSWERED MULTI CHOICE =======================-->
+                <% question.choices.each_with_index do |choice, i| %>
+
+                  <%# showing user submitted answer from choices #%>
+                  <% if response.answer == (i+65).chr %>
+                    <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=response.id%>" checked disabled >
+                    <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+                    <br>
+                  <% else %>  
+                    <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice" id="<%=response.id%>" disabled>
+                    <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
+                    <br>
+                  <% end %>
+                <% end %>
+                  <br>
+                <% if response.answer.upcase == question.answer_key.upcase %>
+                  <% response.grade = question.max_points %>
+                <% else %>
+                  <% response.grade = 0 %>
+                <% end %>
+                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><input type="text" class="response-grade" value="<%=response.grade%>" id="<%=response.id%>"disabled=true>
+                  <button class="instructor-grade-multiple-choice-submit-button hidden" id="submit-grade<%=question.id%>">Grade Question</button>
+                  <button class="instructor-grade-multiple-choice-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+                  <button class="instructor-grade-multiple-choice-update-button hidden" id="update-grade<%=question.id%>">UPDATE GRADE</button>
+                  <br>
+
+              <% else %>
+          <!-- ANSWERED SHORT-ANSWER =======================-->
+                <input type="hidden" class="<%=question.max_points%>" id="max_points">
+                  <script>
+                    function handleChange(input) {
+                      var max = parseInt($('#max_points').attr('class'));
+                      if (input.value < 0) input.value = 0;
+                      if (input.value > max) input.value = max;
+                    }
+                  </script>
+                <label>Student Answer:</label><br><input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
+                <br><br>
+
+              <!--=== Graded (on-load) ===-->
+                <% if response.grade %>
+                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value="<%= response.grade %>" disabled><br><br>
+                <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
+                <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+
+              <!--=== UnGraded (on-load) ===-->
+                <% else %>
+                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>"><br><br>
+                <button class="instructor-grade-submit-button" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
+                <button class="instructor-grade-edit-button hidden" id="edit-grade<%=question.id%>">EDIT GRADE</button>
+
+                <% end %>
+                <br>
+              <% end %>
             <% end %>
-          <% end %>
-            <br>
-          <% if response.answer.upcase == question.answer_key.upcase %>
-            <% response.grade = question.max_points %>
-          <% else %>
-            <% response.grade = 0 %>
-          <% end %>
-          <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><input type="text" class="response-grade" value="<%=response.grade%>" id="<%=response.id%>"disabled=true>
-            <button class="instructor-grade-multiple-choice-submit-button hidden" id="submit-grade<%=question.id%>">Grade Question</button>
-            <button class="instructor-grade-multiple-choice-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-            <button class="instructor-grade-multiple-choice-update-button hidden" id="update-grade<%=question.id%>">UPDATE GRADE</button>
-            <br>
-
-        <% else %>
-    <!-- ANSWERED SHORT-ANSWER =======================-->
-          <input type="hidden" class="<%=question.max_points%>" id="max_points">
-            <script>
-              function handleChange(input) {
-                var max = parseInt($('#max_points').attr('class'));
-                if (input.value < 0) input.value = 0;
-                if (input.value > max) input.value = max;
-              }
-            </script>
-          <label>Student Answer:</label><br><input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
-          <br><br>
-
-        <!--=== Graded (on-load) ===-->
-          <% if response.grade %>
-            <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value="<%= response.grade %>" disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-
-        <!--=== UnGraded (on-load) ===-->
-          <% else %>
-            <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>"><br><br>
-          <button class="instructor-grade-submit-button" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button hidden" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-
-          <% end %>
-          <br>
+          </div>
         <% end %>
-      <% end %>
+        <br><br><br>
+
+      <%#+++++code for auto submitting auto graded mult choice qs++++++%>
+      <div class="assessment-submit">
+        <button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
+        <button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>  
+      </div>
     </div>
-  <% end %>
-  <br>
 
-<%#+++++code for auto submitting auto graded mult choice qs++++++%>
-
-<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
-<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>  
-
-
+    </div>
+    </div>
+  </div>
+</div>
