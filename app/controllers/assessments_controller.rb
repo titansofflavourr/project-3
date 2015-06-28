@@ -22,7 +22,17 @@ class AssessmentsController < ApplicationController
   end
 
   def show
-    @assessment = Assessment.find(params[:id])
+    if not session[:is_instructor]
+      binding.pry 
+      @assessment = Assessment.find(params[:id])
+      @quiz = Quiz.find(params[:quiz_id])
+      @user= User.find(session[:user_id])
+      @cohort = Cohort.find(user: @user)
+      render 'assessment_student_show'
+    else 
+      @assessment = Assessment.find(params[:id])
+      render 'show' 
+    end
   end
 
   def update

@@ -4,8 +4,9 @@ class QuizzesController < ApplicationController
 
   def index
     if not session[:is_instructor]
-      @cohort = Cohort.find(params[:cohort_id])
-      @quizzes = Quiz.where(cohort: params[:cohort_id])
+      @user = User.find(session[:user_id])
+      @assessments = Assessment.where(user_id: session[:user_id])
+      @quizzes = Quiz.all
       render 'student_index'
     else 
       @cohorts = Cohort.all
