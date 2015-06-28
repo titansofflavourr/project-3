@@ -1,19 +1,36 @@
-<h1>Create a New Quiz</h1>
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
 
-<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
 
-<%= form_for @quiz, url: {action: "create"} do |f| %>
-	
-	<%= f.label :course_id, "Cohort:" %>
-	<%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %><br>
-	<%= f.label :title, "Title" %>
-	<%= f.text_field :title %><br>
-	<%= f.label :date_assigned, "Date Assigned" %>
-	<%= f.date_field :date_assigned %><br>
-	<%= f.label :instructions, "Instructions" %>
-	<%= f.text_area :instructions %><br>
-	<%= f.hidden_field :user_id, html: {value: session[:user_id]} %>
+			<div id="user-header">
+				<h1>Create a New Quiz</h1>
+			</div>
 
-	<%= f.submit "Create Quiz", html: {class: "button"}  %>
+			<div id="center-user">
+				<br><br>
+			<div id="edit-user-text-input">
+				<%= form_for @quiz, url: {action: "create"} do |f| %>
+				
+				<%= f.label :course_id, "Cohort:" %><br>
+				<%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %><br>
+				<%= f.label :title, "Title" %><br>
+				<%= f.text_field :title %><br>
+				<%= f.label :date_assigned, "Date Assigned" %><br>
+				<%= f.date_field :date_assigned %><br>
+				<%= f.label :instructions, "Instructions" %><br>
+				<%= f.text_area :instructions %><br>
+				<%= f.hidden_field :user_id, html: {value: session[:user_id]} %><br>
+			</div>
+			<div id="user-submit">
+				<%= f.submit "Create Quiz", html: {class: "button"}  %>
+			</div>
+			<% end %>
+		</div>
 
-<% end %>
+		</div>
+	</div>
+</div>
