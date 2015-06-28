@@ -128,37 +128,41 @@
 
 	<h4>Name: <%= @user.f_name %> <%=  @user.l_name %></h4>
 	<% average = 0 %>
+	<% assessments = 0 %>
 
 	<h5>My Assessments:</h5>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>Quiz</th>
+				<th>Status</th>
 				<th>Score</th>
 				<th>Points</th>
 				<th>Percent</th>
 			</tr>
 		</thead>
 		<tbody>
-			<% @user.assessments do |assessment| %>
+			<% @user.assessments.each do |assessment| %>
 				<tr>
 					<td><%= assessment.quiz.title %></td>
+					<td><%= assessment.status %></td>
 					<td><%= assessment.student_score %></td>
 					<td><%= assessment.quiz.total_points %></td>
-					<% if (assessment.quiz.total_points > 0) %>
+					<% if (assessment.student_score) && (assessment.quiz.total_points > 0) %>
 						<% percent = (assessment.student_score * 100) / assessment.quiz.total_points %>
+						<% average = average + percent %>
+						<% assessments = assessments + 1 %>
 					<% else %>
 						<% percent = "NA" %>
 					<% end %>
-					<% average = average + percent %>
 					<td><%= percent %> %</td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 
-	<% if (@user.assessments.count > 0) %>
-		<% average = average / @user.assessments.count %>
+	<% if (assessments > 0) %>
+		<% average = average / assessments %>
 	<% else %>
 		<% average = "NA" %>
 	<% end %>
