@@ -7,9 +7,9 @@
 
 		<% @quiz.questions.each_with_index do |question, i| %>
 			<div class="question">
-				<h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
+				<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :fenced_code_blockes => true)%>
+				<h3>#<%= i + 1 %>. <%= markdown.render(question.prompt) %></h3>
 				<%# showing question that belongs to quiz %>
-
 
 				<% if question.responses.find_by(user: @user) == nil %>
 

@@ -5,7 +5,6 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    binding.pry
     if not session[:is_instructor]
     assessment = Assessment.create(quiz_id: params[:quiz_id], user_id: session[:user_id])
     @empty_responses = params[:blanks]

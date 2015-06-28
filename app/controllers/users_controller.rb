@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     count = 0
     quizzes = []
     assessments.each do |assessment|
-      if (assessment.quiz.total_points > 0)
+      if (assessment.student_score) && (assessment.quiz.total_points > 0)
         percent = (assessment.student_score * 100) / assessment.quiz.total_points
         average = average + percent
         count = count + 1
