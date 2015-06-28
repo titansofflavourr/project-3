@@ -1,6 +1,19 @@
-<h1>Quizzes</h1>
+<h1>Completed Quizzes by <%=@user.f_name%> <%=@user.l_name%></h1>
 
-<%  @quizzes.each do |quiz| %>
-	<li><%=link_to quiz.title, "/cohorts/#{@cohort.id}/quizzes/#{quiz.id}" %>
-	</li>
+
+<%# show all assessments that were submitted by the user #%>
+<% if @assessments %>
+		<% @assessments.each do |assessment| %>
+			<li>
+				<% binding.pry %>
+
+				<% if assessment.student_score %>
+					<h3><%= link_to @quizzes.find(assessment.quiz_id).title, "/quizzes/#{assessment.quiz_id}/assessments/#{assessment.id}" %> <%=assessment.student_score%></h3>
+				<% else %>
+					<h3><%= link_to @quizzes.find(assessment.quiz_id).title, "/quizzes/#{assessment.quiz_id}/assessments/#{assessment.id}" %> </h3>
+				<% end %> 
+			</li>
+		<% end %> 
 <% end %>
+
+

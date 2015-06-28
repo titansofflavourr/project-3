@@ -44,10 +44,10 @@
 			<h2>Email:</h2> <h3><%= @user.email %></h3>
 
 
-			<h2>Cohorts you are a part of:</h2>
+			<h2>My Cohorts:</h2>
 			<ul class="profile-cohort-list">
 				<% @user.cohorts.each do |cohort| %>
-					<li><%= cohort.course.name %> <%= cohort.name %></li>
+					<li><a href="/cohorts/<%= cohort.id %>"><%= cohort.course.name %> <%= cohort.name %></a></li>
 				<% end %> 
 			</ul>
 		</div>
