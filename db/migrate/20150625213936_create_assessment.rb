@@ -5,7 +5,7 @@ class CreateAssessment < ActiveRecord::Migration
     	t.integer :quiz_id, null: false
     	t.integer :student_score
     	t.string :comment
-    	t.string :status, default: "completed"
+    	t.string :status, default: "submitted"
     end
   end
 end

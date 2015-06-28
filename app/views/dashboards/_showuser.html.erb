@@ -32,6 +32,10 @@
 
 				<li><%= link_to "Reports", "/report" %></li>
 
+				<% if session[:is_instructor] %>
+					<li><%= link_to "Assessments", "/assessments" %></li>
+				<% end %>
+
 
 			</ul>
 		</div>
