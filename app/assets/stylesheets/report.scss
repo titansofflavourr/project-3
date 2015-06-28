@@ -2,6 +2,31 @@
 	
 	padding: 50px;
 
+	button {
+
+		color: white;
+		font-size: 1.3em;
+		background-color: #9CCC65;
+		opacity: 1;
+		padding: 10px;
+		border: 0px;
+		border-radius: 50px;
+
+		a {
+			color: white;
+		}
+
+	}
+
+	button:hover {
+		background-color: #795548;
+    box-shadow:5px 5px 5px #16872b;
+
+    a:hover {
+    	text-decoration: none;
+    }
+	}
+
 }
 
 hr {
