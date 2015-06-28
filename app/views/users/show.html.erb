@@ -64,7 +64,10 @@
 								<% end %> 
 							<% end %>
 						</select>
+
+					<div id="user-submit">
 						<input type="submit" value="Add User to Cohort"/>
+					</div>
 						<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 					</form>
 
@@ -100,9 +103,12 @@
 						</table>
 
 					<% end %>
+				<br><br><br>
+
+
 				</div>
 
-						<div class="profile-nav">
+<div class="profile-nav">
 						<ul>
 
 				<%# edit profile (self) %>
@@ -143,6 +149,8 @@
 				<%# edit class - this link is on the class(cohort) show page %>
 				</ul>
 				</div>
+
+						
 		</div>
 	</div>
 </div>

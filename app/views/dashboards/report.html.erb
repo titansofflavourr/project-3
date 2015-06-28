@@ -1,96 +1,111 @@
-<h1>Instructor Reports</h1>
-
-<hr>
-
-<div id="cohorts">
-
-	<h5>Select a Cohort: </h5>
-	<select name="cohort_id" id="select_cohort">
-		<option value="0">SELECT COHORT</option>
-		<% @cohorts.each do |cohort| %>
-	  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
-	  <% end %>
-	</select>
-
-	<div id="cohort_report">
-	</div>
-
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
 </div>
 
-<!-- MUSTACHE TEMPLATES BELOW -->
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
 
-<script id="cohort_template" type="mustache">
-	<h3>Cohort: {{cohort.name}}</h3>
-	<h4>Course: {{course}}</h4>
-	<h5>Quizzes Taken: {{quiz_count}}</h5>
-	<h5>Cohort Average Across All Quizzes: {{average}} %</h5>
-	<hr>
+			<div id="user-header">
+				<h1>Instructor Reports</h1>
+			</div>
 
-	<h5>Select a Quiz: </h5>
-	<select name="quiz_id" id="select_quiz">
-		<option value="0">SELECT QUIZ</option>
-	  {{#quizzes}}
-	  	<option value="{{id}}">{{title}}</option> 
-	  {{/quizzes}}
-	</select>
+			<hr>
+				<div id="reports-inner-box">
+				<div id="cohorts">
 
-	<div id="quiz_report">
+					<h5>Select a Cohort: </h5>
+					<select name="cohort_id" id="select_cohort">
+						<option value="0">SELECT COHORT</option>
+						<% @cohorts.each do |cohort| %>
+					  	<option value="<%= cohort.id %>"><%= cohort.name %></option> 
+					  <% end %>
+					</select>
+
+					<div id="cohort_report">
+					</div>
+
+				</div>
+
+				<!-- MUSTACHE TEMPLATES BELOW -->
+
+				<script id="cohort_template" type="mustache">
+					<h3>Cohort: {{cohort.name}}</h3>
+					<h4>Course: {{course}}</h4>
+					<h5>Quizzes Taken: {{quiz_count}}</h5>
+					<h5>Cohort Average Across All Quizzes: {{average}} %</h5>
+					<hr>
+
+					<h5>Select a Quiz: </h5>
+					<select name="quiz_id" id="select_quiz">
+						<option value="0">SELECT QUIZ</option>
+					  {{#quizzes}}
+					  	<option value="{{id}}">{{title}}</option> 
+					  {{/quizzes}}
+					</select>
+
+					<div id="quiz_report">
+					</div>
+
+					<hr>
+
+					<h5>Select a Student: </h5>
+					<select name="student_id" id="select_student">
+						<option value="0">SELECT STUDENT</option>
+					  {{#users}}
+					  	<option value="{{id}}">{{f_name}} {{l_name}}</option> 
+					  {{/users}}
+					</select>
+
+					<div id="student_report">
+					</div>
+
+					<hr>
+
+				</script>
+
+				<script id="quiz_template" type="mustache">
+					<h4>Quiz: {{quiz.title}}</h4>
+					<h5>Date Assigned: {{quiz.date_assigned}}</h5>
+					<h5>Number of Questions: {{questions}}</h5>
+					<h5>Number of Student Assessments: {{assessments}}</h5>
+					<h5>Average Cohort Score: {{average_score}} (out of {{total_points}} total points)</h5>
+					<h5>Average Percentage Score: {{percent}} %</h5>
+					<hr>
+				</script>
+
+				<script id="student_template" type="mustache">
+					<h4>Name: {{user.f_name}} {{user.l_name}}</h4>
+					<h5>Student Overall Average: {{average}} %</h5>
+					<h5>Assessments:</h5>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Quiz</th>
+								<th>Score</th>
+								<th>Points</th>
+								<th>Percent</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#quizzes}}
+							<tr>
+								<td>{{quiz.title}}</td>
+								<td>{{assessment.student_score}}</td>
+								<td>{{quiz.total_points}}</td>
+								<td>{{percent}} %</td>
+							</tr>
+							{{/quizzes}}
+						</tbody>
+					</table>
+				</script>
+				</div>
+
+		</div>
+
+		</div>
 	</div>
-
-	<hr>
-
-	<h5>Select a Student: </h5>
-	<select name="student_id" id="select_student">
-		<option value="0">SELECT STUDENT</option>
-	  {{#users}}
-	  	<option value="{{id}}">{{f_name}} {{l_name}}</option> 
-	  {{/users}}
-	</select>
-
-	<div id="student_report">
-	</div>
-
-	<hr>
-
-</script>
-
-<script id="quiz_template" type="mustache">
-	<h4>Quiz: {{quiz.title}}</h4>
-	<h5>Date Assigned: {{quiz.date_assigned}}</h5>
-	<h5>Number of Questions: {{questions}}</h5>
-	<h5>Number of Student Assessments: {{assessments}}</h5>
-	<h5>Average Cohort Score: {{average_score}} (out of {{total_points}} total points)</h5>
-	<h5>Average Percentage Score: {{percent}} %</h5>
-	<hr>
-</script>
-
-<script id="student_template" type="mustache">
-	<h4>Name: {{user.f_name}} {{user.l_name}}</h4>
-	<h5>Student Overall Average: {{average}} %</h5>
-	<h5>Assessments:</h5>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Quiz</th>
-				<th>Score</th>
-				<th>Points</th>
-				<th>Percent</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#quizzes}}
-			<tr>
-				<td>{{quiz.title}}</td>
-				<td>{{assessment.student_score}}</td>
-				<td>{{quiz.total_points}}</td>
-				<td>{{percent}} %</td>
-			</tr>
-			{{/quizzes}}
-		</tbody>
-	</table>
-</script>
-
-
+</div>
 
 
 
