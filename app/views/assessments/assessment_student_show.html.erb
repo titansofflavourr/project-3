@@ -23,9 +23,6 @@
             <br>
           <% end %>
           <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-
 
 
         <% else %>
@@ -35,8 +32,6 @@
           <br><br>
           
           <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
         <% end %>
 
       <% else %>
@@ -64,9 +59,6 @@
             <% response.grade = 0 %>
           <% end %>
           <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><input type="text" class="response-grade" value="<%=response.grade%>" id="<%=response.id%>"disabled=true>
-            <button class="instructor-grade-multiple-choice-submit-button hidden" id="submit-grade<%=question.id%>">Grade Question</button>
-            <button class="instructor-grade-multiple-choice-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-            <button class="instructor-grade-multiple-choice-update-button hidden" id="update-grade<%=question.id%>">UPDATE GRADE</button>
             <br>
 
         <% else %>
@@ -85,15 +77,10 @@
         <!--=== Graded (on-load) ===-->
           <% if response.grade %>
             <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value="<%= response.grade %>" disabled><br><br>
-          <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
 
         <!--=== UnGraded (on-load) ===-->
           <% else %>
             <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>"><br><br>
-          <button class="instructor-grade-submit-button" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
-          <button class="instructor-grade-edit-button hidden" id="edit-grade<%=question.id%>">EDIT GRADE</button>
-
           <% end %>
           <br>
         <% end %>
@@ -104,7 +91,6 @@
 
 <%#+++++code for auto submitting auto graded mult choice qs++++++%>
 
-<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
-<button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>  
+<button class="student-return-quiz-page"><a href="/report">GO BACK TO REPORT PAGE</a></button>  
 
 
