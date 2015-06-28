@@ -12,7 +12,9 @@
 
   <%response = question.responses.find_by(user: @user)%>
     <div class="question">
-      <h3>#<%= i + 1 %>. <%= question.prompt.upcase %></h3>
+      <% renderer = Redcarpet::Render::HTML.new %>
+        <% markdown = Redcarpet::Markdown.new(renderer) %>
+        <h3>#<%= i + 1 %>. <%= markdown.render(question.prompt).html_safe %></h3>
       <%# showing question that belongs to quiz %>
 
       <% if response == nil %>
