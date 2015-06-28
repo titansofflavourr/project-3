@@ -33,7 +33,7 @@
           <label>Student Answer:</label><br>
           <input type="text" class="<%=question.id%>" disabled=true value="UNANSWERED"></input>
           <br><br>
-          
+
           <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value=0 disabled><br><br>
           <button class="instructor-grade-submit-button hidden" id="submit-grade<%=question.id%>">SUBMIT GRADE</button>
           <button class="instructor-grade-edit-button" id="edit-grade<%=question.id%>">EDIT GRADE</button>
@@ -104,7 +104,7 @@
 
 <%#+++++code for auto submitting auto graded mult choice qs++++++%>
 
-<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ</button>
+<button class="student-complete-quiz-button" id="student-complete-quiz">COMPLETE QUIZ GRADING</button>
 <button class="student-return-quiz-page"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>  
 
 
