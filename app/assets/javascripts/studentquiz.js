@@ -182,7 +182,7 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 				blanks: blanks
 			}
 		}).done(function(data){
-			console.log(data);
+			console.log('ajax finished');
 		})
 
 		//after submitting, change view for complete//
