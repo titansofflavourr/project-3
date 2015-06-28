@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   post '/copyquiz/:id', to: 'quizzes#copy'
 
+  resources :assessments, only: [:index]
+
   resources :quizzes, :except =>[:destroy] do
     resources :assessments, :except =>[:destroy]
   end
