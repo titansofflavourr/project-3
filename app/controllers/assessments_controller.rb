@@ -36,7 +36,22 @@ class AssessmentsController < ApplicationController
 
   def update
     assessment = Assessment.find(params[:id])
-    assessment.update(assessment_params)
+    quiz_id = params[:quiz_id]
+    question_ids =[]
+    Quiz.find(quiz_id).questions.each do |question|
+      question_ids.push(question.id)  
+    end
+    totalScore = 0
+    Response.where({user_id: params[:user_id]}).each do |response|
+      if response.grade
+        if question_ids.include?(response.question_id)
+          totalScore += response.grade
+        end
+      end
+    end
+
+    assessment.update(student_score:totalScore, status:"graded")
+    render json: totalScore
   end
 
   def edit
