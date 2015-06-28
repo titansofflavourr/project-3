@@ -5,10 +5,12 @@
 	<h3 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h3>
 	<h3 class="student-user-name">USERNAME: <%= @user.f_name.upcase %> <%= @user.l_name.upcase %></h3>
 
+		<%# Iterate thru question prompt and render it as markdown #%> 
 		<% @quiz.questions.each_with_index do |question, i| %>
 			<div class="question">
-				<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :fenced_code_blockes => true)%>
-				<h3>#<%= i + 1 %>. <%= markdown.render(question.prompt) %></h3>
+				<% renderer = Redcarpet::Render::HTML.new %>
+				<% markdown = Redcarpet::Markdown.new(renderer) %>
+				<h3>#<%= i + 1 %>. <%= markdown.render(question.prompt).html_safe %></h3>
 				<%# showing question that belongs to quiz %>
 
 				<% if question.responses.find_by(user: @user) == nil %>
@@ -26,6 +28,7 @@
 						<button class="student-quiz--multiple-choice-update-button hidden" id="update-answer<%=question.id%>">UPDATE ANSWER</button>
 						<p class="hidden">ANSWER SUBMITTED</p>
 						<br>
+
 
 
 				  <% else %>

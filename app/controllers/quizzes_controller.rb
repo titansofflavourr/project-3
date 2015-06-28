@@ -4,8 +4,9 @@ class QuizzesController < ApplicationController
 
   def index
     if not session[:is_instructor]
-      @cohort = Cohort.find(params[:cohort_id])
-      @quizzes = Quiz.where(cohort: params[:cohort_id])
+      @user = User.find(session[:user_id])
+      @assessments = Assessment.where(user_id: session[:user_id])
+      @quizzes = Quiz.all
       render 'student_index'
     else 
       @cohorts = Cohort.all
@@ -75,7 +76,7 @@ class QuizzesController < ApplicationController
   def report #ajax call
     quiz = Quiz.find(params[:quiz_id])
     questions = quiz.questions.count
-    assessments = quiz.assessments.where('student_score > 0').count
+    assessments = quiz.assessments.count
     if (assessments > 0)
       average_score = quiz.assessments.average('student_score')
       total_points = quiz.total_points

@@ -134,7 +134,9 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th>Cohort</th>
 				<th>Quiz</th>
+				<th>Date</th>
 				<th>Status</th>
 				<th>Score</th>
 				<th>Points</th>
@@ -144,7 +146,9 @@
 		<tbody>
 			<% @user.assessments.each do |assessment| %>
 				<tr>
+					<td><a href="/cohorts/<%= assessment.quiz.cohort.id %>"><%= assessment.quiz.cohort.course.name %> - <%= assessment.quiz.cohort.name %></a></td>
 					<td><a href="/quizzes/<%= assessment.quiz.id %>/assessments/<%= assessment.id %>"><%= assessment.quiz.title %></a></td>
+					<td><%= assessment.quiz.date_assigned %></td>
 					<td><%= assessment.status %></td>
 					<td><%= assessment.student_score %></td>
 					<td><%= assessment.quiz.total_points %></td>
