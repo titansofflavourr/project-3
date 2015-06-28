@@ -1,4 +1,3 @@
-<% if (session[:is_instructor]) %>
 
 <h1 id="<%=@quiz.id%>">Quiz Result: <%=@quiz.title.titleize%></h1>
 <h2>Judging <%=@user.f_name.titleize%> <%=@user.l_name.titleize%>'s worth as a sacrifice to the elder gods. </h2>
@@ -100,12 +99,5 @@
 <%#+++++code for auto submitting auto graded mult choice qs++++++%>
 
 <button class="student-return-quiz-page"><a href="/report">GO BACK TO REPORT PAGE</a></button>  
-
-
-<% else %>
-
-  <h3>This page is for instructors only</h3>
-
-<% end %>
 
 

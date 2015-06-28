@@ -18,7 +18,7 @@ var update_response_grade = function (response_id, grade) {
     url: url,
     type: "PATCH",
     data: {
-      id:response_id,
+      id: response_id,
       grade: grade
     }
   }).done(function(response) {
@@ -28,8 +28,27 @@ var update_response_grade = function (response_id, grade) {
 }
 
 $('.instructor-grade-edit-button').on('click',function() {
+  console.log("edit butt clicked")
   $(this).parent().find('.response-grade').attr("disabled",false);
   $(this).addClass("hidden");
   $(this).prev().removeClass("hidden");
 })
 
+
+$('#save-total-grade').on('click', function(){
+  var qid = $('#user-header').children().attr('id')
+  var aid = $('.student-quiz-cohort-name').attr('id')
+  var url = "/quizzes/"+ qid +"/assessments/"+ aid
+  var user_id = $('#user-header').attr('class')
+  $.ajax({
+    url: url,
+    type: "PATCH",
+    data: {
+      user_id: user_id
+    }
+  }).done(function(result){
+    console.log("ajax post done")
+    debugger;
+    $("#confirmation").html(" Submitted Grade of " + result)
+  })
+})
