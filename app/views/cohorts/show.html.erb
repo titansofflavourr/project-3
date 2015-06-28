@@ -1,3 +1,7 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
+
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="main-user">
@@ -5,44 +9,51 @@
 			<div id="user-header">
 				<h1>Viewing the <%= @cohort.name %> Cohort</h1>
 			</div>
+			<hr>
 
-			<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+			<div id="reports-inner-box">
+				<h2>Course: <%= @cohort.course.name %></h2>
+				<h2>Cohort Name: <%= @cohort.name %></h2>
 
-			<h2>Course: <%= @cohort.course.name %></h2>
-			<h2>Cohort Name: <%= @cohort.name %></h2>
+				<h3>Start Date: <%= @cohort.start_date %></h3>
+				<h3>End Date: <%= @cohort.end_date %></h3>
 
-			<h3>Start Date: <%= @cohort.start_date %></h3>
-			<h3>End Date: <%= @cohort.end_date %></h3>
-
-			<% if (@cohort.is_active) %>
-				<h3>Status: ACTIVE</h3>
-			<% else %>
-				<h3>Status: INACTIVE</h3>
-			<% end %>
-
-			<%= link_to "Add New Quiz", new_cohort_quiz_path(@cohort) %>
-
-			<%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %>
-
-			<h3>Students in this Cohort</h3>
-			<ul>
-				<% @cohort.users.each do |user| %>
-					<li><%= user.f_name %> <%= user.l_name %></li>
+				<% if (@cohort.is_active) %>
+					<h3>Status: ACTIVE</h3>
+				<% else %>
+					<h3>Status: INACTIVE</h3>
 				<% end %>
-			</ul>
 
-			<h3>Enroll a User</h3>
-			<form action="/enroll_cohort/<%= @cohort.id %>" method="post">
-				<select name="user_id">
-					<% @users.each do |user| %>
-						<% if not user.cohorts.include?(@cohort) %>
-							<option value="<%= user.id %>"><%= user.f_name %> <%= user.l_name %></option>
-						<% end %> 
+				<div class="cohort-buttons">
+					<ul>
+						<li><%= link_to "Add New Quiz", new_cohort_quiz_path(@cohort) %></li>
+
+						<li><%= link_to "Edit Cohort", "/cohorts/#{@cohort.id}/edit" %></li>
+					</ul>
+				</div>
+
+				<h3>Students in this Cohort</h3>
+				<ul>
+					<% @cohort.users.each do |user| %>
+						<li><%= user.f_name %> <%= user.l_name %></li>
 					<% end %>
-				</select>
-				<input type="submit" value="Add User to Cohort"/>
-				<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
-			</form>
+				</ul>
+
+				<h3>Enroll a User</h3>
+				<form action="/enroll_cohort/<%= @cohort.id %>" method="post">
+					<select name="user_id">
+						<% @users.each do |user| %>
+							<% if not user.cohorts.include?(@cohort) %>
+								<option value="<%= user.id %>"><%= user.f_name %> <%= user.l_name %></option>
+							<% end %> 
+						<% end %>
+					</select>
+					<div id="user-submit">
+						<input type="submit" value="Add User to Cohort"/>
+					</div>
+					<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+				</form>
+			</div>
 
 		</div>
 	</div>

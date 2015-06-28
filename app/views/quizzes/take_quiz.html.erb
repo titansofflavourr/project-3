@@ -1,21 +1,34 @@
-<h1>Today's Quizzes</h1>
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
 
-<%= link_to "Back to Dashboard", "/users/#{session[:user_id]}" %>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
 
-<% if session[:is_instructor] %>
+			<div id="user-header">
+				<h1>Today's Quizzes</h1>
+			</div>
+			<hr>
 
-	<h3>This page is for students only</h3>
+			<% if session[:is_instructor] %>
 
-<% else %>
+				<h3>This page is for students only</h3>
 
-	<ul>
-		<% @user.cohorts.each do |cohort| %>
-			<% cohort.quizzes.each do |quiz| %>
-				<% if (quiz.date_assigned == Date.today) %>
-					<li><a href="/cohorts/<%= cohort.id %>/quizzes/<%= quiz.id %>"><%= quiz.title %></a></li>
-				<% end %>
+			<% else %>
+
+				<ul>
+					<% @user.cohorts.each do |cohort| %>
+						<% cohort.quizzes.each do |quiz| %>
+							<% if (quiz.date_assigned == Date.today) %>
+								<li><a href="/cohorts/<%= cohort.id %>/quizzes/<%= quiz.id %>"><%= quiz.title %></a></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+
 			<% end %>
-		<% end %>
-	</ul>
 
-<% end %>
+		</div>
+	</div>
+</div>
