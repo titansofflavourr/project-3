@@ -5,8 +5,15 @@ class AssessmentsController < ApplicationController
   end
 
   def create
+    binding.pry
     if not session[:is_instructor]
     assessment = Assessment.create(quiz_id: params[:quiz_id], user_id: session[:user_id])
+    @empty_responses = params[:blanks]
+    
+    @empty_responses.each do |question_id|
+        Response.create(question_id: question_id, user_id: session[:user_id], answer: "NO ANSWER SUBMITTED")
+    end
+
     redirect_to '/'
     end
   end

@@ -18,10 +18,10 @@ class DashboardsController < ApplicationController
 		if (session[:is_instructor])
 		 @cohorts = Cohort.all
 		 @quizzes = Quiz.all
-		 render :report
 		else
-			redirect_to "/users/#{session[:user_id]}"
+			@user = User.find(session[:user_id])
 		end
+		render :report
 	end
 
 end

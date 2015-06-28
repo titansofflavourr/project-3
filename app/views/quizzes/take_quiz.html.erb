@@ -12,7 +12,7 @@
 		<% @user.cohorts.each do |cohort| %>
 			<% cohort.quizzes.each do |quiz| %>
 				<% if (quiz.date_assigned == Date.today) %>
-					<li><a href="<%= quiz.id %>"><%= quiz.title %></a></li>
+					<li><a href="/cohorts/<%= cohort.id %>/quizzes/<%= quiz.id %>"><%= quiz.title %></a></li>
 				<% end %>
 			<% end %>
 		<% end %>

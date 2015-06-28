@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625213936) do
+ActiveRecord::Schema.define(version: 20150627225917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150625213936) do
     t.integer "quiz_id",                             null: false
     t.integer "student_score"
     t.string  "comment"
-    t.string  "status",        default: "completed"
+    t.string  "status",        default: "submitted"
   end
 
   create_table "choices", force: :cascade do |t|
