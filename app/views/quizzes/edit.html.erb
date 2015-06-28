@@ -7,6 +7,8 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
 
 <!-- QUESTION:(number:, prompt:, is_multiple_choice:, answer_key:, max_points:, quiz_id:) -->
 
+<% if (session[:is_instructor]) %>
+
 <div id="back-to-link">
   <%= link_to "Back to Dashboard", "/" %>
 </div>
@@ -188,4 +190,10 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
       </div>
     </div>
   </div>
+
+<% else %>
+
+  <h3>This page is for instructors only</h3>
+
+<% end %>
 
