@@ -48,6 +48,7 @@ class QuizzesController < ApplicationController
       total_points = total_points + question.max_points
     end
     quiz.total_points = total_points
+    quiz.save
     redirect_to "/quizzes"
   end
 

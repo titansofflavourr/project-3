@@ -35,7 +35,8 @@
 				<% if (session[:is_instructor]) %>
 						<ul>
 							<% @cohort.quizzes.each do |quiz| %>
-								<li><a href="/quizzes/<%= quiz.id %>/edit"><%= quiz.title %></a></li>
+								<li><a href="/quizzes/<%= quiz.id %>/edit"><%= quiz.title %></a> 
+									[<%= quiz.total_points %> points]</li>
 							<% end %>
 						</ul>
 				<% else %>
