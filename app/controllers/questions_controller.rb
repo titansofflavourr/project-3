@@ -26,15 +26,35 @@ class QuestionsController < ApplicationController
       answer = params[:sa_answer_key]
     end
     question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
-    choices = params[:choices]
-    i = 0
-    choices.each do |option|
-      if (option != "")
-        key = (i+97).chr
-        question.choices.create({question_id: question.id, option: option, key: key})
-        i = i + 1
+    if (params[:is_multiple_choice] == "true")
+      if (params[:choice1] != "")
+        key = 'a'
+        question.choices.create({question_id: question.id, option: params[:choice1], key: key})
+      end
+      if (params[:choice2] != "")
+        key = 'b'
+        question.choices.create({question_id: question.id, option: params[:choice2], key: key})
+      end
+      if (params[:choice3] != "")
+        key = 'c'
+        question.choices.create({question_id: question.id, option: params[:choice3], key: key})
+      end
+      if (params[:choice4] != "")
+        key = 'd'
+        question.choices.create({question_id: question.id, option: params[:choice4], key: key})
+      end
+      if (params[:choice5] != "")
+        key = 'e'
+        question.choices.create({question_id: question.id, option: params[:choice5], key: key})
       end
     end
+    # choices.each do |option|
+    #   if (option != "")
+    #     key = (i+97).chr
+    #     question.choices.create({question_id: question.id, option: option, key: key})
+    #     i = i + 1
+    #   end
+    # end
     # choices.each_with_index do |option, i|
     #   if (option != "")
     #     key = (i+97).chr
