@@ -36,9 +36,9 @@ $('.instructor-grade-edit-button').on('click',function() {
 
 
 $('#save-total-grade').on('click', function(){
-  var qid = $('#user-header').children().attr('id')
-  var aid = $('.student-quiz-cohort-name').attr('id')
-  var url = "/quizzes/"+ qid +"/assessments/"+ aid
+  var quizid = $('#user-header').children().attr('id')
+  var assid = $('.student-quiz-cohort-name').attr('id')
+  var url = "/quizzes/"+ quizid +"/assessments/"+ assid
   var user_id = $('#user-header').attr('class')
   $.ajax({
     url: url,
