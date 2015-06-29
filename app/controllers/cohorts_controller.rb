@@ -73,7 +73,6 @@ class CohortsController < ApplicationController
     else
       cohort_average = "NA"
     end
-
     render json: {course: course, cohort: cohort, quiz_count: quiz_count, quizzes: quizzes, users: users, average: cohort_average}.to_json
   end
 
