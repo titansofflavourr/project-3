@@ -32,6 +32,19 @@ select {
 	background-color: #DCEDC8;
 }
 
+a {
+	color: #9CCC65;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #795548;
+}
+
+button {
+	text-transform: uppercase;
+}
+
 body {
 	font-family: "Arial Black", Gadget, sans-serif;
 	color: #689F38;
@@ -40,6 +53,11 @@ body {
 	background-image: url("http://i.imgur.com/MIep62L.png");
    background-position: right bottom; 
    background-repeat: no-repeat;
+}
+
+::selection {
+	color: red;
+	background: black;
 }
 
 .header {
