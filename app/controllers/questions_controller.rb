@@ -6,7 +6,8 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def create #ajax call
+  def create
+    binding.pry
     if (params[:is_multiple_choice] == 'true')
       answer = params[:mc_answer_key]
     else
