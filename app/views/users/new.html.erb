@@ -29,7 +29,7 @@
 				<%= f.password_field :password %><br>
 				<%= f.label :password_confirmation, "Confirm Password" %><br>
 				<%= f.password_field :password_confirmation %>
-				</div>
+				
 				<br><br>
 				<%= f.label :is_instructor, "Is Instructor?:" %><br>
 				<%= f.radio_button(:is_instructor, :true) %>
@@ -37,11 +37,10 @@
 				<%= f.radio_button(:is_instructor, :false) %>
 				<%= f.label(:is_instructor_false, "No") %>
 
-
-			<div id="user-submit">
 				<%= f.submit "Create", html: {class: "button"}  %>
-			</div>
+
 			<% end %>
+			</div>
 			<br>
 		</div>
 
