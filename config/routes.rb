@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     resources :assessments, :except =>[:destroy]
   end
 
+  post '/addquestion', to: 'questions#add'
+
   resources :questions, :except =>[:destroy]
 
   resources :choices, :except =>[:destroy]

@@ -6,8 +6,21 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def create #ajax call
-    if (params[:is_multiple_choice] == 'true')
+  def new
+    @question = Question.new
+  end
+
+  def create
+    question = Question.new
+    if question.update(question_params)
+      redirect_to "/question/#{question.id}"
+    else
+      redirect_to "questions/new"
+    end
+  end
+
+  def add #ajax call
+    if (params[:is_multiple_choice])
       answer = params[:mc_answer_key]
     else
       answer = params[:sa_answer_key]
@@ -26,10 +39,6 @@ class QuestionsController < ApplicationController
     end
     render json: {question: question, choices: choices}.to_json
   end 
-
-  def new
-    @question = Question.new
-  end
 
   def show
     @question = Question.find(params[:id])

@@ -30,8 +30,9 @@ var myFunc = function(event){
   event.preventDefault();
   var parameters = $('.new-question-form').serializeArray();
             // ------db-----
+  console.log('executing ajx query now');
   $.ajax({
-    url: '/questions',
+    url: '/addquestion',
     type: 'POST',
     data: parameters,
     dataType: 'json'
