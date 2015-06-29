@@ -29,7 +29,6 @@ $('#short-answer-radio').click(function() {
 var myFunc = function(event){
   event.preventDefault();
   var parameters = $('.new-question-form').serializeArray();
-  console.log("parameters=", parameters)
             // ------db-----
   $.ajax({
     url: '/questions',
@@ -37,7 +36,6 @@ var myFunc = function(event){
     data: parameters,
     dataType: 'json'
   }).done(function(result) {
-            // -----DOM-----
     var template = $("#new-question-template").html();
     var html = Mustache.render(template, result);
     $( "#quiz-questions" ).append(html); //appends     
