@@ -10,22 +10,17 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def create
-    question = Question.new
-    if question.update(question_params)
-      redirect_to "/question/#{question.id}"
-    else
-      redirect_to "questions/new"
-    end
-  end
-
-  def add #ajax call
+  def create #ajax call
+    # if (params[:is_multiple_choice] == "true")
+    #   answer = params[:mc_answer_key]
+    # else
+    #   answer = params[:sa_answer_key]
+    # end
     if (params[:is_multiple_choice] == "true")
-      answer = params[:mc_answer_key]
+      question = Question.create({prompt: params[:prompt], answer_key: params[:mc_answer_key], is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]})
     else
-      answer = params[:sa_answer_key]
+      question = Question.create({prompt: params[:prompt], answer_key: params[:sa_answer_key], is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]})
     end
-    question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
     if (params[:is_multiple_choice] == "true")
       if (params[:choice1] != "")
         key = 'a'
@@ -48,6 +43,19 @@ class QuestionsController < ApplicationController
         question.choices.create({question_id: question.id, option: params[:choice5], key: key})
       end
     end
+    render json: {question: question, choices: question.choices}.to_json
+  end 
+
+
+  # def create
+  #   question = Question.new
+  #   if question.update(question_params)
+  #     redirect_to "/question/#{question.id}"
+  #   else
+  #     redirect_to "questions/new"
+  #   end
+  # end
+
     # choices.each do |option|
     #   if (option != "")
     #     key = (i+97).chr
@@ -61,8 +69,6 @@ class QuestionsController < ApplicationController
     #     question.choices.create({question_id: question.id, option: option, key: key})
     #   end
     # end
-    render json: {question: question, choices: question.choices}.to_json
-  end 
 
   def show
     @question = Question.find(params[:id])
@@ -76,6 +82,7 @@ class QuestionsController < ApplicationController
   def edit
     @question = Question.find(params[:id])
   end
+
 
   private
 

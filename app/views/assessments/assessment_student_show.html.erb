@@ -35,12 +35,12 @@
 
               <% if question.is_multiple_choice %>
           <!-- UNANSWERED MULTI CHOICE =======================-->
-                <% question.choices.each_with_index do |choice, i| %>
+                <% question.choices.each_with_index do |choice, i| %> 
                   <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
                   <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
                   <br>
                 <% end %>
-                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);"  value=0 disabled><br><br>
+                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" disabled><br><br>
 
 
               <% else %>
@@ -49,7 +49,7 @@
                 <input type="text" class="<%=question.id%>" disabled=true value="UNANSWERED"></input>
                 <br><br>
                 
-                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" value=0 disabled><br><br>
+                <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" disabled><br><br>
               <% end %>
 
             <% else %>
@@ -71,34 +71,22 @@
                   <% end %>
                 <% end %>
                   <br>
-                <% if response.answer.upcase == question.answer_key.upcase %>
-                  <% response.grade = question.max_points %>
-                <% else %>
-                  <% response.grade = 0 %>
-                <% end %>
                 <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><input type="text" class="response-grade" value="<%=response.grade%>" id="<%=response.id%>"disabled=true>
                   <br>
 
               <% else %>
           <!-- ANSWERED SHORT-ANSWER =======================-->
                 <input type="hidden" class="<%=question.max_points%>" id="max_points">
-                  <script>
-                    function handleChange(input) {
-                      var max = parseInt($('#max_points').attr('class'));
-                      if (input.value < 0) input.value = 0;
-                      if (input.value > max) input.value = max;
-                    }
-                  </script>
                 <label>Student Answer:</label><br><input type="text" class="<%=question.id%>" value="<%=question.responses.find_by(user: @user).answer%>" id="<%=question.responses.find_by(user: @user).id%>" disabled></input>
                 <br><br>
 
               <!--=== Graded (on-load) ===-->
                 <% if response.grade %>
-                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>" value="<%= response.grade %>" disabled><br><br>
+                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" id="<%=response.id%>" value="<%= response.grade %>" disabled><br><br>
 
               <!--=== UnGraded (on-load) ===-->
                 <% else %>
-                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" onchange="handleChange(this);" id="<%=response.id%>"><br><br>
+                  <label>GRADE <i>out of <%=question.max_points%> points</i>:</label><br><input type="text" class="response-grade" id="<%=response.id%>"><br><br>
                 <% end %>
                 <br>
               <% end %>

@@ -2,9 +2,9 @@ console.log("student-quiz linked")
 
 var question_id = "";
 
-var student_quiz_submit = document.querySelector('.student-quiz-submit-button');
+var student_return_quiz_page = document.querySelector('.student-return-quiz-page');
 
-if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(event) {
+if(student_return_quiz_page) {$('.student-quiz-submit-button').on('click',function(event) {
 		// event.preventDefault(); 
 		console.log($(this));
 		var answer_input = $(this).parent().find('input');
@@ -189,6 +189,6 @@ if(student_quiz_submit) {$('.student-quiz-submit-button').on('click',function(ev
 		//after submitting, change view for complete//
 		$(this).addClass("hidden");
 		$('.student-take-quiz-view').addClass("hidden");
-		$('.student-submitted-quiz-view').html('<p> THANK YOU FOR TAKING QUIZ.</p>');
+		$('.student-submitted-quiz-view').append('<p> THANK YOU FOR TAKING QUIZ.</p>');
 	})
 }
