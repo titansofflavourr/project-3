@@ -47,12 +47,16 @@ class QuestionsController < ApplicationController
   end
 
   def add #ajax call
+    # if (params[:is_multiple_choice] == "true")
+    #   answer = params[:mc_answer_key]
+    # else
+    #   answer = params[:sa_answer_key]
+    # end
     if (params[:is_multiple_choice] == "true")
-      ans = params[:mc_answer_key]
+      question = Question.create({prompt: params[:prompt], answer_key: params[:mc_answer_key], is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]})
     else
-      ans = params[:sa_answer_key]
+      question = Question.create({prompt: params[:prompt], answer_key: params[:sa_answer_key], is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]})
     end
-    question = Question.create({prompt: params[:prompt], answer_key: ans, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
     if (params[:is_multiple_choice] == "true")
       if (params[:choice1] != "")
         key = 'a'
