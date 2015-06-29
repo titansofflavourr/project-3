@@ -29,7 +29,7 @@ class ChoicesController < ApplicationController
   private
 
   def choice_params
-    params.require(:choice).permit(:option, :key)
+    params.require(:choice).permit(:question_id, :option, :key)
   end
 
 end
