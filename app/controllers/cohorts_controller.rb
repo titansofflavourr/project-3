@@ -24,7 +24,7 @@ class CohortsController < ApplicationController
   def update
     cohort = Cohort.find(params[:id])
     cohort.update(cohort_params)
-    redirect_to cohort_path(cohort)
+    redirect_to "/cohorts/#{cohort.id}"
   end
 
   def edit
@@ -35,7 +35,7 @@ class CohortsController < ApplicationController
     cohort = Cohort.find(params[:id])
     user = User.find(params[:user_id])
     cohort.users.append(user)
-    redirect_to cohort_path(cohort)
+    redirect_to "/cohorts/#{cohort.id}"
   end
 
   def report # ajax call
