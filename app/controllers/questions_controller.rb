@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def create
+  def create #ajax call
     if (params[:is_multiple_choice] == 'true')
       answer = params[:mc_answer_key]
     else
@@ -15,7 +15,8 @@ class QuestionsController < ApplicationController
     question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
     params["choices"].each_with_index do |choice, i|
       if (choice != "")
-        question.choices.create({question_id:question.id, option: choice, key:(i+97).chr})
+        key = (i+97).chr
+        question.choices.create({question_id: question.id, option: choice, key: key})
       end
     end 
     if (question.choices)
