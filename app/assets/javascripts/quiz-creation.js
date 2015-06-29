@@ -38,11 +38,9 @@ var myFunc = function(event){
     dataType: 'json'
   }).done(function(result) {
             // -----DOM-----
-    console.log("ajax is done, now ajaxing ",result["choices"], " question.");
     var template = $("#new-question-template").html();
     var html = Mustache.render(template, result);
-    $( "#quiz-questions" ).append(html); //appends 
-    
+    $( "#quiz-questions" ).append(html); //appends     
     $( ":text" ).val(""); //clears text inputs for next question
   })
 }
