@@ -36,7 +36,6 @@
               <% if question.is_multiple_choice %>
           <!-- UNANSWERED MULTI CHOICE =======================-->
                 <% question.choices.each_with_index do |choice, i| %> 
-                <% binding.pry %>
                   <input class="<%=question.id%>" type="radio" name="question<%=question.id%>_choice">
                   <label for "question<%=question.id%>_choice"><%=(i+65).chr%>. <%=choice.option%></label>
                   <br>
