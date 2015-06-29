@@ -33,7 +33,7 @@ $( ".add-question-button").click( function(event){
   console.log(parameters);
   $.ajax({
     url: "/addquestion",
-    type: "GET",
+    type: "POST",
     data: parameters,
     dataType: "json",
     success: function(result) {
