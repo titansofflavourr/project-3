@@ -5,7 +5,6 @@
 <% if @assessments %>
 		<% @assessments.each do |assessment| %>
 			<li>
-				<% binding.pry %>
 
 				<% if assessment.student_score %>
 					<h3><%= link_to @quizzes.find(assessment.quiz_id).title, "/quizzes/#{assessment.quiz_id}/assessments/#{assessment.id}" %> <%=assessment.student_score%></h3>
