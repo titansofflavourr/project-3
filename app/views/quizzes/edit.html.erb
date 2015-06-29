@@ -60,7 +60,8 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
               <form action="/questions" method="post" class="new-question-form form-horizontal" id="<%=@quiz.id%>">
                 <div class="row">
                   <div class="col-xs-10">
-                    <input type="hidden" name="quiz_id" value="<%=@quiz.id%>">
+                    <input type="hidden" name="quiz_id" value="<%=@quiz.id%>"/>
+                    <input type="hidden" name="number" value="1"/>
                     <div class="input-group">
                     <!--   <input type="text" name="number" class="form-control question-number-field" placeholder="Question Number"> -->
                     </div> <!-- input group -->
@@ -160,7 +161,7 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
                     
                   </button>
                 </span>
-              </form>
+            </form>
             
             <form action="/quizzes/<%= @quiz.id %>/points" method="post">
               <input type="hidden" name="_method" value="patch"/>
