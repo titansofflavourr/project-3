@@ -39,11 +39,12 @@ var myFunc = function(event){
     data: parameters,
     dataType: 'json'
   }).done(function(result) {
-    var template = $("#new-question-template").html();
-    var html = Mustache.render(template, result);
-    $( "#quiz-questions" ).append(html); //appends     
-    $( ":text" ).val(""); //clears text inputs for next question
-  })
+    window.alert('executed successfully');
+    // var template = $("#new-question-template").html();
+    // var html = Mustache.render(template, result);
+    // $( "#quiz-questions" ).append(html); //appends     
+    // $( ":text" ).val(""); //clears text inputs for next question
+  });
 }
 
 $( ".add-question-button").click(myFunc)
