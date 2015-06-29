@@ -1,7 +1,17 @@
+<div id="back-to-link">
+	<%= link_to "Back to Dashboard", "/" %>
+</div>
 
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="main-user">
+
+			<div id="user-header">
 <%# Student View for Quizzes %> 
 <div class="student-take-quiz-view">
 	<h1 id="<%=@quiz.id%>" class="student-quiz-title">QUIZ:  <%= @quiz.title.upcase %></h1>
+</div>
+      <div id="reports-inner-box">
 	<h3 class="student-quiz-cohort-name"> COHORT: <%= @cohort.name.upcase %></h3>
 	<h3 class="student-user-name">USERNAME: <%= @user.f_name.upcase %> <%= @user.l_name.upcase %></h3>
 
@@ -80,9 +90,13 @@
 		<% end %>
 		<br>
 	<button class="student-complete-quiz-page">COMPLETE QUIZ</button>
-</div>
+	<br><br>
 <div class="student-submitted-quiz-view"> 
-	<button class="student-return-quiz-page"><a href="/">EXIT WITH SAVING</a></button>	
+	<button class="student-return-quiz-page"><a href="/">EXIT WITHOUT SAVING</a></button>	
 </div>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 

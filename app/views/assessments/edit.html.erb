@@ -79,6 +79,7 @@
                   <br>
                 <% if response.answer.upcase == question.answer_key.upcase %>
                   <% response.grade = question.max_points %>
+                  <% response.update(grade: question.max_points) %>
 
                 <% else %>
                   <% response.grade = 0 %>

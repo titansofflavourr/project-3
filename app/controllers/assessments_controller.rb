@@ -26,7 +26,7 @@ class AssessmentsController < ApplicationController
       @assessment = Assessment.find(params[:id])
       @quiz = Quiz.find(params[:quiz_id])
       @user= User.find(session[:user_id])
-      @cohort = Cohort.where(user_id: @user.id)
+      @cohort = User.find(@user.id).cohorts.first
       render 'assessment_student_show'
     else 
       @assessment = Assessment.find(params[:id])
