@@ -35,10 +35,13 @@ $( ".add-question-button").click( function(event){
     data: parameters,
     dataType: 'json'
   }).done(function(result) {
-    var template = $("#new-question-template").html();
-    var html = Mustache.render(template, result);
-    $( "#quiz-questions" ).append(html); //appends     
-    $( ":text" ).val(""); //clears text inputs for next question
+    var output = Mustache.render($("#new-question-template").html(), result);
+    $("#quiz-questions").append(output);
+
+    // var template = $("#new-question-template").html();
+    // var html = Mustache.render(template, result);
+    // $( "#quiz-questions" ).append(html); //appends     
+    // $( ":text" ).val(""); //clears text inputs for next question
   })
 })
 
