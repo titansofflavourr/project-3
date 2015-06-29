@@ -26,7 +26,7 @@ $('#short-answer-radio').click(function() {
 });
 
 // ------Question-Submit(to-db-and-DOM)-----
-var myFunc = function(event){
+$( ".add-question-button").click( function(event){
   event.preventDefault();
   var parameters = $('.new-question-form').serializeArray();
             // ------db-----
@@ -43,8 +43,8 @@ var myFunc = function(event){
     $( "#quiz-questions" ).append(html); //appends     
     $( ":text" ).val(""); //clears text inputs for next question
   })
-}
+})
 
-$( ".add-question-button").click(myFunc)
+// $( ".add-question-button").click(myFunc)
 
 
