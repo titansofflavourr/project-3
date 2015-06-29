@@ -7,6 +7,7 @@ class ChoicesController < ApplicationController
   def create
     choice = Choice.new
     choice.update(choice_params)
+    choice
   end
 
   def new
