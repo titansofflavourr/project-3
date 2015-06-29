@@ -32,7 +32,7 @@ $( ".add-question-button").click( function(event){
   console.log('executing ajx query now');
   console.log(parameters);
   $.ajax({
-    url: "/addquestion",
+    url: "/questions",
     type: "POST",
     data: parameters,
     dataType: "json",

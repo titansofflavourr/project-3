@@ -10,43 +10,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def create
-    question = Question.new
-    if question.update(question_params)
-      redirect_to "/question/#{question.id}"
-    else
-      redirect_to "questions/new"
-    end
-  end
-
-    # choices.each do |option|
-    #   if (option != "")
-    #     key = (i+97).chr
-    #     question.choices.create({question_id: question.id, option: option, key: key})
-    #     i = i + 1
-    #   end
-    # end
-    # choices.each_with_index do |option, i|
-    #   if (option != "")
-    #     key = (i+97).chr
-    #     question.choices.create({question_id: question.id, option: option, key: key})
-    #   end
-    # end
-
-  def show
-    @question = Question.find(params[:id])
-  end
-
-  def update
-    question = Question.find(params[:id])
-    question.update(question_params)
-  end
-
-  def edit
-    @question = Question.find(params[:id])
-  end
-
-  def add #ajax call
+  def create #ajax call
     # if (params[:is_multiple_choice] == "true")
     #   answer = params[:mc_answer_key]
     # else
@@ -81,6 +45,44 @@ class QuestionsController < ApplicationController
     end
     render json: {question: question, choices: question.choices}.to_json
   end 
+
+
+  # def create
+  #   question = Question.new
+  #   if question.update(question_params)
+  #     redirect_to "/question/#{question.id}"
+  #   else
+  #     redirect_to "questions/new"
+  #   end
+  # end
+
+    # choices.each do |option|
+    #   if (option != "")
+    #     key = (i+97).chr
+    #     question.choices.create({question_id: question.id, option: option, key: key})
+    #     i = i + 1
+    #   end
+    # end
+    # choices.each_with_index do |option, i|
+    #   if (option != "")
+    #     key = (i+97).chr
+    #     question.choices.create({question_id: question.id, option: option, key: key})
+    #   end
+    # end
+
+  def show
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    question = Question.find(params[:id])
+    question.update(question_params)
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
 
   private
 
