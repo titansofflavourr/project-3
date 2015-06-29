@@ -60,7 +60,7 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
               <form action="/questions" method="post" class="new-question-form form-horizontal" id="<%=@quiz.id%>">
                 <div class="row">
                   <div class="col-xs-10">
-                    <input type="hidden" name="quiz_id" value="<%=@quiz.id%>"/>
+                    <input type="hidden" name="quiz_id" value="<%= @quiz.id %>"/>
                     <input type="hidden" name="number" value="1"/>
                     <div class="input-group">
                     <!--   <input type="text" name="number" class="form-control question-number-field" placeholder="Question Number"> -->
@@ -149,12 +149,15 @@ edit_cohort_quiz| GET  |  /cohorts/:cohort_id/quizzes/:id/edit(.:format) |quizze
                   </div> <!-- panel -->
                 </div><br>
                 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+                <input type="submit" value="Add Question"/>
 
 
             </div> <!-- panel-body -->
             <br>
                 <span class="form-group-btn">
-                  <button type="submit" value="submit" class="btn btn-success add-question-button" id="<%=@quiz.id%>">
+
+
+               <!--    <button type="submit" value="submit" class="btn btn-success add-question-button" id="<%=@quiz.id%>"> -->
                     
                     <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
                     <span class="glyphicon-class">Add Question</span>
