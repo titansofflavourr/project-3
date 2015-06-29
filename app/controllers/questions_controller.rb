@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def add #ajax call
-    if (params[:is_multiple_choice])
+    if (params[:is_multiple_choice] == "true")
       answer = params[:mc_answer_key]
     else
       answer = params[:sa_answer_key]
@@ -32,12 +32,7 @@ class QuestionsController < ApplicationController
         question.choices.create({question_id: question.id, option: choice, key: key})
       end
     end 
-    if (question.choices)
-      choices = question.choices
-    else
-      choices = []
-    end
-    render json: {question: question, choices: choices}.to_json
+    render json: {question: question, choices: question.choices}.to_json
   end 
 
   def show
