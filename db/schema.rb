@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150628210835) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer  "number",                             null: false
+    t.integer  "number"
     t.string   "prompt",                             null: false
     t.boolean  "is_multiple_choice", default: false, null: false
     t.string   "answer_key"
