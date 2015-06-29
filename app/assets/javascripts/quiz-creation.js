@@ -2,6 +2,29 @@ console.log("quiz_creation js is linked up");
 
 // ==========QUIZ-CREATION/EDIT=============
 
+// ------Question-Submit(to-db-and-DOM)-----
+var newChoice = function(event){
+  event.preventDefault();
+  var parameters = $('.new-question-form').serializeArray();
+            // ------db-----
+  console.log('executing ajx query now');
+  console.log(parameters);
+  $.ajax({
+    url: '/addquestion',
+    type: 'POST',
+    data: parameters,
+    dataType: 'json'
+  }).done(function(result) {
+    window.alert('executed successfully');
+    // var template = $("#new-question-template").html();
+    // var html = Mustache.render(template, result);
+    // $( "#quiz-questions" ).append(html); //appends     
+    // $( ":text" ).val(""); //clears text inputs for next question
+  });
+}
+
+$( ".add-question-button").click(newChoice);
+
 // ----------Radio-Button-Listeners---------
   // hides show multi-c and short-a fields
 $('#mult-choice-radio').click(function() {
@@ -25,28 +48,5 @@ $('#short-answer-radio').click(function() {
     // $( ".mult-choice-answer-panel" ).prop('disabled', true);
   };
 });
-
-// ------Question-Submit(to-db-and-DOM)-----
-var myFunc = function(event){
-  event.preventDefault();
-  var parameters = $('.new-question-form').serializeArray();
-            // ------db-----
-  console.log('executing ajx query now');
-  console.log(parameters);
-  $.ajax({
-    url: '/addquestion',
-    type: 'POST',
-    data: parameters,
-    dataType: 'json'
-  }).done(function(result) {
-    window.alert('executed successfully');
-    // var template = $("#new-question-template").html();
-    // var html = Mustache.render(template, result);
-    // $( "#quiz-questions" ).append(html); //appends     
-    // $( ":text" ).val(""); //clears text inputs for next question
-  });
-}
-
-$( ".add-question-button").click(myFunc)
 
 
