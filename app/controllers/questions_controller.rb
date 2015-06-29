@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     else
       answer = params[:sa_answer_key]
     end
-    question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
+    question = Question.create({prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
     if (params[:is_multiple_choice] == "true")
       if (params[:choice1] != "")
         key = 'a'
