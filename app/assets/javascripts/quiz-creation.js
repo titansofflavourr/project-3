@@ -13,8 +13,9 @@ $('#mult-choice-radio').click(function() {
     // $( ".short-answer-panel" ).prop('disabled', true);
     // $( ".mult-choice-answer-panel" ).attr('name', myName); // changes/adds name
     // elem.removeAttr('name'); 
-  }
+  };
 });
+
 $('#short-answer-radio').click(function() {
    if($('#short-answer-radio').is(':checked')) { 
     console.log("sa's checked"); 
@@ -22,7 +23,7 @@ $('#short-answer-radio').click(function() {
     // $( ".short-answer-panel" ).prop('disabled', false);
     $( ".mult-choice-answer-panel" ).addClass( "hidden" );
     // $( ".mult-choice-answer-panel" ).prop('disabled', true);
-  }
+  };
 });
 
 // ------Question-Submit(to-db-and-DOM)-----
