@@ -26,12 +26,13 @@ class QuestionsController < ApplicationController
       answer = params[:sa_answer_key]
     end
     question = Question.create({number: params[:number], prompt: params[:prompt], answer_key: answer, is_multiple_choice: params[:is_multiple_choice], max_points: params[:max_points], quiz_id: params[:quiz_id]}); 
-    params[:choices].each_with_index do |choice, i|
-      if (choice != "")
+    choices = params[:choices]
+    choices.each_with_index do |option, i|
+      if (option != "")
         key = (i+97).chr
-        question.choices.create({question_id: question.id, option: choice, key: key})
+        question.choices.create({question_id: question.id, option: option, key: key})
       end
-    end 
+    end
     render json: {question: question, choices: question.choices}.to_json
   end 
 
