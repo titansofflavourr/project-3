@@ -48,7 +48,6 @@ $('#save-total-grade').on('click', function(){
     }
   }).done(function(result){
     console.log("ajax post done")
-    debugger;
     $("#confirmation").html(" Submitted Grade of " + result)
   })
 })
