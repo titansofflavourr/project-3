@@ -23,32 +23,32 @@ console.log("quiz_creation js is linked up");
 //   });
 // }
 
-addQuestionButton = document.querySelector(".add-question-button");
+// addQuestionButton = document.querySelector(".add-question-button");
 
-$( ".add-question-button").click( function(event){
-  event.preventDefault();
-  var parameters = $('.new-question-form').serializeArray();
-            // ------db-----
-  console.log('executing ajx query now');
-  console.log(parameters);
-  $.ajax({
-    url: "/questions",
-    type: "POST",
-    data: parameters,
-    dataType: "json",
-    success: function(result) {
-      var output = Mustache.render($("#new-question-template").html(), result);
-      $("#quiz-questions").append(output);
-      // var template = $("#new-question-template").html();
-      // var html = Mustache.render(template, result);
-      // $( "#quiz-questions" ).append(html); //appends     
-      $( ":text" ).val(""); //clears text inputs for next question
-    }, 
-    error: function() {
-      window.alert("Oops, there was a problem adding your question.");
-    }
-  });
-})
+// $( ".add-question-button").click( function(event){
+//   event.preventDefault();
+//   var parameters = $('.new-question-form').serializeArray();
+//             // ------db-----
+//   console.log('executing ajx query now');
+//   console.log(parameters);
+//   $.ajax({
+//     url: "/questions",
+//     type: "POST",
+//     data: parameters,
+//     dataType: "json",
+//     success: function(result) {
+//       var output = Mustache.render($("#new-question-template").html(), result);
+//       $("#quiz-questions").append(output);
+//       // var template = $("#new-question-template").html();
+//       // var html = Mustache.render(template, result);
+//       // $( "#quiz-questions" ).append(html); //appends     
+//       $( ":text" ).val(""); //clears text inputs for next question
+//     }, 
+//     error: function() {
+//       window.alert("Oops, there was a problem adding your question.");
+//     }
+//   });
+// })
 
 // $( ".add-question-button").click(newChoice);
 
