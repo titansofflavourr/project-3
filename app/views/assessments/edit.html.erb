@@ -79,6 +79,7 @@
                 <% if response.answer.upcase == question.answer_key.upcase %>
                   <% response.grade = question.max_points %>
                   <% response.update(grade: question.max_points) %>
+
                 <% else %>
                   <% response.grade = 0 %>
                 <% end %>
@@ -124,11 +125,7 @@
         <% end %>
         <br><br><br>
 
-      <%#+++++code for auto submitting auto graded mult choice qs++++++%>
       <div class="assessment-submit">
-<!-- 
-        # <%= button_to "SAVE TOTAL GRADE", quiz_assessment_path %>
- -->  
         <button id="save-total-grade">SAVE TOTAL GRADE</button>
         <div id="confirmation"></div>
         <button id="exit-grading"><a href="/cohorts/<%=@cohort.id%>/quizzes">EXIT WITHOUT SAVING</a></button>  
