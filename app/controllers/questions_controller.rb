@@ -43,7 +43,8 @@ class QuestionsController < ApplicationController
         question.choices.create({question_id: question.id, option: params[:choice5], key: key})
       end
     end
-    render json: {question: question, choices: question.choices}.to_json
+    redirect_to "/quizzes/#{question.quiz.id}/edit"
+    # render json: {question: question, choices: question.choices}.to_json
   end 
 
 
