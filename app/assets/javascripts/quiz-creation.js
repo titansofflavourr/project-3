@@ -15,6 +15,7 @@ $('#mult-choice-radio').click(function() {
     // elem.removeAttr('name'); 
   }
 });
+
 $('#short-answer-radio').click(function() {
    if($('#short-answer-radio').is(':checked')) { 
     console.log("sa's checked"); 
@@ -43,8 +44,8 @@ $( ".add-question-button").click( function(event){
     $( "#quiz-questions" ).append(html); //appends     
     $( ":text" ).val(""); //clears text inputs for next question
   })
-}
+});
 
-$( ".add-question-button").click(myFunc)
+// $( ".add-question-button").click(myFunc)
 
 
