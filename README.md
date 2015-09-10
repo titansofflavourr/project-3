@@ -10,8 +10,7 @@ Team members
   - Junho Rhee - https://www.github.com/juno0628
   - David Neuhaus - https://www.github.com/neuhausneuhaus
   - Gabriella Lubliner - https://www.github.com/poele
-  - Devatha Kesarkodigae - https://www.github.com/deksr
-  
+
 Technologies
   - Devise Invitable - https://github.com/scambra/devise_invitable
   - jQuery
